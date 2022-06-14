@@ -40,6 +40,30 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="address" class="col-md-4 col-form-label text-md-right">Address</label>
+
+                            <div class="col-md-6">
+                                <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}" required autocomplete="address">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="image_url" class="col-md-4 col-form-label text-md-right">Image</label>
+
+                            <div class="col-md-6">
+                                <input id="image_url" type="text" class="form-control" name="image_url" value="{{ old('image_url') }}" required autocomplete="image_url">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="logo" class="col-md-4 col-form-label text-md-right">Logo</label>
+
+                            <div class="col-md-6">
+                                <input id="logo" type="text" class="form-control" name="logo" value="{{ old('logo') }}" required autocomplete="logo">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
