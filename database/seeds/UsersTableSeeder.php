@@ -2,6 +2,7 @@
 
 use App\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class UsersTableSeeder extends Seeder
 {
@@ -19,5 +20,7 @@ class UsersTableSeeder extends Seeder
         // $user->vat_number ="1234567890";
         // $user->address = "Via Roma, 15";
         // $user->save();
+
+        // Hash::make($value)
     }
 }
