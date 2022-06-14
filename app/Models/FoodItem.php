@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\User;
+use App\User;
 use App\Models\Order;
 use App\Models\Course;
 use App\Models\Category;

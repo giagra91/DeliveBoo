@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App;
 
 use App\Models\Order;
 use App\Models\FoodItem;
@@ -14,13 +14,15 @@ class User extends Authenticatable
     
     use Notifiable;
 
+    protected $table = "users";
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', "address", "vat_number"
     ];
 
     /**

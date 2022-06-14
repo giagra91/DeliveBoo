@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\User;
+use App\User;
 use App\Models\FoodItem;
 use Illuminate\Database\Eloquent\Model;
 
