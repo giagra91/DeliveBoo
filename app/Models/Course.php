@@ -8,6 +8,6 @@ use Models\FoodItems;
 class Course extends Model
 {
     public function foodItems(){
-        return $this->hasMany("Models\FoodItem");
+        return $this->hasMany("App\Models\FoodItem");
     }
 }
