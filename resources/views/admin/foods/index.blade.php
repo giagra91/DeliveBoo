@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('title', 'Home')
@@ -24,3 +25,4 @@
 		@endforeach
 	</section>
 @endsection
+
