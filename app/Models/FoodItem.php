@@ -16,7 +16,6 @@ class FoodItem extends Model
         "price", 
         "description", 
         "ingredients",
-        "img_url", 
         "is_visible", 
         "course_id", 
     );

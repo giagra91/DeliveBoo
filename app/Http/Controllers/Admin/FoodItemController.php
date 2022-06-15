@@ -19,7 +19,7 @@ class FoodItemController extends Controller
      */
     public function index()
     {
-        $foods = FoodItem::all();
+        $foods = FoodItem::where("user_id", Auth::user()->id)->get();
         return view("admin.foods.index", compact("foods"));
     }
 
@@ -104,7 +104,7 @@ class FoodItemController extends Controller
      * @param  FoodItem $foodItem
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, FoodItem $foodItem)
+    public function update(Request $request, FoodItem $food)
     {
 
         $request->validate([
@@ -118,15 +118,15 @@ class FoodItemController extends Controller
 
         $data = $request->all();
 
-        $foodItem->fill($data);
+        // $foodItem->fill($data);
 
-        $foodItem->user_id = Auth::user()->id;
+        $food->user_id = Auth::user()->id;
 
-        $foodItem->img_url = Storage::put('uploads', $data['img_url']);
+        $food->img_url = Storage::put('uploads', $data['img_url']);
 
-        $foodItem->categories()->attach($data['category']);
+        $food->categories()->sync($data['category']);
 
-        $foodItem->update($data);      
+        $food->update($data);      
 
         return redirect()->route("admin.foods.index")->with('message', 'Piatto modificato correttamente');
 
