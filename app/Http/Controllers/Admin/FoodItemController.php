@@ -19,7 +19,7 @@ class FoodItemController extends Controller
      */
     public function index()
     {
-        $foods = FoodItem::all();
+        $foods = FoodItem::where('user_id',Auth::user()['id']);
         return view("admin.foods.index", compact("foods"));
     }
 
@@ -126,7 +126,7 @@ class FoodItemController extends Controller
 
         $foodItem->categories()->attach($data['category']);
 
-        $foodItem->update($data);      
+        $foodItem->update($data);
 
         return redirect()->route("admin.foods.index")->with('message', 'Piatto modificato correttamente');
 
