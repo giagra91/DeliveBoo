@@ -17,7 +17,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string('custumer_name', 40)->nullable(false);
+            $table->string('customer_name', 40)->nullable(false);
             $table->string('customer_address', 255)->nullable(false);
             $table->date('order_date')->nullable(false);
             $table->date('pickup_date')->nullable(false);
