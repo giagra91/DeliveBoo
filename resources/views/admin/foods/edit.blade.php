@@ -11,7 +11,7 @@
 		</div>
 	</div>
 
-	<form class="row row-cols-4 g-3 flex-column align-items-center" action="{{ route("admin.foods.update", $foodItem )}}" method="POST">
+	<form class="row row-cols-4 g-3 flex-column align-items-center" action="{{ route("admin.foods.update", $foodItem )}}" method="POST" enctype="multipart/form-data">
 		@csrf
 		@method('PUT')
 				<div class="col">
@@ -44,8 +44,8 @@
 			</div>
 
 			<div class="col">
-					<label for="image">Carica l'immagine</label>
-					<input type="file" name="image" id="image" class="form-control" value="{{$foodItem->img_url}}">
+					<label for="img_url">Carica l'immagine</label>
+					<input type="file" name="img_url" id="img_url" class="form-control" value="{{$foodItem->img_url}}">
 			</div>
 
 			<div class="col">
@@ -56,23 +56,39 @@
 
 
 			<div class="col py-2">
-				<div class="form-check">
-						<select 
-						class="form-select" 
-						name="course[]" 
-						>
-						<option selected>Seleziona la portata</option>
-						@foreach ($courses as $course)
-							<option value="{{$course->id}}" {{ $foodItem->course_id === $course->id ? 'selected' : '' }}>{{$course->name}}</option>
-						@endforeach
-				</div>
+				<select 
+				class="form-select" 
+				name="course_id" 
+				>
+				{{-- <option selected>Seleziona la portata</option> --}}
+				@foreach ($courses as $course)
+					<option value="{{$course->id}}" {{ $foodItem->course_id === $course->id ? "selected='selected'" : '' }}>{{$course->name}}</option>
+				@endforeach
+				</select>
 		</div> 
 
+		
+		<div class="col py-2">
+			@foreach ($categories as $category)
+			<div class="form-check">
+				<input 
+				class="form-check-input"
+				type="checkbox"
+				value="{{ $category->id }}" 
+				name="category[]"
+				{{ $foodItem->categories->contains($category) ? 'checked' : '' }}
+				>
+				<label class="form-check-label" for="flexCheckDefault">
+					<span class="badge rounded-pill mb-3">{{$category->name}}</span>
+				</label>
+			</div>
+			@endforeach
+		</div> 
 		<div class="col py-2">
 
 			<div class="form-check">
 				<input class="form-check-input" type="checkbox" value="{{false}}" name="is_visible" id="flexCheckDefault" checked>
-				<label class="form-check-label" for="flexCheckDefault" {{ !$foodItem->is_visible ? 'checked' : '' }}>
+				<label class="form-check-label" for="flexCheckDefault" {{ !$foodItem->is_visible ? "checked='checked'" : '' }}>
 					Non visibile
 				</label>
 			</div>
@@ -84,23 +100,6 @@
 			</div>
 
 		</div>
-
-			<div class="col py-2">
-					@foreach ($categories as $category)
-					<div class="form-check">
-							<input 
-							class="form-check-input"
-							type="checkbox"
-							value="{{ $category->id }}" 
-							name="category[]"
-							{{ $foodItem->categories->contains($category) ? 'checked' : '' }}
-							>
-							<label class="form-check-label" for="flexCheckDefault">
-									<span class="badge rounded-pill mb-3">{{$category->name}}</span>
-							</label>
-					</div>
-					@endforeach
-			</div> 
 
 			<div class="col text-center pt-4">
 					<button type="submit" class="btn btn-primary">Modifica il piatto</button>

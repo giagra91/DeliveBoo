@@ -21,18 +21,6 @@ class FoodItemTableSeeder extends Seeder
 
         $faker = \Faker\Factory::create();
         $faker->addProvider(new \FakerRestaurant\Provider\it_IT\Restaurant($faker));
-        for ($i=0; $i < 10 ; $i++) { 
-            $foodItem = new FoodItem();
-            $foodItem->name = $faker->foodName();
-            $foodItem->user_id = $faker->randomElement($userIds);
-            $foodItem->course_id = $faker->randomElement($courseIds);
-            $foodItem->price = $faker->randomFloat(2, 1, 999);
-            $foodItem->description = $faker->realText(50);
-            $foodItem->ingredients = $faker->words(4, true);
-            $foodItem->img_url = "https://picsum.photos/900?random=" . $i;
-            $foodItem->is_visible = $faker->boolean();
-            $foodItem->save();
-        }
 
         $foodItemOne = new FoodItem();
         $foodItemOne->name = "Spaghetti alla carbonara";
@@ -244,7 +232,7 @@ class FoodItemTableSeeder extends Seeder
         $foodItemNineteen->save();
 
         $foodItemTwenty = new FoodItem();
-        $foodItemTwenty->name = "Curry di gamberi e latte di cocco profumato al lime";
+        $foodItemTwenty->name = "Curry di gamberi e latte di cocco al lime";
         $foodItemTwenty->user_id = 10;
         $foodItemTwenty->course_id = 3;
         $foodItemTwenty->price = 15.00;
