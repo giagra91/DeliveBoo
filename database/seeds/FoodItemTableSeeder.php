@@ -121,6 +121,28 @@ class FoodItemTableSeeder extends Seeder
         $foodItemEight->img_url = asset("img/pesce spada.jpeg");
         $foodItemEight->is_visible = true;
         $foodItemEight->save();
+
+        $foodItemNine = new FoodItem();
+        $foodItemNine->name = "Tagliatelle Speck, Fiori di Zucca e Zucchine";
+        $foodItemNine->user_id = 5;
+        $foodItemNine->course_id = 2;
+        $foodItemNine->price = 12.00;
+        $foodItemNine->description = $faker->realText(50);
+        $foodItemNine->ingredients = "Speck, Fiori di Zucca e Zucchine";
+        $foodItemNine->img_url = asset("img/tagliatelle-ai-fiori-di-zucca.jpeg");
+        $foodItemNine->is_visible = true;
+        $foodItemNine->save();
+
+        $foodItemTen = new FoodItem();
+        $foodItemTen->name = "Filetto al pepe verde";
+        $foodItemTen->user_id = 5;
+        $foodItemTen->course_id = 2;
+        $foodItemTen->price = 18.00;
+        $foodItemTen->description = $faker->realText(50);
+        $foodItemTen->ingredients = "Filetto, pepe verde";
+        $foodItemTen->img_url = asset("img/Filetto-al-pepe-verde-e-senape.jpeg");
+        $foodItemTen->is_visible = true;
+        $foodItemTen->save();
         
     }
 }
