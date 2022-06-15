@@ -12,7 +12,7 @@ class CourseTableSeeder extends Seeder
      */
     public function run()
     {
-        $names = ["antipasto", "primo", "secondo", "dolce", "contorno"];
+        $names = ["antipasto", "primo", "secondo", "dolce", "contorno", "burger"];
         for ($i=0; $i < count($names) ; $i++) { 
             $course = new Course;
             $course->name = $names[$i];
