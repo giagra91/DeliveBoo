@@ -143,6 +143,116 @@ class FoodItemTableSeeder extends Seeder
         $foodItemTen->img_url = asset("img/Filetto-al-pepe-verde-e-senape.jpeg");
         $foodItemTen->is_visible = true;
         $foodItemTen->save();
+
+        $foodItemEleven = new FoodItem();
+        $foodItemEleven->name = "Paccheri allo scoglio";
+        $foodItemEleven->user_id = 6;
+        $foodItemEleven->course_id = 2;
+        $foodItemEleven->price = 12.00;
+        $foodItemEleven->description = $faker->realText(50);
+        $foodItemEleven->ingredients = "Paccheri, cozze, gamberetti, vongole, peperoncino piccante";
+        $foodItemEleven->img_url = asset("img/paccheri-allo-scoglio.jpg");
+        $foodItemEleven->is_visible = true;
+        $foodItemEleven->save();
+
+        $foodItemTwelve = new FoodItem();
+        $foodItemTwelve->name = "Bucatini all'amatriciana";
+        $foodItemTwelve->user_id = 6;
+        $foodItemTwelve->course_id = 2;
+        $foodItemTwelve->price = 10.00;
+        $foodItemTwelve->description = $faker->realText(50);
+        $foodItemTwelve->ingredients = "Bucatini, guanciale, pecorino, pomodoro, peperoncino";
+        $foodItemTwelve->img_url = asset("img/paccheri-allo-scoglio.jpg");
+        $foodItemTwelve->is_visible = true;
+        $foodItemTwelve->save();
+
+        $foodItemThirteen = new FoodItem();
+        $foodItemThirteen->name = "Carbonara";
+        $foodItemThirteen->user_id = 7;
+        $foodItemThirteen->course_id = 2;
+        $foodItemThirteen->price = 12.00;
+        $foodItemThirteen->description = $faker->realText(50);
+        $foodItemThirteen->ingredients = "Bucatini, guanciale, pecorino, peperoncino";
+        $foodItemThirteen->img_url = asset("img/carbonara.jpg");
+        $foodItemThirteen->is_visible = true;
+        $foodItemThirteen->save();
+
+        $foodItemFourteen = new FoodItem();
+        $foodItemFourteen->name = "Trancio di salmone con patate e pachino";
+        $foodItemFourteen->user_id = 7;
+        $foodItemFourteen->course_id = 3;
+        $foodItemFourteen->price = 16.00;
+        $foodItemFourteen->description = $faker->realText(50);
+        $foodItemFourteen->ingredients = "Salmone, patate, pomodori pachino";
+        $foodItemFourteen->img_url = asset("img/salmone-patate.jpg");
+        $foodItemFourteen->is_visible = true;
+        $foodItemFourteen->save();
+
+        $foodItemFifteen = new FoodItem();
+        $foodItemFifteen->name = "Polpette al sugo di mamma con patate al forno";
+        $foodItemFifteen->user_id = 8;
+        $foodItemFifteen->course_id = 3;
+        $foodItemFifteen->price = 15.00;
+        $foodItemFifteen->description = $faker->realText(50);
+        $foodItemFifteen->ingredients = "Carne bovina, patate, pomodori";
+        $foodItemFifteen->img_url = asset("img/polpette-patate.jpg");
+        $foodItemFifteen->is_visible = true;
+        $foodItemFifteen->save();
+
+        $foodItemSixteen = new FoodItem();
+        $foodItemSixteen->name = "Straccetti di manzo con patate";
+        $foodItemSixteen->user_id = 8;
+        $foodItemSixteen->course_id = 3;
+        $foodItemSixteen->price = 16.50;
+        $foodItemSixteen->description = $faker->realText(50);
+        $foodItemSixteen->ingredients = "Carne bovina, patate";
+        $foodItemSixteen->img_url = asset("img/straccetti-manzo.jpg");
+        $foodItemSixteen->is_visible = true;
+        $foodItemSixteen->save();
+
+        $foodItemSeventeen = new FoodItem();
+        $foodItemSeventeen->name = "Spaghetti alla carbonara";
+        $foodItemSeventeen->user_id = 9;
+        $foodItemSeventeen->course_id = 2;
+        $foodItemSeventeen->price = 8.50;
+        $foodItemSeventeen->description = $faker->realText(50);
+        $foodItemSeventeen->ingredients = "Spaghetti, guanciale, uova";
+        $foodItemSeventeen->img_url = asset("img/carbonara-rosamunde.JPG");
+        $foodItemSeventeen->is_visible = true;
+        $foodItemSeventeen->save();
+
+        $foodItemEighteen = new FoodItem();
+        $foodItemEighteen->name = "Parmigiana alle melanzane";
+        $foodItemEighteen->user_id = 9;
+        $foodItemEighteen->course_id = 3;
+        $foodItemEighteen->price = 8.50;
+        $foodItemEighteen->description = $faker->realText(50);
+        $foodItemEighteen->ingredients = "Melenzane, pomodori, cipolla";
+        $foodItemEighteen->img_url = asset("img/parmigiana-di-melanzane-2.jpg");
+        $foodItemEighteen->is_visible = true;
+        $foodItemEighteen->save();
+
+        $foodItemNineteen = new FoodItem();
+        $foodItemNineteen->name = "Pollo fritto paprika e origano con mayolime";
+        $foodItemNineteen->user_id = 10;
+        $foodItemNineteen->course_id = 3;
+        $foodItemNineteen->price = 9.00;
+        $foodItemNineteen->description = $faker->realText(50);
+        $foodItemNineteen->ingredients = "Pollo, maionese, paprika, origano";
+        $foodItemNineteen->img_url = asset("img/pollo-paprika-maio.jpg");
+        $foodItemNineteen->is_visible = true;
+        $foodItemNineteen->save();
+
+        $foodItemTwenty = new FoodItem();
+        $foodItemTwenty->name = "Curry di gamberi e latte di cocco profumato al lime";
+        $foodItemTwenty->user_id = 10;
+        $foodItemTwenty->course_id = 3;
+        $foodItemTwenty->price = 15.00;
+        $foodItemTwenty->description = $faker->realText(50);
+        $foodItemTwenty->ingredients = "Gamberi, latte di cocco, lime";
+        $foodItemTwenty->img_url = asset("img/curry-gamberi.jpg");
+        $foodItemTwenty->is_visible = true;
+        $foodItemTwenty->save();
         
     }
 }
