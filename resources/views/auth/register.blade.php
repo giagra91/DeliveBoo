@@ -123,4 +123,3 @@
     </div>
 </div>
 @endsection
-@dump($cookingTypes)

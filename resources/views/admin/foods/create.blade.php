@@ -14,7 +14,7 @@
 
 
     <form class="row row-cols-4 g-3 flex-column align-items-center" action="{{route("admin.foods.store")}}" method="POST" enctype="multipart/form-data">
-      @csrf
+    @csrf
 
 			<div class="col">
 					<h2>
