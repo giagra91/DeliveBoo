@@ -1,0 +1,2 @@
+testo index
+{{-- @dump($foods) --}}

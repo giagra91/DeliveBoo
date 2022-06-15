@@ -16,7 +16,7 @@ class FoodItemController extends Controller
     public function index()
     {
         $foods = FoodItem::all();
-        return view("admin.index", compact("foods"));
+        return view("admin.foods.index", compact("foods"));
     }
 
     /**
