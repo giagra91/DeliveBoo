@@ -16,10 +16,10 @@ class CreateCategoryFoodItemTable extends Migration
         Schema::create('category_food_item', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('food_item_id');
-            $table->foreign('food_item_id')->references('id')->on('food_items');
+            $table->foreign('food_item_id')->references('id')->on('food_items')->onDelete('cascade');
 
             $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
         });
     }

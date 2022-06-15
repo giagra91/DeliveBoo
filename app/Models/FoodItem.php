@@ -10,6 +10,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class FoodItem extends Model
 {
+
+    protected $fillable = array(
+        "name", 
+        "price", 
+        "description", 
+        "ingredients",
+        "img_url", 
+        "is_visible", 
+        "course_id", 
+    );
+
     public function course(){
         return $this->hasOne("App\Models\Course");
         
