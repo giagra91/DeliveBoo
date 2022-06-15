@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use App\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Models\CookingType;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -64,10 +65,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+
+        $user = new User();
+        $user->name =  $data['name'];
+        $user->email = $data['email'];
+        $user->address = $data['address'];
+        $user->vat_number = $data['vat_number'];
+        $user->img_url = $data['image_url'];
+        $user->logo_url = $data['logo'];
+        $user->password = Hash::make($data['password']);
+        $user->save();
+        $user->cookingTypes()->attach($data["cooking_types"]);
+        return $user;
     }
+
+        public function showRegistrationForm(){
+            $cookingTypes = CookingType::all();
+            return view('auth.register', compact("cookingTypes"));
+        }
 }

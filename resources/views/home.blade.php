@@ -15,6 +15,7 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+                    <a href="{{route("admin.foods.index")}}">Lista piatti</a>
                 </div>
             </div>
         </div>

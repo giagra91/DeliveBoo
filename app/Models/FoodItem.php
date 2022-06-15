@@ -10,6 +10,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class FoodItem extends Model
 {
+
+    protected $fillable = array(
+        "name", 
+        "price", 
+        "description", 
+        "ingredients",
+        "is_visible", 
+        "course_id", 
+    );
+
     public function course(){
         return $this->hasOne("App\Models\Course");
         
@@ -25,6 +35,6 @@ class FoodItem extends Model
     }
 
     public function user(){
-        return $this->belongsTo("App\Models\User");        
+        return $this->belongsTo("App\User");        
     }
 }

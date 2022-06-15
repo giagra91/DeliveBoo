@@ -1,2 +1,0 @@
-testo index
-@dump($foods)

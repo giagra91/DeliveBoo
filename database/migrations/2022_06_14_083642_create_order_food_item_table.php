@@ -13,13 +13,13 @@ class CreateOrderFoodItemTable extends Migration
      */
     public function up()
     {
-        Schema::create('order_food_item', function (Blueprint $table) {
+        Schema::create('food_item_order', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('order_id');
-            $table->foreign('order_id')->references('id')->on('orders');
+            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
 
             $table->unsignedBigInteger('food_item_id');
-            $table->foreign('food_item_id')->references('id')->on('food_items');
+            $table->foreign('food_item_id')->references('id')->on('food_items')->onDelete('cascade');
             $table->timestamps();
         });
     }
