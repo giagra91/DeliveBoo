@@ -1,2 +1,3 @@
 testo index
-{{-- @dump($foods) --}}
+@dump($foods)
+{{-- <img src="{{asset("img/lasagna-pasta-in-corso.jpeg")}}" alt=""> --}}
