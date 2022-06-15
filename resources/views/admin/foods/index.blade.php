@@ -3,7 +3,7 @@
 @section('title', 'Home')
 
 @section('content')
-	<section>
+	<section class="p-4">
 		<a href="{{route('admin.foods.create' )}}">Aggiungi un nuovo piatto</a>
 		<h2>Piatti:</h2>
 		@foreach ($foods as $food)
