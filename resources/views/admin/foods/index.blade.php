@@ -42,6 +42,7 @@
 				action="{{route('admin.foods.destroy', $food )}}"
 				method="post"
 				class="delete-form"
+				dish-title="{{$food->name}}"
 		>
 				@csrf
 				@method('DELETE')
