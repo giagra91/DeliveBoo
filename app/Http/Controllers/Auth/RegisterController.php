@@ -75,12 +75,14 @@ class RegisterController extends Controller
         $user->email = $data['email'];
         $user->address = $data['address'];
         $user->vat_number = $data['vat_number'];
+
         if ($request->hasFile('img_url')) { 
             $user->img_url = Storage::put('uploads', $data['img_url']);
         } 
         if ($request->hasFile('logo_url')) { 
             $user->logo_url = Storage::put('uploads', $data['logo']);
-        }     
+        }   
+
         $user->password = Hash::make($data['password']);
         $user->save();
         $user->cookingTypes()->attach($data["cooking_types"]);
