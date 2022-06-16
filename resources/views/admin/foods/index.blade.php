@@ -50,6 +50,32 @@
 				</button>
 				</form>
 		@endforeach
+		<button id="fire">test</button>
 	</section>
 @endsection
 
+@section('script')
+    <script defer>
+        // const deleteForms = document.querySelectorAll(".delete-form");
+        // console.log(deleteForms);
+        // deleteForms.forEach(singleForm => {
+        //     singleForm.addEventListener("submit", function(event){
+        //         event.preventDefault(); // Blocco l'invio del form
+        //         userConfirmation = window.confirm(`Vuoi davvero cancellare il post ${this.getAttribute(`post-title`)}?`);
+        //         if(userConfirmation){
+        //             this.submit();
+        //         }
+        //     });
+        // });
+		document.getElementById("fire").addEventListener("submit", function(event){
+			event.preventDefault();
+			Swal.fire({
+				title: "error",
+				text:"test",
+				icon:"error",
+				confirmButtonText: "Cool"
+			})
+		})
+    </script>
+	
+@endsection
