@@ -37288,26 +37288,20 @@ var form = {
   email: "",
   address: "",
   vat_number: "",
-  cooking_types: "",
   password: "",
-  confirm_password: ""
+  confirm_password: "",
+  cooking_types: ""
 };
 var errors = {};
-var error_messages = document.getElementById("errors"); // if (!form.name.trim()) errors.name = "Il nome non è valido.";
-// if (!form.email.trim()) errors.email = "La mail non è valida.";
-// if (!form.address.trim()) errors.address = "L'indirizzo non è valido.";
-// if (!form.vat_number.trim()) errors.vat_number = "La partita IVA non è valida.";
-// if (!form.cooking_types.trim()) errors.cooking_types = "Devi selezionare almeno una categoria.";
-// if (!form.password.trim()) errors.password = "La password non può essere vuota.";
-// if (!form.confirm_password.trim()) errors.confirm_password = "La conferma della password non può essere vuota.";
-// console.log(Object.keys(errors).length === 0)
+var error_messages = document.getElementById("errors");
+var checkedTypes = [];
 
 function checkErrors() {
+  error_messages.innerHTML = "";
   if (form.name == "") errors.name = "Il nome non è valido.";
   if (!form.email.trim() && !form.email.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) errors.email = "La mail non è valida.";
   if (!form.address.trim()) errors.address = "L'indirizzo non è valido.";
   if (!form.vat_number.trim()) errors.vat_number = "La partita IVA non è valida.";
-  if (!form.cooking_types.trim()) errors.cooking_types = "Devi selezionare almeno una categoria.";
   if (!form.password.trim()) errors.password = "La password non può essere vuota.";
   if (!form.confirm_password.trim()) errors.confirm_password = "La conferma della password non può essere vuota.";
 
@@ -37320,23 +37314,30 @@ function checkErrors() {
   }
 }
 
-var keys = Object.keys(form);
-console.warn(keys);
+var types = document.querySelectorAll(".my-types"); // console.log(types.checked)
+
+var keys = Object.keys(form); // console.warn(keys)
+
 var button = document.getElementById("register-button");
 button.addEventListener("click", function () {
-  var input = document.querySelectorAll(".form-control");
+  var input = document.querySelectorAll(".my-form");
+  console.warn(input);
 
   for (var i = 0; i < input.length; i++) {
-    console.table(keys[i]);
+    if (types[i].checked) {
+      checkedTypes.push(types[i]);
+    }
+
+    console.log(types[i].checked);
     var key = keys[i];
-    console.log(input[i].getAttribute("form-title") == form.name);
+    console.log(key, input[i].getAttribute("form-title"));
 
     if (input[i].getAttribute("form-title") == key) {
       form[key] = input[i].value;
     }
   }
 
-  console.log(form);
+  if (checkedTypes.length === 0) errors.cooking_types = "Devi selezionare almeno una categoria.";
   checkErrors();
 });
 

@@ -18,7 +18,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" form-title="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input id="name" form-title="name" type="text" class="my-form form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -32,7 +32,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" form-title="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <input id="email" form-title="email" type="email" class="my-form form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -46,7 +46,7 @@
                             <label for="address" class="col-md-4 col-form-label text-md-right">Address</label>
 
                             <div class="col-md-6">
-                                <input id="address" form-title="address" type="text" class="form-control" name="address" value="{{ old('address') }}" required autocomplete="address">
+                                <input id="address" form-title="address" type="text" class="my-form form-control" name="address" value="{{ old('address') }}" required autocomplete="address">
                             </div>
                         </div>
 
@@ -54,7 +54,7 @@
                             <label for="image_url" class="col-md-4 col-form-label text-md-right">Image</label>
 
                             <div class="col-md-6">
-                                <input id="image_url" type="text" class="form" name="image_url" value="{{ old('image_url') }}" required autocomplete="image_url">
+                                <input id="image_url" type="text" class="form-control" name="image_url" value="{{ old('image_url') }}" required autocomplete="image_url">
                             </div>
                         </div>
 
@@ -62,7 +62,7 @@
                             <label for="logo" class="col-md-4 col-form-label text-md-right">Logo</label>
 
                             <div class="col-md-6">
-                                <input id="logo" type="text" class="form" name="logo" value="{{ old('logo') }}" required autocomplete="logo">
+                                <input id="logo" type="text" class="form-control" name="logo" value="{{ old('logo') }}" required autocomplete="logo">
                             </div>
                         </div>
 
@@ -70,16 +70,17 @@
                             <label for="vat_number" class="col-md-4 col-form-label text-md-right">Vat Number</label>
 
                             <div class="col-md-6">
-                                <input id="vat_number" form-title="vat_number" type="text" class="form-control" name="vat_number" value="{{ old('vat_number') }}" required autocomplete="vat_number">
+                                <input id="vat_number" form-title="vat_number" type="text" class="my-form form-control" name="vat_number" value="{{ old('vat_number') }}" required autocomplete="vat_number">
                             </div>
                         </div>
 
-                        <div class="col  d-flex flex-wrap">
+                        {{-- <div class="col w-75 mx-auto d-flex flex-wrap">
                             @foreach ($cookingTypes as $cookingType)
                                 <div class="form-check">
                                     <input 
                                     class="form-check-input"
                                     type="checkbox"
+                                    form-title="cooking_types"
                                     value="{{ $cookingType->id }}" 
                                     name="cooking_types[]" 
                                     >
@@ -88,13 +89,13 @@
                                     </label>
                                 </div>
                             @endforeach
-                        </div>
+                        </div> --}}
 
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" form-title="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <input id="password" form-title="password" type="password" class=" my-form form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -105,12 +106,29 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password-confirm" form-title="confirm_password" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <input id="password-confirm" form-title="confirm_password" type="password" class="my-form form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
+                        
+                    <div class="col w-75 mx-auto d-flex flex-wrap">
+                        @foreach ($cookingTypes as $cookingType)
+                            <div class="form-check">
+                                <input 
+                                class="form-check-input my-types"
+                                type="checkbox"
+                                form-title="cooking_types"
+                                value="{{ $cookingType->id }}" 
+                                name="cooking_types[]" 
+                                >
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    <span class="badge rounded-pill mb-3">{{$cookingType->name}}</span>
+                                </label>
+                            </div>
+                        @endforeach
+                    </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
