@@ -18,7 +18,7 @@
 
 			<div class="col">
 					<h2>
-							Inserisci un nuovo piatto
+						Inserisci un nuovo piatto
 					</h2>
 					@if ( $errors->any() )
 					<ul class="alert alert-danger">
@@ -71,17 +71,17 @@
 
 			<div class="col py-2 d-flex">
 					@foreach ($categories as $category)
-					<div class="form-check">
-							<input 
-							class="form-check-input"
-							type="checkbox"
-							value="{{ $category->id }}" 
-							name="category[]" 
-							>
-							<label class="form-check-label" for="flexCheckDefault">
-									<span class="badge rounded-pill mb-3">{{$category->name}}</span>
-							</label>
-					</div>
+						<div class="form-check">
+								<input 
+								class="form-check-input"
+								type="checkbox"
+								value="{{ $category->id }}" 
+								name="category[]" 
+								>
+								<label class="form-check-label" for="flexCheckDefault">
+										<span class="badge rounded-pill mb-3">{{$category->name}}</span>
+								</label>
+						</div>
 					@endforeach
 			</div>
 

@@ -67,7 +67,7 @@ class FoodItemController extends Controller
 
         $newFoodItem->categories()->attach($data['category']);
 
-        return redirect()->route("admin.foods.index")->with('message', 'Piatto inserito correttamente');
+        return redirect()->route("admin.foods.index")->with('create-message', 'Piatto inserito correttamente');
     }
 
     /**
@@ -128,7 +128,7 @@ class FoodItemController extends Controller
 
         $food->update($data);      
 
-        return redirect()->route("admin.foods.index")->with('message', 'Piatto modificato correttamente');
+        return redirect()->route("admin.foods.index")->with('edit-message', 'Piatto modificato correttamente');
 
     }
 
