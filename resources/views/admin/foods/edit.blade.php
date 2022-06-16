@@ -87,14 +87,26 @@
 		<div class="col py-2">
 
 			<div class="form-check">
-				<input class="form-check-input" type="checkbox" value="{{false}}" name="is_visible" id="flexCheckDefault" checked>
-				<label class="form-check-label" for="flexCheckDefault" {{ !$foodItem->is_visible ? "checked='checked'" : '' }}>
+				<input 
+					class="form-check-input"
+					type="radio"
+					value="0"
+					name="is_visible"
+					{{ !$foodItem->is_visible ? "checked='checked'" : '' }}
+					>
+				<label class="form-check-label">
 					Non visibile
 				</label>
 			</div>
 			<div class="form-check">
-				<input class="form-check-input" type="checkbox" value="{{true}}" name="is_visible" id="flexCheckChecked">
-				<label class="form-check-label" for="flexCheckChecked" {{ $foodItem->is_visible ? 'checked' : '' }}>
+				<input
+					class="form-check-input"
+					type="radio"
+					value="1"
+					name="is_visible"
+					{{ $foodItem->is_visible ? 'checked' : '' }}
+					>
+				<label class="form-check-label">
 					Visibile
 				</label>
 			</div>

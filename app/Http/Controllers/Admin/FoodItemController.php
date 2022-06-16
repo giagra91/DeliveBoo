@@ -118,8 +118,6 @@ class FoodItemController extends Controller
 
         $data = $request->all();
 
-        // $foodItem->fill($data);
-
         $food->user_id = Auth::user()->id;
 
         $food->img_url = Storage::put('uploads', $data['img_url']);

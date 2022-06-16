@@ -56,14 +56,14 @@
 
 			<div class="col mb-3">
 				<div class="form-check">
-					<input class="form-check-input" type="checkbox" value="{{false}}" name="is_visible" checked>
-					<label class="form-check-label" for="flexCheckDefault">
+					<input class="form-check-input" type="radio" value="0" name="is_visible" checked>
+					<label class="form-check-label">
 						Non visibile
 					</label>
 				</div>
 				<div class="form-check">
-					<input class="form-check-input" type="checkbox" value="{{true}}" name="is_visible">
-					<label class="form-check-label" for="flexCheckChecked">
+					<input class="form-check-input" type="radio" value="1" name="is_visible">
+					<label class="form-check-label">
 						Visibile
 					</label>
 				</div>
