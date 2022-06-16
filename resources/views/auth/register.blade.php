@@ -2,6 +2,9 @@
 
 @section('content')
 <div class="container">
+    <div  id="errors">
+
+    </div>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -15,7 +18,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input id="name" form-title="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -29,7 +32,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <input id="email" form-title="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -43,7 +46,7 @@
                             <label for="address" class="col-md-4 col-form-label text-md-right">Address</label>
 
                             <div class="col-md-6">
-                                <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}" required autocomplete="address">
+                                <input id="address" form-title="address" type="text" class="form-control" name="address" value="{{ old('address') }}" required autocomplete="address">
                             </div>
                         </div>
 
@@ -51,7 +54,7 @@
                             <label for="image_url" class="col-md-4 col-form-label text-md-right">Image</label>
 
                             <div class="col-md-6">
-                                <input id="image_url" type="text" class="form-control" name="image_url" value="{{ old('image_url') }}" required autocomplete="image_url">
+                                <input id="image_url" type="text" class="form" name="image_url" value="{{ old('image_url') }}" required autocomplete="image_url">
                             </div>
                         </div>
 
@@ -59,7 +62,7 @@
                             <label for="logo" class="col-md-4 col-form-label text-md-right">Logo</label>
 
                             <div class="col-md-6">
-                                <input id="logo" type="text" class="form-control" name="logo" value="{{ old('logo') }}" required autocomplete="logo">
+                                <input id="logo" type="text" class="form" name="logo" value="{{ old('logo') }}" required autocomplete="logo">
                             </div>
                         </div>
 
@@ -67,7 +70,7 @@
                             <label for="vat_number" class="col-md-4 col-form-label text-md-right">Vat Number</label>
 
                             <div class="col-md-6">
-                                <input id="vat_number" type="text" class="form-control" name="vat_number" value="{{ old('vat_number') }}" required autocomplete="vat_number">
+                                <input id="vat_number" form-title="vat_number" type="text" class="form-control" name="vat_number" value="{{ old('vat_number') }}" required autocomplete="vat_number">
                             </div>
                         </div>
 
@@ -91,7 +94,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <input id="password" form-title="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -102,7 +105,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                            <label for="password-confirm" form-title="confirm_password" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
@@ -111,7 +114,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary" id="register-button">
                                     {{ __('Register') }}
                                 </button>
                             </div>
@@ -123,4 +126,7 @@
     </div>
 </div>
 @endsection
-@dump($cookingTypes)
+
+@section('script')
+    <script src="{{asset("js/admin.js")}}"></script>
+@endsection
