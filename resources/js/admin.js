@@ -13,6 +13,8 @@ deleteForms.forEach(form => {
     })
 })
 
+// user register validation
+
 const form = {
     name: "",
     email: "",
@@ -69,6 +71,7 @@ button.addEventListener("click", function(){
     if(checkedTypes.length === 0) errors.cooking_types = "Devi selezionare almeno una categoria.";
     checkErrors();
 })
+
 
 
 
