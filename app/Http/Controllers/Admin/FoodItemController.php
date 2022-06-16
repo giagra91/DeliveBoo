@@ -141,6 +141,6 @@ class FoodItemController extends Controller
     public function destroy(FoodItem $food)
     {
         $food->delete();
-        return redirect()->route("admin.foods.index")->with('message', 'Piatto cancellato correttamente');
+        return redirect()->route("admin.foods.index")->with('delete-message', 'Piatto cancellato correttamente');
     }
 }

@@ -9,9 +9,9 @@
 		<h2>Piatti:</h2>
 
 		<div class="col-6 text-center m-auto">
-            @if (session('message'))
+            @if (session('delete-message'))
                     <div class="alert alert-danger">
-                        {{ session('message')}}
+                        {{ session('delete-message')}}
                     </div>
             @endif
         </div>
@@ -55,27 +55,7 @@
 @endsection
 
 @section('script')
-    <script defer>
-        // const deleteForms = document.querySelectorAll(".delete-form");
-        // console.log(deleteForms);
-        // deleteForms.forEach(singleForm => {
-        //     singleForm.addEventListener("submit", function(event){
-        //         event.preventDefault(); // Blocco l'invio del form
-        //         userConfirmation = window.confirm(`Vuoi davvero cancellare il post ${this.getAttribute(`post-title`)}?`);
-        //         if(userConfirmation){
-        //             this.submit();
-        //         }
-        //     });
-        // });
-		document.getElementById("fire").addEventListener("submit", function(event){
-			event.preventDefault();
-			Swal.fire({
-				title: "error",
-				text:"test",
-				icon:"error",
-				confirmButtonText: "Cool"
-			})
-		})
-    </script>
+
+<script src="{{asset('js/admin.js')}}"></script>
 	
 @endsection
