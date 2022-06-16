@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Storage;
 
 class RegisterController extends Controller
 {
@@ -54,6 +55,9 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'address' => ['required', 'string', 'max:255'],
+            'vat_number' => ['required', 'string', 'max:20'],
+            'cooking_types' => ['required']
         ]);
     }
 
@@ -65,14 +69,18 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
+        $request = request();
         $user = new User();
         $user->name =  $data['name'];
         $user->email = $data['email'];
         $user->address = $data['address'];
         $user->vat_number = $data['vat_number'];
-        $user->img_url = $data['image_url'];
-        $user->logo_url = $data['logo'];
+        if ($request->hasFile('img_url')) { 
+            $user->img_url = Storage::put('uploads', $data['img_url']);
+        } 
+        if ($request->hasFile('logo_url')) { 
+            $user->logo_url = Storage::put('uploads', $data['logo']);
+        }     
         $user->password = Hash::make($data['password']);
         $user->save();
         $user->cookingTypes()->attach($data["cooking_types"]);
