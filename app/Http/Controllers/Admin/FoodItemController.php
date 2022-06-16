@@ -120,7 +120,9 @@ class FoodItemController extends Controller
 
         $food->user_id = Auth::user()->id;
 
-        $food->img_url = Storage::put('uploads', $data['img_url']);
+        if ($request->hasFile('img_url')) {      
+            $food->img_url = Storage::put('uploads', $data['img_url']);
+        }
 
         $food->categories()->sync($data['category']);
 

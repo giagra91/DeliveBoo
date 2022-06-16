@@ -43,6 +43,14 @@
 				<input type="text" name="ingredients" id="ingredients" class="form-control text-secondary" value="{{$foodItem->ingredients}}">
 			</div>
 
+			<div class="col">			
+				<img 
+					class="w-100"
+					src="{{ str_starts_with($foodItem->img_url, 'http') ? $foodItem->img_url : asset('storage') . '/' . $foodItem->img_url }}"
+					alt="image of {{$foodItem->name}}"
+				>
+			</div>
+
 			<div class="col">
 					<label for="img_url">Carica l'immagine</label>
 					<input type="file" name="img_url" id="img_url" class="form-control" value="{{$foodItem->img_url}}">
