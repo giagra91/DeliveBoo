@@ -30,17 +30,17 @@
 
 			<div class="col">
 					<label for="name">Nome</label>
-					<input type="text" name="name" id="name" class="form-control" value="{{$foodItem->name}}">
+					<input type="text" name="name" id="name" class="form-control my-form1" form-title="name" value="{{$foodItem->name}}">
 			</div>
 
 			<div class="col py-2">
 				<label for="description">Descrizione</label>
-				<input type="text" name="description" id="description" class="form-control text-secondary" value="{{$foodItem->description}}">
+				<input type="text" name="description" id="description" class="form-control my-form1 text-secondary" form-title="description" value="{{$foodItem->description}}">
 			</div>
 
 			<div class="col py-2">
 				<label for="ingredients">Ingredienti</label>
-				<input type="text" name="ingredients" id="ingredients" class="form-control text-secondary" value="{{$foodItem->ingredients}}">
+				<input type="text" name="ingredients" id="ingredients" class="form-control my-form1 text-secondary" form-title="ingredients" value="{{$foodItem->ingredients}}">
 			</div>
 
 			<div class="col">			
@@ -58,10 +58,10 @@
 
 			<div class="col">
 				<label for="price">Inserisci il prezzo</label>
-				<input type="number" step="0.01" name="price" id="price" class="form-control" value="{{$foodItem->price}}">
+				<input type="number" step="0.01" name="price" id="price" class="form-control my-form1" form-title="price" value="{{$foodItem->price}}">
 			</div>
 
-
+			<div id="errors"></div>
 
 			<div class="col py-2">
 				<select 
@@ -122,9 +122,13 @@
 		</div>
 
 			<div class="col text-center pt-4">
-					<button type="submit" class="btn btn-primary">Modifica il piatto</button>
+					<button type="submit" id="edit-button" class="btn btn-primary">Modifica il piatto</button>
 			</div>  
 	</form>
 </section>
 
+@endsection
+
+@section('script')
+	<script src="{{asset('js/food.js')}}"></script>
 @endsection

@@ -37282,7 +37282,8 @@ deleteForms.forEach(function (form) {
       this.submit();
     }
   });
-});
+}); // user register validation
+
 var form = {
   name: "",
   email: "",
