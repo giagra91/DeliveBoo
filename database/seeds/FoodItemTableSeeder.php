@@ -29,7 +29,7 @@ class FoodItemTableSeeder extends Seeder
         $foodItemOne->price = 8.50;
         $foodItemOne->description = $faker->realText(50);
         $foodItemOne->ingredients = "fettuccine, carne bovina, passata di pomodoro";
-        $foodItemOne->img_url = asset("img/carbonara-pasta-in-corso.jpeg");
+        $foodItemOne->img_url = "img/carbonara-pasta-in-corso.jpeg";
         $foodItemOne->is_visible = true;
         $foodItemOne->save();
 
@@ -40,7 +40,7 @@ class FoodItemTableSeeder extends Seeder
         $foodItemTwo->price = 8.50;
         $foodItemTwo->description = $faker->realText(50);
         $foodItemTwo->ingredients = "spaghetti, uovo, guanciale, pecorino romano, pepe nero";
-        $foodItemTwo->img_url = asset("img/lasagna-pasta-in-corso.jpeg");
+        $foodItemTwo->img_url = "img/lasagna-pasta-in-corso.jpeg";
         $foodItemTwo->is_visible = true;
         $foodItemTwo->save();
 
@@ -51,7 +51,7 @@ class FoodItemTableSeeder extends Seeder
         $foodItemThree->price = 9.50;
         $foodItemThree->description = $faker->realText(50);
         $foodItemThree->ingredients = "Acqua, farina, uova e tanto amore! Tutte le nostre paste vengono servite con parmigiano reggiano DOP O Pecorino, secondo tradizione.";
-        $foodItemThree->img_url = asset("img/tonnarello cacio e pepe.jpeg");
+        $foodItemThree->img_url = "img/tonnarello cacio e pepe.jpeg";
         $foodItemThree->is_visible = true;
         $foodItemThree->save();
 
@@ -62,7 +62,7 @@ class FoodItemTableSeeder extends Seeder
         $foodItemFour->price = 14.50;
         $foodItemFour->description = $faker->realText(50);
         $foodItemFour->ingredients = "patate, sugo, carne e tradizione!";
-        $foodItemFour->img_url = asset("img/saltimbocca-alla-romana.jpeg");
+        $foodItemFour->img_url = "img/saltimbocca-alla-romana.jpeg";
         $foodItemFour->is_visible = true;
         $foodItemFour->save();
 
@@ -73,7 +73,7 @@ class FoodItemTableSeeder extends Seeder
         $foodItemFive->price = 12.00;
         $foodItemFive->description = $faker->realText(50);
         $foodItemFive->ingredients = "patate, provola affumicata, speck, formaggio, funghi porcini";
-        $foodItemFive->img_url = asset("img/crostini-patate-funghi-speck-11.jpeg");
+        $foodItemFive->img_url = "img/crostini-patate-funghi-speck-11.jpeg";
         $foodItemFive->is_visible = true;
         $foodItemFive->save();
 
@@ -84,7 +84,7 @@ class FoodItemTableSeeder extends Seeder
         $foodItemSix->price = 9.50;
         $foodItemSix->description = $faker->realText(50);
         $foodItemSix->ingredients = "salsa tonnata, rughetta, carciofini, arrosto, olive, grana e pomodori secchi";
-        $foodItemSix->img_url = asset("img/pinsa-mia.jpeg");
+        $foodItemSix->img_url = "img/pinsa-mia.jpeg";
         $foodItemSix->is_visible = true;
         $foodItemSix->save();
 
@@ -95,7 +95,7 @@ class FoodItemTableSeeder extends Seeder
         $foodItemSeven->price = 16.00;
         $foodItemSeven->description = $faker->realText(50);
         $foodItemSeven->ingredients = "Carpaccio di manzo 'Pezzata Rossa' marinato alle spezie del mediterraneo, con frutti di bosco e aceto balsamico ai lamponi";
-        $foodItemSeven->img_url = asset("img/carpaccio.jpeg");
+        $foodItemSeven->img_url = "img/carpaccio.jpeg";
         $foodItemSeven->is_visible = true;
         $foodItemSeven->save();
 
@@ -106,7 +106,7 @@ class FoodItemTableSeeder extends Seeder
         $foodItemEight->price = 13.00;
         $foodItemEight->description = $faker->realText(50);
         $foodItemEight->ingredients = "Pesce spada affumicato su mousse di formaggio fresco all’aneto e cetriolo con pepe rosa";
-        $foodItemEight->img_url = asset("img/pesce spada.jpeg");
+        $foodItemEight->img_url = "img/pesce spada.jpeg";
         $foodItemEight->is_visible = true;
         $foodItemEight->save();
 
@@ -117,7 +117,7 @@ class FoodItemTableSeeder extends Seeder
         $foodItemNine->price = 12.00;
         $foodItemNine->description = $faker->realText(50);
         $foodItemNine->ingredients = "Speck, Fiori di Zucca e Zucchine";
-        $foodItemNine->img_url = asset("img/tagliatelle-ai-fiori-di-zucca.jpeg");
+        $foodItemNine->img_url = "img/tagliatelle-ai-fiori-di-zucca.jpeg";
         $foodItemNine->is_visible = true;
         $foodItemNine->save();
 
@@ -128,7 +128,7 @@ class FoodItemTableSeeder extends Seeder
         $foodItemTen->price = 18.00;
         $foodItemTen->description = $faker->realText(50);
         $foodItemTen->ingredients = "Filetto, pepe verde";
-        $foodItemTen->img_url = asset("img/Filetto-al-pepe-verde-e-senape.jpeg");
+        $foodItemTen->img_url = "img/Filetto-al-pepe-verde-e-senape.jpeg";
         $foodItemTen->is_visible = true;
         $foodItemTen->save();
 
@@ -139,7 +139,7 @@ class FoodItemTableSeeder extends Seeder
         $foodItemEleven->price = 12.00;
         $foodItemEleven->description = $faker->realText(50);
         $foodItemEleven->ingredients = "Paccheri, cozze, gamberetti, vongole, peperoncino piccante";
-        $foodItemEleven->img_url = asset("img/paccheri-allo-scoglio.jpg");
+        $foodItemEleven->img_url = "img/paccheri-allo-scoglio.jpg";
         $foodItemEleven->is_visible = true;
         $foodItemEleven->save();
 
@@ -150,7 +150,7 @@ class FoodItemTableSeeder extends Seeder
         $foodItemTwelve->price = 10.00;
         $foodItemTwelve->description = $faker->realText(50);
         $foodItemTwelve->ingredients = "Bucatini, guanciale, pecorino, pomodoro, peperoncino";
-        $foodItemTwelve->img_url = asset("img/paccheri-allo-scoglio.jpg");
+        $foodItemTwelve->img_url = "img/paccheri-allo-scoglio.jpg";
         $foodItemTwelve->is_visible = true;
         $foodItemTwelve->save();
 
@@ -161,7 +161,7 @@ class FoodItemTableSeeder extends Seeder
         $foodItemThirteen->price = 12.00;
         $foodItemThirteen->description = $faker->realText(50);
         $foodItemThirteen->ingredients = "Bucatini, guanciale, pecorino, peperoncino";
-        $foodItemThirteen->img_url = asset("img/carbonara.jpg");
+        $foodItemThirteen->img_url = "img/carbonara.jpg";
         $foodItemThirteen->is_visible = true;
         $foodItemThirteen->save();
 
@@ -172,7 +172,7 @@ class FoodItemTableSeeder extends Seeder
         $foodItemFourteen->price = 16.00;
         $foodItemFourteen->description = $faker->realText(50);
         $foodItemFourteen->ingredients = "Salmone, patate, pomodori pachino";
-        $foodItemFourteen->img_url = asset("img/salmone-patate.jpg");
+        $foodItemFourteen->img_url = "img/salmone-patate.jpg";
         $foodItemFourteen->is_visible = true;
         $foodItemFourteen->save();
 
@@ -183,7 +183,7 @@ class FoodItemTableSeeder extends Seeder
         $foodItemFifteen->price = 15.00;
         $foodItemFifteen->description = $faker->realText(50);
         $foodItemFifteen->ingredients = "Carne bovina, patate, pomodori";
-        $foodItemFifteen->img_url = asset("img/polpette-patate.jpg");
+        $foodItemFifteen->img_url = "img/polpette-patate.jpg";
         $foodItemFifteen->is_visible = true;
         $foodItemFifteen->save();
 
@@ -194,7 +194,7 @@ class FoodItemTableSeeder extends Seeder
         $foodItemSixteen->price = 16.50;
         $foodItemSixteen->description = $faker->realText(50);
         $foodItemSixteen->ingredients = "Carne bovina, patate";
-        $foodItemSixteen->img_url = asset("img/straccetti-manzo.jpg");
+        $foodItemSixteen->img_url = "img/straccetti-manzo.jpg";
         $foodItemSixteen->is_visible = true;
         $foodItemSixteen->save();
 
@@ -205,7 +205,7 @@ class FoodItemTableSeeder extends Seeder
         $foodItemSeventeen->price = 8.50;
         $foodItemSeventeen->description = $faker->realText(50);
         $foodItemSeventeen->ingredients = "Spaghetti, guanciale, uova";
-        $foodItemSeventeen->img_url = asset("img/carbonara-rosamunde.JPG");
+        $foodItemSeventeen->img_url = "img/carbonara-rosamunde.JPG";
         $foodItemSeventeen->is_visible = true;
         $foodItemSeventeen->save();
 
@@ -216,7 +216,7 @@ class FoodItemTableSeeder extends Seeder
         $foodItemEighteen->price = 8.50;
         $foodItemEighteen->description = $faker->realText(50);
         $foodItemEighteen->ingredients = "Melenzane, pomodori, cipolla";
-        $foodItemEighteen->img_url = asset("img/parmigiana-di-melanzane-2.jpg");
+        $foodItemEighteen->img_url = "img/parmigiana-di-melanzane-2.jpg";
         $foodItemEighteen->is_visible = true;
         $foodItemEighteen->save();
 
@@ -227,7 +227,7 @@ class FoodItemTableSeeder extends Seeder
         $foodItemNineteen->price = 9.00;
         $foodItemNineteen->description = $faker->realText(50);
         $foodItemNineteen->ingredients = "Pollo, maionese, paprika, origano";
-        $foodItemNineteen->img_url = asset("img/pollo-paprika-maio.jpg");
+        $foodItemNineteen->img_url = "img/pollo-paprika-maio.jpg";
         $foodItemNineteen->is_visible = true;
         $foodItemNineteen->save();
 
@@ -238,7 +238,7 @@ class FoodItemTableSeeder extends Seeder
         $foodItemTwenty->price = 15.00;
         $foodItemTwenty->description = $faker->realText(50);
         $foodItemTwenty->ingredients = "Gamberi, latte di cocco, lime";
-        $foodItemTwenty->img_url = asset("img/curry-gamberi.jpg");
+        $foodItemTwenty->img_url = "img/curry-gamberi.jpg";
         $foodItemTwenty->is_visible = true;
         $foodItemTwenty->save();
         

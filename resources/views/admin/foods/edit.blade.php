@@ -46,7 +46,7 @@
 			<div class="col">			
 				<img 
 					class="w-100"
-					src="{{ str_starts_with($foodItem->img_url, 'http') ? $foodItem->img_url : asset('storage') . '/' . $foodItem->img_url }}"
+					src="{{ str_starts_with($foodItem->img_url, 'img') ? asset($foodItem->img_url) : asset('storage') . '/' . $foodItem->img_url }}"
 					alt="image of {{$foodItem->name}}"
 				>
 			</div>
