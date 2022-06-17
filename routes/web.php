@@ -16,8 +16,8 @@ use App\Http\Controllers\FoodItemController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/guest', function () {
+    return view('guest.home');
 });
 
 Auth::routes();

@@ -21,8 +21,8 @@ class CreateUsersTable extends Migration
             $table->string("address")->nullable(false);
             $table->string("vat_number", 20);
             $table->string('password');
-            $table->text('img_url')->nullable(true);
-            $table->text('logo_url')->nullable(true);
+            $table->text('img')->nullable(true);
+            $table->text('logo')->nullable(true);
             $table->rememberToken();
             $table->timestamps();
         });
