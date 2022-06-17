@@ -120,13 +120,13 @@ class FoodItemController extends Controller
 
         $food->user_id = Auth::user()->id;
 
-        if ($request->hasFile('img_url')) {      
+        if ($request->hasFile('img_url')) {
             $food->img_url = Storage::put('uploads', $data['img_url']);
         }
 
         $food->categories()->sync($data['category']);
 
-        $food->update($data);      
+        $food->update($data);
 
         return redirect()->route("admin.foods.index")->with('edit-message', 'Piatto modificato correttamente');
 

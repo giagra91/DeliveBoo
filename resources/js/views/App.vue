@@ -1,26 +1,18 @@
 <template>
     <div class="container">
-        <!-- <div class="card" v-for="(restaurant, index) in restaurants" :key="index">
-            <img class="card-img-top w-25" :src="(restaurant.logo) ? restaurant.logo : 'img/loghi/generic-restaurant.jpg'" :alt="restaurant.name">
-            <div class="card-body">
-                <h5 class="card-title">{{restaurant.name}}</h5>
-                <p class="card-text">{{restaurant.address}}</p>
-                <p class="card-text">{{restaurant.vat_number}}</p>
-                <p class="card-text">{{restaurant.email}}</p>
-
-
-            </div>
-        </div> -->
-
-
-
+        <Header />
+        <Jumbotron />
         <div class="row m-4">
+            <div class="input-group-icon pe-2 m-4">
+                <i class="fas fa-search input-box-icon text-primary"></i>
+                <input class="form-control border-0 input-box bg-100 p-3" type="search" placeholder="Search Food" aria-label="Search" />
+            </div>
             <div class="col-sm-12 col-md-6 col-lg-4 mb-4" v-for="(restaurant, index) in restaurants" :key="index">
                 <div class="card text-white card-has-bg click-col" v-bind:style="{ 'background-image': 'url(' + restaurant.logo + ')' }">
                     <img class="card-img d-none" :src="(restaurant.logo) ? restaurant.logo : 'img/loghi/generic-restaurant.jpg'" :alt="restaurant.name">
                     <div class="card-img-overlay d-flex flex-column">
                         <div class="card-body">
-                            <small class="card-meta mb-2">{{restaurant.vat_number}}</small>
+                            <small class="card-meta mb-2">p. iva: {{restaurant.vat_number}}</small>
                             <h4 class="card-title mt-0 "><a class="text-white" herf="#">{{restaurant.name}}</a></h4>
                             <small><i class="far fa-clock"></i> {{restaurant.email}}</small>
                         </div>
@@ -36,13 +28,22 @@
                     </div>
                 </div>
             </div>
+            <div class="col-12 d-flex justify-content-center mt-5">
+                <a class="btn btn-lg btn-primary" href="#!">View All </a>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+import Header from '../components/Header.vue';
+import Jumbotron from '../components/Jumbotron.vue';
 export default {
     name: "App",
+    components: {
+        Header,
+        Jumbotron
+    },
     data: function(){
         return{
             restaurants: [],
@@ -70,6 +71,23 @@ export default {
 </script>
 
 <style lang="scss" scoped >
+
+.btn-primary{
+    background-color: #FFB30E !important;
+    border-color: #FFB30E !important;
+}
+div.input-group-icon{
+    border-radius: 10px;
+    input{
+        border-radius: 10px;
+        background-color: #d6d3287a;
+    }
+    input::placeholder {
+            text-align: center;
+        }
+
+}
+
 .wrapper{margin:10vh}
 //post card styles
 
@@ -116,8 +134,8 @@ filter: grayscale(100%);}
 
     .card-img-overlay {
     transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
-    background: rgb(35,79,109);
-    background: linear-gradient(0deg, rgba(4,69,114,0.5) 0%, rgba(4,69,114,1) 100%);
+    background: rgb(146, 117, 36);
+    background: linear-gradient(0deg, rgba(103, 114, 4, 0.5) 0%, rgb(187, 59, 20) 100%);
     }
 }
 }
@@ -130,7 +148,7 @@ border-top: none;
     }
 }
 }
-.card-meta{color:#26BD75}
+.card-meta{color:#bd2626}
 .card-body{
 transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
 }
@@ -144,8 +162,8 @@ transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
 }
 .card-img-overlay {
 transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
-background: rgb(35,79,109);
-background: linear-gradient(0deg, rgba(35,79,109,0.3785889355742297) 0%, rgba(69,95,113,1) 100%);
+background: rgb(165, 179, 44);
+background: linear-gradient(0deg, rgba(165, 48, 19, 0.379) 0%, rgb(189, 177, 68) 100%);
 }
 }
 @media (max-width: 767px){
