@@ -1,12 +1,63 @@
 <template>
-    <div class="container">
+    <div >
         <Header />
         <Jumbotron />
+
+        <section class="py-5 overflow-hidden bg-primary" id="home">
+            <div class="container">
+                <div class="row flex-center">
+                    <div class="col-md-5 col-lg-6 order-0 order-md-1 mt-8 mt-md-0"><a class="img-landing-banner" href="#!"><img class="img-fluid" src="../../../public/img/logo-deliveboo/gallery/hero-header.png" alt="hero-header" /></a></div>
+                        <div class="col-md-7 col-lg-6 py-8 text-md-start text-center">
+                            <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">Hai fame?</h1>
+                            <h1 class="text-800 mb-5 fs-4">Con pochi e semplici click, ti sazierai<br class="d-none d-xxl-block" /></h1>
+                            <div class="card w-xxl-75">
+                            <div class="card-body">
+                                <nav>
+                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                    <button class="nav-link active mb-3" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true"><i class="fas fa-motorcycle me-2"></i>Delivery</button>
+                                </div>
+                                </nav>
+                                <div class="tab-content mt-3" id="nav-tabContent">
+                                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                    <form class="row gx-2 gy-2 align-items-center">
+                                    <div class="col">
+                                        <div class="input-group-icon"><i class="fas fa-map-marker-alt text-danger input-box-icon"></i>
+                                        <label class="visually-hidden" for="inputDelivery">Address</label>
+                                        <input class="form-control input-box form-foodwagon-control" id="inputDelivery" type="text" placeholder="Cercail ristorante" />
+                                        </div>
+                                    </div>
+                                    <div class="d-grid gap-3 col-sm-auto">
+                                        <button class="btn btn-danger" type="submit">Cerca</button>
+                                    </div>
+                                    </form>
+                                </div>
+                                <!-- <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                    <form class="row gx-4 gy-2 align-items-center">
+                                    <div class="col">
+                                        <div class="input-group-icon"><i class="fas fa-map-marker-alt text-danger input-box-icon"></i>
+                                        <label class="visually-hidden" for="inputPickup">Address</label>
+                                        <input class="form-control input-box form-foodwagon-control" id="inputPickup" type="text" placeholder="Enter Your Address" />
+                                        </div>
+                                    </div>
+                                    <div class="d-grid gap-3 col-sm-auto">
+                                        <button class="btn btn-danger" type="submit">Find Food</button>
+                                    </div>
+                                    </form>
+                                </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
         <div class="row m-4">
-            <div class="input-group-icon pe-2 m-4">
+            <!-- <div class="input-group-icon pe-2 m-4">
                 <i class="fas fa-search input-box-icon text-primary"></i>
                 <input class="form-control border-0 input-box bg-100 p-3" type="search" placeholder="Search Food" aria-label="Search" />
-            </div>
+            </div> -->
             <div class="col-sm-12 col-md-6 col-lg-4 mb-4" v-for="(restaurant, index) in restaurants" :key="index">
                 <div class="card text-white card-has-bg click-col" v-bind:style="{ 'background-image': 'url(' + restaurant.logo + ')' }">
                     <img class="card-img d-none" :src="(restaurant.logo) ? restaurant.logo : 'img/loghi/generic-restaurant.jpg'" :alt="restaurant.name">
@@ -31,6 +82,7 @@
             <div class="col-12 d-flex justify-content-center mt-5">
                 <a class="btn btn-lg btn-primary" href="#!">View All </a>
             </div>
+        </div>
         </div>
     </div>
 </template>
@@ -76,17 +128,10 @@ export default {
     background-color: #FFB30E !important;
     border-color: #FFB30E !important;
 }
-div.input-group-icon{
-    border-radius: 10px;
-    input{
-        border-radius: 10px;
-        background-color: #d6d3287a;
-    }
-    input::placeholder {
-            text-align: center;
-        }
-
+.bg-primary{
+    background-color: #FFB30E !important;
 }
+
 
 .wrapper{margin:10vh}
 //post card styles

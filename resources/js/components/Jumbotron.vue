@@ -1,6 +1,6 @@
 <template>
+<div id="jumbotron">
     <section class="py-0 bg-primary-gradient">
-
         <div class="container">
           <div class="row justify-content-center g-0">
             <div class="col-xl-9">
@@ -19,8 +19,10 @@
             </div>
           </div>
         </div><!-- end of .container-->
-
       </section>
+
+
+</div>
 </template>
 
 <script>
@@ -55,6 +57,7 @@ export default {
 }
 </script>
 
-<style >
+<style scoped>
+
 
 </style>
