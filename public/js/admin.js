@@ -37271,7 +37271,8 @@ module.exports = function(module) {
 var _require = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js"),
     isEmpty = _require.isEmpty;
 
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // delete popup
+
 
 var deleteForms = document.querySelectorAll('.delete-form');
 deleteForms.forEach(function (form) {
@@ -37282,64 +37283,6 @@ deleteForms.forEach(function (form) {
       this.submit();
     }
   });
-}); // user register validation
-
-var form = {
-  name: "",
-  email: "",
-  address: "",
-  vat_number: "",
-  password: "",
-  confirm_password: "",
-  cooking_types: ""
-};
-var errors = {};
-var error_messages = document.getElementById("errors");
-var checkedTypes = [];
-
-function checkErrors() {
-  error_messages.innerHTML = "";
-  if (form.name == "") errors.name = "Il nome non è valido.";
-  if (!form.email.trim() && !form.email.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) errors.email = "La mail non è valida.";
-  if (!form.address.trim()) errors.address = "L'indirizzo non è valido.";
-  if (!form.vat_number.trim()) errors.vat_number = "La partita IVA non è valida.";
-  if (!form.password.trim()) errors.password = "La password non può essere vuota.";
-  if (!form.confirm_password.trim()) errors.confirm_password = "La conferma della password non può essere vuota.";
-
-  if (Object.keys(errors).length !== 0) {
-    for (var error in errors) {
-      error_messages.classList.add("alert", "alert-danger");
-      error_messages.innerHTML += errors[error] + "<br>";
-      console.log(errors[error]);
-    }
-  }
-}
-
-var types = document.querySelectorAll(".my-types"); // console.log(types.checked)
-
-var keys = Object.keys(form); // console.warn(keys)
-
-var button = document.getElementById("register-button");
-button.addEventListener("click", function () {
-  var input = document.querySelectorAll(".my-form");
-  console.warn(input);
-
-  for (var i = 0; i < input.length; i++) {
-    if (types[i].checked) {
-      checkedTypes.push(types[i]);
-    }
-
-    console.log(types[i].checked);
-    var key = keys[i];
-    console.log(key, input[i].getAttribute("form-title"));
-
-    if (input[i].getAttribute("form-title") == key) {
-      form[key] = input[i].value;
-    }
-  }
-
-  if (checkedTypes.length === 0) errors.cooking_types = "Devi selezionare almeno una categoria.";
-  checkErrors();
 });
 
 /***/ }),
@@ -37396,7 +37339,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\giqua\Desktop\BOOLEAN\DeliveBoo\resources\js\admin.js */"./resources/js/admin.js");
+module.exports = __webpack_require__(/*! C:\Users\Utente\Desktop\proj-finale\DeliveBoo\resources\js\admin.js */"./resources/js/admin.js");
 
 
 /***/ })
