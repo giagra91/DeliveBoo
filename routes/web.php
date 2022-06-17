@@ -16,13 +16,15 @@ use App\Http\Controllers\FoodItemController;
 |
 */
 
+
+
 Route::get('/guest', function () {
     return view('guest.home');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::middleware('auth') // § intermediario che si assicura che il contenuto sia mostrato solo ad utenti loggati
     ->namespace('Admin') // # aggiunge come prefisso sui controller contenuti nel gruppo Admin come namespace
