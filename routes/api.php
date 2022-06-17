@@ -17,3 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::namespace('Api') // # aggiunge come prefisso sui controller contenuti nel gruppo Admin come namespace
+    ->name('api.')   // § aggiunge come prefisso sui controller contenuti nel gruppo admin come prefisso ai name
+    ->group(function(){
+        // # inserisco qui le mie rotte riservate agli admin
+        // Route::get('/', 'HomeController@index')->name('home');   // | Aggiunta facoltativa ->middleware('password.confirm');
+        Route::resource('users', 'RestaurantController');
+    });
