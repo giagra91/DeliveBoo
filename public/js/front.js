@@ -38720,7 +38720,7 @@ var staticRenderFns = [
                 ),
                 _vm._v(" "),
                 _c("h1", { staticClass: "text-800 mb-5 fs-4" }, [
-                  _vm._v("Con pochi e semplici click, ti sazierai"),
+                  _vm._v("Con pochi e semplici click, ti sazierai!!"),
                   _c("br", { staticClass: "d-none d-xxl-block" }),
                 ]),
                 _vm._v(" "),

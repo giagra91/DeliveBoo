@@ -133,7 +133,7 @@ document.getElementById('edit-button').addEventListener('click', function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\giqua\Desktop\BOOLEAN\DeliveBoo\resources\js\food.js */"./resources/js/food.js");
+module.exports = __webpack_require__(/*! C:\esercizi boolean\DeliveBoo-1\resources\js\food.js */"./resources/js/food.js");
 
 
 /***/ })
