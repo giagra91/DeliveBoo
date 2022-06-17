@@ -14,11 +14,11 @@
 
 
     <form class="row row-cols-4 g-3 flex-column align-items-center" action="{{route("admin.foods.store")}}" method="POST" enctype="multipart/form-data">
-      @csrf
+    @csrf
 
 			<div class="col">
 					<h2>
-							Inserisci un nuovo piatto
+						Inserisci un nuovo piatto
 					</h2>
 					@if ( $errors->any() )
 					<ul class="alert alert-danger">
@@ -56,14 +56,14 @@
 
 			<div class="col mb-3">
 				<div class="form-check">
-					<input class="form-check-input" type="checkbox" value="{{false}}" name="is_visible" checked>
-					<label class="form-check-label" for="flexCheckDefault">
+					<input class="form-check-input" type="radio" value="0" name="is_visible" checked>
+					<label class="form-check-label">
 						Non visibile
 					</label>
 				</div>
 				<div class="form-check">
-					<input class="form-check-input" type="checkbox" value="{{true}}" name="is_visible">
-					<label class="form-check-label" for="flexCheckChecked">
+					<input class="form-check-input" type="radio" value="1" name="is_visible">
+					<label class="form-check-label">
 						Visibile
 					</label>
 				</div>
@@ -71,17 +71,17 @@
 
 			<div class="col py-2 d-flex">
 					@foreach ($categories as $category)
-					<div class="form-check">
-							<input 
-							class="form-check-input"
-							type="checkbox"
-							value="{{ $category->id }}" 
-							name="category[]" 
-							>
-							<label class="form-check-label" for="flexCheckDefault">
-									<span class="badge rounded-pill mb-3">{{$category->name}}</span>
-							</label>
-					</div>
+						<div class="form-check">
+								<input 
+								class="form-check-input"
+								type="checkbox"
+								value="{{ $category->id }}" 
+								name="category[]" 
+								>
+								<label class="form-check-label" for="flexCheckDefault">
+										<span class="badge rounded-pill mb-3">{{$category->name}}</span>
+								</label>
+						</div>
 					@endforeach
 			</div>
 

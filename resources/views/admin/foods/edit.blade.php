@@ -30,17 +30,25 @@
 
 			<div class="col">
 					<label for="name">Nome</label>
-					<input type="text" name="name" id="name" class="form-control" value="{{$foodItem->name}}">
+					<input type="text" name="name" id="name" class="form-control my-form1" form-title="name" value="{{$foodItem->name}}">
 			</div>
 
 			<div class="col py-2">
 				<label for="description">Descrizione</label>
-				<input type="text" name="description" id="description" class="form-control text-secondary" value="{{$foodItem->description}}">
+				<input type="text" name="description" id="description" class="form-control my-form1 text-secondary" form-title="description" value="{{$foodItem->description}}">
 			</div>
 
 			<div class="col py-2">
 				<label for="ingredients">Ingredienti</label>
-				<input type="text" name="ingredients" id="ingredients" class="form-control text-secondary" value="{{$foodItem->ingredients}}">
+				<input type="text" name="ingredients" id="ingredients" class="form-control my-form1 text-secondary" form-title="ingredients" value="{{$foodItem->ingredients}}">
+			</div>
+
+			<div class="col">			
+				<img 
+					class="w-100"
+					src="{{ str_starts_with($foodItem->img_url, 'img') ? asset($foodItem->img_url) : asset('storage') . '/' . $foodItem->img_url }}"
+					alt="image of {{$foodItem->name}}"
+				>
 			</div>
 
 			<div class="col">
@@ -50,10 +58,10 @@
 
 			<div class="col">
 				<label for="price">Inserisci il prezzo</label>
-				<input type="number" step="0.01" name="price" id="price" class="form-control" value="{{$foodItem->price}}">
+				<input type="number" step="0.01" name="price" id="price" class="form-control my-form1" form-title="price" value="{{$foodItem->price}}">
 			</div>
 
-
+			<div id="errors"></div>
 
 			<div class="col py-2">
 				<select 
@@ -87,14 +95,26 @@
 		<div class="col py-2">
 
 			<div class="form-check">
-				<input class="form-check-input" type="checkbox" value="{{false}}" name="is_visible" id="flexCheckDefault" checked>
-				<label class="form-check-label" for="flexCheckDefault" {{ !$foodItem->is_visible ? "checked='checked'" : '' }}>
+				<input 
+					class="form-check-input"
+					type="radio"
+					value="0"
+					name="is_visible"
+					{{ !$foodItem->is_visible ? "checked='checked'" : '' }}
+					>
+				<label class="form-check-label">
 					Non visibile
 				</label>
 			</div>
 			<div class="form-check">
-				<input class="form-check-input" type="checkbox" value="{{true}}" name="is_visible" id="flexCheckChecked">
-				<label class="form-check-label" for="flexCheckChecked" {{ $foodItem->is_visible ? 'checked' : '' }}>
+				<input
+					class="form-check-input"
+					type="radio"
+					value="1"
+					name="is_visible"
+					{{ $foodItem->is_visible ? 'checked' : '' }}
+					>
+				<label class="form-check-label">
 					Visibile
 				</label>
 			</div>
@@ -102,9 +122,13 @@
 		</div>
 
 			<div class="col text-center pt-4">
-					<button type="submit" class="btn btn-primary">Modifica il piatto</button>
+					<button type="submit" id="edit-button" class="btn btn-primary">Modifica il piatto</button>
 			</div>  
 	</form>
 </section>
 
+@endsection
+
+@section('script')
+	<script src="{{asset('js/food.js')}}"></script>
 @endsection

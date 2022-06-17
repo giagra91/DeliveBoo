@@ -67,7 +67,7 @@ class FoodItemController extends Controller
 
         $newFoodItem->categories()->attach($data['category']);
 
-        return redirect()->route("admin.foods.index")->with('message', 'Piatto inserito correttamente');
+        return redirect()->route("admin.foods.index")->with('create-message', 'Piatto inserito correttamente');
     }
 
     /**
@@ -118,17 +118,17 @@ class FoodItemController extends Controller
 
         $data = $request->all();
 
-        // $foodItem->fill($data);
-
         $food->user_id = Auth::user()->id;
 
-        $food->img_url = Storage::put('uploads', $data['img_url']);
+        if ($request->hasFile('img_url')) {      
+            $food->img_url = Storage::put('uploads', $data['img_url']);
+        }
 
         $food->categories()->sync($data['category']);
 
         $food->update($data);      
 
-        return redirect()->route("admin.foods.index")->with('message', 'Piatto modificato correttamente');
+        return redirect()->route("admin.foods.index")->with('edit-message', 'Piatto modificato correttamente');
 
     }
 
@@ -141,6 +141,6 @@ class FoodItemController extends Controller
     public function destroy(FoodItem $food)
     {
         $food->delete();
-        return redirect()->route("admin.foods.index")->with('message', 'Piatto cancellato correttamente');
+        return redirect()->route("admin.foods.index")->with('delete-message', 'Piatto cancellato correttamente');
     }
 }
