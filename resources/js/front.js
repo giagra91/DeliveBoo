@@ -1,7 +1,7 @@
 require('./bootstrap');
 
 import Axios from 'axios';
-// import App from "./views/App.vue";
+import App from "./views/App.vue";
 
 window.Vue = require('vue');
 

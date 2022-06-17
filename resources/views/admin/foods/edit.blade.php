@@ -28,47 +28,47 @@
 					</ul>
 					@endif
 
+			<div id="errors"></div>
+
 			<div class="col">
-					<label for="name">Nome</label>
-					<input type="text" name="name" id="name" class="form-control my-form1" form-title="name" value="{{$foodItem->name}}">
+					<label for="name">Nome*</label>
+					<input type="text" name="name" id="name" class="form-control my-form1" form-title="name" value="{{$foodItem->name}}" required>
 			</div>
 
 			<div class="col py-2">
-				<label for="description">Descrizione</label>
-				<input type="text" name="description" id="description" class="form-control my-form1 text-secondary" form-title="description" value="{{$foodItem->description}}">
+				<label for="description">Descrizione*</label>
+				<input type="text" name="description" id="description" class="form-control my-form1 text-secondary" form-title="description" value="{{$foodItem->description}}" required>
 			</div>
 
 			<div class="col py-2">
-				<label for="ingredients">Ingredienti</label>
-				<input type="text" name="ingredients" id="ingredients" class="form-control my-form1 text-secondary" form-title="ingredients" value="{{$foodItem->ingredients}}">
+				<label for="ingredients">Ingredienti*</label>
+				<input type="text" name="ingredients" id="ingredients" class="form-control my-form1 text-secondary" form-title="ingredients" value="{{$foodItem->ingredients}}"required>
 			</div>
 
 			<div class="col">			
 				<img 
 					class="w-100"
-					src="{{ str_starts_with($foodItem->img_url, 'img') ? asset($foodItem->img_url) : asset('storage') . '/' . $foodItem->img_url }}"
+					src="{{ str_starts_with($foodItem->img, 'img') ? asset($foodItem->img) : asset('storage') . '/' . $foodItem->img }}"
 					alt="image of {{$foodItem->name}}"
 				>
 			</div>
 
 			<div class="col">
-					<label for="img_url">Carica l'immagine</label>
-					<input type="file" name="img_url" id="img_url" class="form-control" value="{{$foodItem->img_url}}">
+					<label for="img">Carica l'immagine</label>
+					<input type="file" name="img" id="img" class="form-control" value="{{$foodItem->img}}">
 			</div>
 
 			<div class="col">
-				<label for="price">Inserisci il prezzo</label>
-				<input type="number" step="0.01" name="price" id="price" class="form-control my-form1" form-title="price" value="{{$foodItem->price}}">
+				<label for="price">Inserisci il prezzo*</label>
+				<input type="number" step="0.01" name="price" id="price" class="form-control my-form1" form-title="price" value="{{$foodItem->price}}" required>
 			</div>
 
-			<div id="errors"></div>
-
 			<div class="col py-2">
+				<h5>Portata*</h5>
 				<select 
 				class="form-select" 
 				name="course_id" 
 				>
-				{{-- <option selected>Seleziona la portata</option> --}}
 				@foreach ($courses as $course)
 					<option value="{{$course->id}}" {{ $foodItem->course_id === $course->id ? "selected='selected'" : '' }}>{{$course->name}}</option>
 				@endforeach
@@ -80,7 +80,7 @@
 			@foreach ($categories as $category)
 			<div class="form-check">
 				<input 
-				class="form-check-input"
+				class="form-check-input my-categories"
 				type="checkbox"
 				value="{{ $category->id }}" 
 				name="category[]"
@@ -96,7 +96,7 @@
 
 			<div class="form-check">
 				<input 
-					class="form-check-input"
+					class="form-check-input my-visible"
 					type="radio"
 					value="0"
 					name="is_visible"
@@ -108,7 +108,7 @@
 			</div>
 			<div class="form-check">
 				<input
-					class="form-check-input"
+					class="form-check-input my-visible"
 					type="radio"
 					value="1"
 					name="is_visible"
@@ -130,5 +130,50 @@
 @endsection
 
 @section('script')
-	<script src="{{asset('js/food.js')}}"></script>
+	<script>
+	// edit form validation
+		const foodForm = {
+				name: "",
+				description: "",
+				ingredients: "",
+				price: "",
+		};
+		const keys = Object.keys(foodForm);
+		const formErrors = {};
+		const form_error_messages = document.getElementById("errors");
+		const categories = document.querySelectorAll(".my-categories");
+		let checkedCategories = false;
+		let formInputs = document.querySelectorAll('.my-form1');
+		function checkFormErrors() {
+				form_error_messages.innerHTML = "";
+				if (foodForm.name.trim() == "") formErrors.name = "Il nome non è valido.";
+				if (foodForm.description.trim() == "") formErrors.description = "La descrizione non è valida.";
+				if (foodForm.ingredients.trim() == "") formErrors.ingredients = "Ingredienti non validi.";
+				if(!checkedCategories) formErrors.categories = "Devi selezionare almeno una categoria.";
+				if (isNaN(foodForm.price) || foodForm.price <= 0) formErrors.price = "Il prezzo non è valido.";
+				if (Object.keys(formErrors).length !== 0){
+					for (const error in formErrors) {
+						form_error_messages.classList.add("alert", "alert-danger");
+						form_error_messages.innerHTML += formErrors[error] + "<br>";
+						console.log(formErrors[error])
+					}
+            } 
+		};
+		let editBtn = document.getElementById('edit-button');
+		editBtn.addEventListener('click', function(){
+			for (let i = 0; i < formInputs.length; i++) {
+					if(categories[i].checked){
+						checkedCategories = true;
+						console.log(checkedCategories);
+					}
+					let key = keys[i];
+					if (formInputs[i].getAttribute("form-title") == key){
+							foodForm[key] = formInputs[i].value;
+					}
+				}
+				
+				checkFormErrors();
+		})
+		
+</script>
 @endsection
