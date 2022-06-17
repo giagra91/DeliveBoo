@@ -85,7 +85,11 @@ class RegisterController extends Controller
 
         $user->password = Hash::make($data['password']);
         $user->save();
-        $user->cookingTypes()->attach($data["cooking_types"]);
+
+        if (!empty($data["cooking_types"])) {
+            $user->cookingTypes()->attach($data["cooking_types"]);
+        }
+        
         return $user;
     }
 

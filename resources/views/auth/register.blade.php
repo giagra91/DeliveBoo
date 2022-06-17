@@ -105,8 +105,11 @@
                                 <input id="password-confirm" form-title="confirm_password" type="password" class="my-form form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
+                        <div class="col">
+                            <h5>Tipologia*</h5>
+                        </div>
+                        <div class="col w-75 mx-auto d-flex flex-wrap">
                         
-                    <div class="col w-75 mx-auto d-flex flex-wrap">
                         @foreach ($cookingTypes as $cookingType)
                             <div class="form-check">
                                 <input 
