@@ -111,6 +111,7 @@ class FoodItemController extends Controller
             'name' => 'required|max:50',
             'price' => 'required|numeric|max:999',
             'description' => 'required',
+            'categories' => 'required',
             'ingredients' => 'required',
             'is_visible' => 'required|boolean',
             'course_id' => 'required',
@@ -122,9 +123,11 @@ class FoodItemController extends Controller
 
         if ($request->hasFile('img_url')) {      
             $food->img_url = Storage::put('uploads', $data['img_url']);
-        }
+        };
 
-        $food->categories()->sync($data['category']);
+        if (!empty($data["category"])) {
+            $food->categories()->sync($data['category']);
+        };
 
         $food->update($data);      
 
