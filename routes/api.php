@@ -25,3 +25,5 @@ Route::namespace('Api') // # aggiunge come prefisso sui controller contenuti nel
         // Route::get('/', 'HomeController@index')->name('home');   // | Aggiunta facoltativa ->middleware('password.confirm');
         Route::resource('users', 'RestaurantController');
     });
+
+Route::get('/users/{cooking_types}', 'Api\RestaurantController@show');
