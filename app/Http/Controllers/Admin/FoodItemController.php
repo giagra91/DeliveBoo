@@ -61,7 +61,7 @@ class FoodItemController extends Controller
 
         $newFoodItem->user_id = Auth::user()->id;
 
-        $newFoodItem->img_url = Storage::put('uploads', $data['img_url']);
+        $newFoodItem->img = Storage::put('uploads', $data['img']);
 
         $newFoodItem->save();
 
@@ -111,7 +111,7 @@ class FoodItemController extends Controller
             'name' => 'required|max:50',
             'price' => 'required|numeric|max:999',
             'description' => 'required',
-            'categories' => 'required',
+            // 'categories' => 'required',
             'ingredients' => 'required',
             'is_visible' => 'required|boolean',
             'course_id' => 'required',
@@ -121,8 +121,8 @@ class FoodItemController extends Controller
 
         $food->user_id = Auth::user()->id;
 
-        if ($request->hasFile('img_url')) {
-            $food->img_url = Storage::put('uploads', $data['img_url']);
+        if ($request->hasFile('img')) {
+            $food->img = Storage::put('uploads', $data['img']);
         };
 
         if (!empty($data["category"])) {
