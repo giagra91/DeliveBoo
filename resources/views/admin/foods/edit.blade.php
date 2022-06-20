@@ -11,14 +11,14 @@
 		</div>
 	</div>
 
-	<form class="row row-cols-4 g-3 flex-column align-items-center" action="{{ route("admin.foods.update", $foodItem )}}" method="POST" enctype="multipart/form-data">
+	<form id="form-edit-section" class="row row-cols-4 g-3 flex-column align-items-center" action="{{ route("admin.foods.update", $foodItem )}}" method="POST" enctype="multipart/form-data">
 		@csrf
 		@method('PUT')
 				<div class="col">
 						<h2>
 								Modifica
 						</h2>
-						
+
 				</div>
 					@if ( $errors->any() )
 					<ul class="alert alert-danger">
@@ -45,8 +45,8 @@
 				<input type="text" name="ingredients" id="ingredients" class="form-control my-form1 text-secondary" form-title="ingredients" value="{{$foodItem->ingredients}}"required>
 			</div>
 
-			<div class="col">			
-				<img 
+			<div class="col">
+				<img
 					class="w-100"
 					src="{{ str_starts_with($foodItem->img, 'img') ? asset($foodItem->img) : asset('storage') . '/' . $foodItem->img }}"
 					alt="image of {{$foodItem->name}}"
@@ -65,37 +65,37 @@
 
 			<div class="col py-2">
 				<h5>Portata*</h5>
-				<select 
-				class="form-select" 
-				name="course_id" 
+				<select
+				class="form-select"
+				name="course_id"
 				>
 				@foreach ($courses as $course)
 					<option value="{{$course->id}}" {{ $foodItem->course_id === $course->id ? "selected='selected'" : '' }}>{{$course->name}}</option>
 				@endforeach
 				</select>
-		</div> 
+		</div>
 
-		
+
 		<div class="col py-2">
 			@foreach ($categories as $category)
 			<div class="form-check">
-				<input 
+				<input
 				class="form-check-input my-categories"
 				type="checkbox"
-				value="{{ $category->id }}" 
+				value="{{ $category->id }}"
 				name="category[]"
 				{{ $foodItem->categories->contains($category) ? 'checked' : '' }}
 				>
 				<label class="form-check-label" for="flexCheckDefault">
-					<span class="badge rounded-pill mb-3">{{$category->name}}</span>
+					<span class="badge rounded-pill mb-3 text-danger">{{$category->name}}</span>
 				</label>
 			</div>
 			@endforeach
-		</div> 
+		</div>
 		<div class="col py-2">
 
 			<div class="form-check">
-				<input 
+				<input
 					class="form-check-input my-visible"
 					type="radio"
 					value="0"
@@ -123,7 +123,7 @@
 
 			<div class="col text-center pt-4">
 					<button type="submit" id="edit-button" class="btn btn-primary">Modifica il piatto</button>
-			</div>  
+			</div>
 	</form>
 </section>
 
@@ -132,6 +132,7 @@
 @section('script')
 	<script>
 	// edit form validation
+    const formEdit = document.getElementById("form-edit-section");
 		const foodForm = {
 				name: "",
 				description: "",
@@ -157,7 +158,8 @@
 						form_error_messages.innerHTML += formErrors[error] + "<br>";
 						console.log(formErrors[error])
 					}
-            } 
+            }
+
 		};
 		let editBtn = document.getElementById('edit-button');
 		editBtn.addEventListener('click', function(){
@@ -171,9 +173,10 @@
 							foodForm[key] = formInputs[i].value;
 					}
 				}
-				
+
 				checkFormErrors();
+                window.scrollTo({top: 0,behavior: "smooth"});
 		})
-		
+
 </script>
 @endsection

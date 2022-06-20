@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Course;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -19,8 +20,9 @@ class FoodItemController extends Controller
      */
     public function index()
     {
+        $restaurant = User::where("id", Auth::user()->id)->get();
         $foods = FoodItem::where("user_id", Auth::user()->id)->get();
-        return view("admin.foods.index", compact("foods"));
+        return view("admin.foods.index", compact("foods", "restaurant"));
     }
 
     /**
