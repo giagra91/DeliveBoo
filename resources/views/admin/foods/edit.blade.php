@@ -32,17 +32,41 @@
 
 			<div class="col">
 					<label for="name">Nome*</label>
-					<input type="text" name="name" id="name" class="form-control my-form1" form-title="name" value="{{$foodItem->name}}" required>
+					<input
+						type="text"
+						name="name"
+						id="name"
+						class="form-control my-form1"
+						form-title="name"
+						value="{{ old('name', $foodItem->name ) }}"
+						required
+					>
 			</div>
 
 			<div class="col py-2">
 				<label for="description">Descrizione*</label>
-				<input type="text" name="description" id="description" class="form-control my-form1 text-secondary" form-title="description" value="{{$foodItem->description}}" required>
+				<input 
+					type="text"
+					name="description"
+					id="description"
+					class="form-control my-form1"
+					form-title="description"
+					value="{{ old('description', $foodItem->description ) }}"
+					required
+				>
 			</div>
 
 			<div class="col py-2">
 				<label for="ingredients">Ingredienti*</label>
-				<input type="text" name="ingredients" id="ingredients" class="form-control my-form1 text-secondary" form-title="ingredients" value="{{$foodItem->ingredients}}"required>
+				<input 
+					type="text"
+					name="ingredients"
+					id="ingredients"
+					class="form-control my-form1"
+					form-title="ingredients"
+					value="{{ old('ingredients', $foodItem->ingredients ) }}"
+					required
+					>
 			</div>
 
 			<div class="col">
@@ -55,12 +79,27 @@
 
 			<div class="col">
 					<label for="img">Carica l'immagine</label>
-					<input type="file" name="img" id="img" class="form-control" value="{{$foodItem->img}}">
+					<input 
+						type="file"
+						name="img"
+						id="img"
+						class="form-control"
+						value="{{ old('img',$foodItem->img ) }}"
+					>
 			</div>
 
 			<div class="col">
 				<label for="price">Inserisci il prezzo*</label>
-				<input type="number" step="0.01" name="price" id="price" class="form-control my-form1" form-title="price" value="{{$foodItem->price}}" required>
+				<input 
+					type="number"
+					step="0.01"
+					name="price"
+					id="price"
+					class="form-control my-form1"
+					form-title="price"
+					value="{{ old('price', $foodItem->price) }}"
+					required
+				>
 			</div>
 
 			<div class="col py-2">
@@ -70,7 +109,12 @@
 				name="course_id"
 				>
 				@foreach ($courses as $course)
-					<option value="{{$course->id}}" {{ $foodItem->course_id === $course->id ? "selected='selected'" : '' }}>{{$course->name}}</option>
+					<option 
+						value="{{old( 'course_id', $course->id)}}"
+						{{ $foodItem->course_id === $course->id ? "selected='selected'" : '' }}
+					>
+						{{$course->name}}
+				</option>
 				@endforeach
 				</select>
 		</div>
@@ -85,6 +129,7 @@
 				value="{{ $category->id }}"
 				name="category[]"
 				{{ $foodItem->categories->contains($category) ? 'checked' : '' }}
+				required
 				>
 				<label class="form-check-label" for="flexCheckDefault">
 					<span class="badge rounded-pill mb-3 text-danger">{{$category->name}}</span>
@@ -132,50 +177,80 @@
 @section('script')
 	<script>
 	// edit form validation
-    const formEdit = document.getElementById("form-edit-section");
 		const foodForm = {
 				name: "",
 				description: "",
 				ingredients: "",
 				price: "",
 		};
-		const keys = Object.keys(foodForm);
-		const formErrors = {};
-		const form_error_messages = document.getElementById("errors");
-		const categories = document.querySelectorAll(".my-categories");
-		let checkedCategories = false;
-		let formInputs = document.querySelectorAll('.my-form1');
-		function checkFormErrors() {
-				form_error_messages.innerHTML = "";
-				if (foodForm.name.trim() == "") formErrors.name = "Il nome non è valido.";
-				if (foodForm.description.trim() == "") formErrors.description = "La descrizione non è valida.";
-				if (foodForm.ingredients.trim() == "") formErrors.ingredients = "Ingredienti non validi.";
-				if(!checkedCategories) formErrors.categories = "Devi selezionare almeno una categoria.";
-				if (isNaN(foodForm.price) || foodForm.price <= 0) formErrors.price = "Il prezzo non è valido.";
-				if (Object.keys(formErrors).length !== 0){
-					for (const error in formErrors) {
-						form_error_messages.classList.add("alert", "alert-danger");
-						form_error_messages.innerHTML += formErrors[error] + "<br>";
-						console.log(formErrors[error])
-					}
-            }
 
-		};
-		let editBtn = document.getElementById('edit-button');
-		editBtn.addEventListener('click', function(){
-			for (let i = 0; i < formInputs.length; i++) {
-					if(categories[i].checked){
-						checkedCategories = true;
-						console.log(checkedCategories);
-					}
+		const keys = Object.keys(foodForm);
+
+
+		const form_error_messages = document.getElementById("errors");
+
+		const categories = document.querySelectorAll(".my-categories");
+
+
+		let formInputs = document.querySelectorAll('.my-form1');
+
+		function checkFormErrors() {
+				
+				let formErrors = {};
+
+				form_error_messages.innerHTML = "";
+
+				for (let i = 0; i < formInputs.length; i++) {
 					let key = keys[i];
 					if (formInputs[i].getAttribute("form-title") == key){
 							foodForm[key] = formInputs[i].value;
 					}
 				}
 
+				if (foodForm.name.trim() == "") formErrors.name = "Il nome non è valido.";
+				if (foodForm.description.trim() == "") formErrors.description = "La descrizione non è valida.";
+				if (foodForm.ingredients.trim() == "") formErrors.ingredients = "Ingredienti non validi.";
+				if (isNaN(foodForm.price) || foodForm.price <= 0) formErrors.price = "Il prezzo non è valido.";
+
+				let isChecked = false;
+
+				for (let i = 0; i < categories.length; i++) {
+					if(categories[i].checked){
+						isChecked = true;
+					}
+				}
+
+				if (isChecked) {
+					console.log('è checked');
+					for (let i = 0; i < categories.length; i++) {
+						categories[i].required = false;
+					} 
+				} else {
+					formErrors.categories = "Devi selezionare almeno una categoria.";
+					console.log('non è checked');
+					for (let i = 0; i < categories.length; i++) {
+						categories[i].required = true;
+					} 
+				}
+
+				if ( Object.keys(formErrors).length){
+					console.log(Object.keys(formErrors).length);
+					for (const error in formErrors) {
+						form_error_messages.classList.add("alert", "alert-danger");
+						form_error_messages.innerHTML += formErrors[error] + "<br>";
+						console.log(formErrors[error])
+					}
+        } else {
+					form_error_messages.classList.add("d-none");
+				}
+
+		};
+
+		let editBtn = document.getElementById('edit-button');
+
+		editBtn.addEventListener('click', function(){
 				checkFormErrors();
-                window.scrollTo({top: 0,behavior: "smooth"});
+        window.scrollTo({top: 0,behavior: "smooth"});
 		})
 
 </script>
