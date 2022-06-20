@@ -26,7 +26,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <img class="d-inline-block ms-2" src="{{asset('img/logo-deliveboo/logo.svg')}}" alt="logo" />
-                <a class="navbar-brand text-1000 fs-3 fw-bold ms-2 text-gradient" href="{{ route('home') }}">
+                <a class="navbar-brand text-1000 fs-3 fw-bold ms-2 text-gradient" href="{{ route('guest') }}">
                     DeliveBoo
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

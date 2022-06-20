@@ -17,13 +17,14 @@ use App\Http\Controllers\FoodItemController;
 */
 
 
-Route::get('/guest', function () {
-    return view('guest.home');
-});
+
+
+
+
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+// Route::get('/{any}', 'HomeController@index')->name('home');
 
 Route::middleware('auth') // § intermediario che si assicura che il contenuto sia mostrato solo ad utenti loggati
     ->namespace('Admin') // # aggiunge come prefisso sui controller contenuti nel gruppo Admin come namespace
@@ -34,3 +35,9 @@ Route::middleware('auth') // § intermediario che si assicura che il contenuto s
         // Route::get('/', 'HomeController@index')->name('home');   // | Aggiunta facoltativa ->middleware('password.confirm');
         Route::resource('foods', 'FoodItemController');
     });
+
+    Route::get('/guest', function () {
+        return view('guest.home');
+    })->name('guest');
+
+Route::get("/{any}", "HomeController@index")->where("any", ".*");

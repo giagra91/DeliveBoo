@@ -38380,7 +38380,10 @@ var staticRenderFns = [
         _c("div", { staticClass: "container" }, [
           _c(
             "a",
-            { staticClass: "navbar-brand d-inline-flex", attrs: { href: "#" } },
+            {
+              staticClass: "navbar-brand d-inline-flex",
+              attrs: { href: "http://127.0.0.1:8000/guest" },
+            },
             [
               _c("img", {
                 staticClass: "d-inline-block ms-2",
@@ -51458,8 +51461,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\giqua\Desktop\BOOLEAN\DeliveBoo\resources\js\front.js */"./resources/js/front.js");
-module.exports = __webpack_require__(/*! C:\Users\giqua\Desktop\BOOLEAN\DeliveBoo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\esercizi boolean\DeliveBoo-1\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\esercizi boolean\DeliveBoo-1\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

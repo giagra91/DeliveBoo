@@ -23,6 +23,13 @@
 										</div>
 						@endif
 				</div>
+			<div class="col-6 text-center m-auto">
+						@if (session('delete-message'))
+										<div class="alert alert-danger">
+												{{ session('delete-message')}}
+										</div>
+						@endif
+				</div>
 
 
 			@foreach ($foods as $food)
@@ -30,7 +37,7 @@
 				<a href="{{route('admin.foods.show', $food)}}">Show</a>
 				<a href="{{route('admin.foods.edit', $food)}}">Edit</a>
 
-				<form 
+				<form
 				action="{{route('admin.foods.destroy', $food )}}"
 				method="post"
 				class="delete-form"
@@ -54,5 +61,5 @@
 @section('script')
 
 <script src="{{asset('js/admin.js')}}"></script>
-	
+
 @endsection
