@@ -17,7 +17,6 @@ use App\Http\Controllers\FoodItemController;
 */
 
 
-
 Route::get('/guest', function () {
     return view('guest.home');
 });

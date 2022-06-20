@@ -51140,7 +51140,7 @@ module.exports = "/images/pay.png?c333393e0db88c0b777b8f0744ee5110";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/logo.svg?89cfb44998ebc41c7e70d03ebc2c8460";
+module.exports = "/images/logo.svg?eba20296e665c05a065134369291178c";
 
 /***/ }),
 
@@ -51458,8 +51458,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\esercizi boolean\DeliveBoo-1\resources\js\front.js */"./resources/js/front.js");
-module.exports = __webpack_require__(/*! C:\esercizi boolean\DeliveBoo-1\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\giqua\Desktop\BOOLEAN\DeliveBoo\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\giqua\Desktop\BOOLEAN\DeliveBoo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
