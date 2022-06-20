@@ -1,7 +1,7 @@
 <template>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" data-navbar-on-scroll="data-navbar-on-scroll">
         <div class="container">
-                <a class="navbar-brand d-inline-flex" href="#">
+                <a class="navbar-brand d-inline-flex" href="http://127.0.0.1:8000/guest">
                     <img class="d-inline-block ms-2" src="../../../public/img/logo-deliveboo/logo.svg" alt="logo" />
                     <span class="text-1000 fs-3 fw-bold ms-2 text-gradient">DeliveBoo</span>
                 </a>

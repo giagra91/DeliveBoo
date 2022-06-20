@@ -38380,7 +38380,10 @@ var staticRenderFns = [
         _c("div", { staticClass: "container" }, [
           _c(
             "a",
-            { staticClass: "navbar-brand d-inline-flex", attrs: { href: "#" } },
+            {
+              staticClass: "navbar-brand d-inline-flex",
+              attrs: { href: "http://127.0.0.1:8000/guest" },
+            },
             [
               _c("img", {
                 staticClass: "d-inline-block ms-2",
@@ -51140,7 +51143,7 @@ module.exports = "/images/pay.png?c333393e0db88c0b777b8f0744ee5110";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/logo.svg?89cfb44998ebc41c7e70d03ebc2c8460";
+module.exports = "/images/logo.svg?eba20296e665c05a065134369291178c";
 
 /***/ }),
 

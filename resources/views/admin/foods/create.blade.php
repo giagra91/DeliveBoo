@@ -46,8 +46,8 @@
 			</div>
 
 			<div class="col mb-3">
-				<label for="img_url" class="form-label">Carica l'immagine</label>
-				<input class="form-control" name="img_url" type="file" id="img_url">
+				<label for="img" class="form-label">Carica l'immagine</label>
+				<input class="form-control" name="img" type="file" id="img">
 			</div>
 
 			<div class="col mb-3">
@@ -73,11 +73,11 @@
 			<div class="col py-2 d-flex">
 					@foreach ($categories as $category)
 						<div class="form-check">
-								<input 
+								<input
 								class="form-check-input my-categories"
 								type="checkbox"
-								value="{{ $category->id }}" 
-								name="category[]" 
+								value="{{ $category->id }}"
+								name="category[]"
 								>
 								<label class="form-check-label" for="flexCheckDefault">
 										<span class="badge rounded-pill mb-3">{{$category->name}}</span>
@@ -87,20 +87,20 @@
 			</div>
 
 			<div class="col mb-3">
-				<select 
+				<select
 				class="form-select"
-				name="course_id" 
+				name="course_id"
 				>
 					@foreach ($courses as $course)
 						<option value="{{$course->id}}">{{$course->name}}</option>
 					@endforeach
 				</select>
-			</div> 
+			</div>
 
 			<div class="col text-center py-3">
 					<button type="submit" class="btn btn-primary" id="create-button">Inserisci</button>
 			</div>
-			
+
     </form>
 
 </section>
@@ -149,8 +149,8 @@
 			}
 			checkFormErrors();
 
-			
+
 		})
-			
+
 </script>
 @endsection
