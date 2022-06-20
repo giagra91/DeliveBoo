@@ -23,6 +23,7 @@
                                     <div class="col">
                                         <div class="input-group-icon"><i class="fas fa-map-marker-alt text-danger input-box-icon"></i>
                                             <select class="form-select" aria-label="Default select example" v-model='selectedItem' @change="getSingleRestaurant()">
+                                                <option value=" ">Tutti i Ristoranti</option>
                                                 <option value="1">uno</option>
                                                 <option value="2">due</option>
                                                 <option value="3">tre</option>
@@ -31,13 +32,9 @@
                                                 <option value="6">sei</option>
                                             </select>
                                         </div>
-                                        <!-- <button class="btn btn-secondary" >
-                                            console prova
-                                        </button> -->
+
                                     </div>
-                                    <!-- <div class="d-grid gap-3 col-sm-auto">
-                                        <button class="btn btn-danger" type="submit">Cerca</button>
-                                    </div> -->
+
                                     </form>
                                 </div>
                                 </div>
@@ -51,40 +48,39 @@
         <div class="container">
         <div class="row m-4">
 
-            <div  class="col-sm-12 col-md-6 col-lg-4 mb-4" :selectedItem="selectedItem">
+            <!-- <div  class="col-sm-12 col-md-6 col-lg-4 mb-4" :selectedItem="selectedItem">
 
 
-                <div>
-    <div v-for="(restaurant, index) in restaurants" :key="index" >
-        <div class="card text-white card-has-bg click-col" v-bind:style="{ 'background-image': 'url(' + restaurant.logo + ')' }">
-            <p>{{selectedItem}}</p>
-            <img class="card-img d-none" :src="(restaurant.logo) ? restaurant.logo : 'img/loghi/generic-restaurant.jpg'" :alt="restaurant.name">
-            <div class="card-img-overlay d-flex flex-column">
-                <div class="card-body">
-                    <small class="card-meta mb-2">p. iva: {{restaurant.vat_number}}</small>
-                    <h4 class="card-title mt-0 "><a class="text-white" herf="#">{{restaurant.name}}</a></h4>
-                    <small><i class="far fa-clock"></i> {{restaurant.email}}</small>
-                </div>
-                <div class="card-footer">
-                    <div class="media">
-                        <img class="mr-3 rounded-circle" :src="(restaurant.logo) ? restaurant.logo : 'img/loghi/generic-restaurant.jpg'" :alt="restaurant.name" style="max-width:50px">
-                        <div class="media-body">
-                            <h6 class="my-0 text-white d-block">{{restaurant.address}}</h6>
+                <div> -->
+                <div v-for="(restaurant, index) in restaurants" :key="index" class="col-sm-12 col-md-6 col-lg-4 mb-4">
+                    <div class="card text-white card-has-bg click-col" v-bind:style="{ 'background-image': 'url(' + restaurant.logo + ')' }">
+                        <p>{{selectedItem}}</p>
+                        <img class="card-img d-none" :src="(restaurant.logo) ? restaurant.logo : 'img/loghi/generic-restaurant.jpg'" :alt="restaurant.name">
+                        <div class="card-img-overlay d-flex flex-column">
+                            <div class="card-body">
+                                <small class="card-meta mb-2">p. iva: {{restaurant.vat_number}}</small>
+                                <h4 class="card-title mt-0 "><a class="text-white" herf="#">{{restaurant.name}}</a></h4>
+                                <small><i class="far fa-clock"></i> {{restaurant.email}}</small>
+                            </div>
+                            <div class="card-footer">
+                                <div class="media">
+                                    <img class="mr-3 rounded-circle" :src="(restaurant.logo) ? restaurant.logo : 'img/loghi/generic-restaurant.jpg'" :alt="restaurant.name" style="max-width:50px">
+                                    <div class="media-body">
+                                        <h6 class="my-0 text-white d-block">{{restaurant.address}}</h6>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-            </div>
 
-
-            <div class="col-12 d-flex justify-content-center mt-5">
-                <a class="btn btn-lg btn-primary" href="#!">View All </a>
-            </div>
-        </div>
-        </div>
+<!-- 
+                <div class="col-12 d-flex justify-content-center mt-5">
+                    <a class="btn btn-lg btn-primary" href="#!">View All </a>
+                </div> -->
+            
     </div>
 </template>
 
@@ -102,24 +98,36 @@ export default {
     data: function(){
         return{
             restaurants: [],
-            selectedItem: 4,
+            selectedItem: " ",
         }
     },
     methods:{
         getSingleRestaurant(){
-            axios.get(`http://127.0.0.1:8000/api/users/${this.selectedItem}`)
-            .then((result) => {
-                console.log(result.data.results.users);
-                this.restaurants = result.data.results.users;
-            })
-            .catch((error) => {
-                console.warn(error);
-            })
+            if(this.selectedItem !== " "){
+                axios.get(`http://127.0.0.1:8000/api/users/${this.selectedItem}`)
+                .then((result) => {
+                    console.log(result.data.results.users);
+                    this.restaurants = result.data.results.users;
+                })
+                .catch((error) => {
+                    console.warn(error);
+                })
+            }
+            else {
+                axios.get(`http://127.0.0.1:8000/api/users/`)
+                .then((result) => {
+                    // console.log(result.data);
+                    this.restaurants = result.data;
+                })
+                .catch((error) => {
+                    console.warn(error);
+                })
+            }
         },
     },
-    // created(){
-    //     this.getSingleRestaurant();
-    // }
+    created(){
+        this.getSingleRestaurant();
+    }
 }
 </script>
 

@@ -2094,10 +2094,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2109,24 +2105,33 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       restaurants: [],
-      selectedItem: 4
+      selectedItem: " "
     };
   },
   methods: {
     getSingleRestaurant: function getSingleRestaurant() {
       var _this = this;
 
-      axios.get("http://127.0.0.1:8000/api/users/".concat(this.selectedItem)).then(function (result) {
-        console.log(result.data.results.users);
-        _this.restaurants = result.data.results.users;
-      })["catch"](function (error) {
-        console.warn(error);
-      });
+      if (this.selectedItem !== " ") {
+        axios.get("http://127.0.0.1:8000/api/users/".concat(this.selectedItem)).then(function (result) {
+          console.log(result.data.results.users);
+          _this.restaurants = result.data.results.users;
+        })["catch"](function (error) {
+          console.warn(error);
+        });
+      } else {
+        axios.get("http://127.0.0.1:8000/api/users/").then(function (result) {
+          // console.log(result.data);
+          _this.restaurants = result.data;
+        })["catch"](function (error) {
+          console.warn(error);
+        });
+      }
     }
-  } // created(){
-  //     this.getSingleRestaurant();
-  // }
-
+  },
+  created: function created() {
+    this.getSingleRestaurant();
+  }
 });
 
 /***/ }),
@@ -38691,6 +38696,12 @@ var render = function () {
                                           [
                                             _c(
                                               "option",
+                                              { attrs: { value: " " } },
+                                              [_vm._v("Tutti i Ristoranti")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "option",
                                               { attrs: { value: "1" } },
                                               [_vm._v("uno")]
                                             ),
@@ -38745,104 +38756,92 @@ var render = function () {
       ),
       _vm._v(" "),
       _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "row m-4" }, [
-          _c(
-            "div",
-            {
-              staticClass: "col-sm-12 col-md-6 col-lg-4 mb-4",
-              attrs: { selectedItem: _vm.selectedItem },
-            },
-            [
-              _c(
-                "div",
-                _vm._l(_vm.restaurants, function (restaurant, index) {
-                  return _c("div", { key: index }, [
+        _c(
+          "div",
+          { staticClass: "row m-4" },
+          _vm._l(_vm.restaurants, function (restaurant, index) {
+            return _c(
+              "div",
+              { key: index, staticClass: "col-sm-12 col-md-6 col-lg-4 mb-4" },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass: "card text-white card-has-bg click-col",
+                    style: {
+                      "background-image": "url(" + restaurant.logo + ")",
+                    },
+                  },
+                  [
+                    _c("p", [_vm._v(_vm._s(_vm.selectedItem))]),
+                    _vm._v(" "),
+                    _c("img", {
+                      staticClass: "card-img d-none",
+                      attrs: {
+                        src: restaurant.logo
+                          ? restaurant.logo
+                          : "img/loghi/generic-restaurant.jpg",
+                        alt: restaurant.name,
+                      },
+                    }),
+                    _vm._v(" "),
                     _c(
                       "div",
-                      {
-                        staticClass: "card text-white card-has-bg click-col",
-                        style: {
-                          "background-image": "url(" + restaurant.logo + ")",
-                        },
-                      },
+                      { staticClass: "card-img-overlay d-flex flex-column" },
                       [
-                        _c("p", [_vm._v(_vm._s(_vm.selectedItem))]),
+                        _c("div", { staticClass: "card-body" }, [
+                          _c("small", { staticClass: "card-meta mb-2" }, [
+                            _vm._v("p. iva: " + _vm._s(restaurant.vat_number)),
+                          ]),
+                          _vm._v(" "),
+                          _c("h4", { staticClass: "card-title mt-0 " }, [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "text-white",
+                                attrs: { herf: "#" },
+                              },
+                              [_vm._v(_vm._s(restaurant.name))]
+                            ),
+                          ]),
+                          _vm._v(" "),
+                          _c("small", [
+                            _c("i", { staticClass: "far fa-clock" }),
+                            _vm._v(" " + _vm._s(restaurant.email)),
+                          ]),
+                        ]),
                         _vm._v(" "),
-                        _c("img", {
-                          staticClass: "card-img d-none",
-                          attrs: {
-                            src: restaurant.logo
-                              ? restaurant.logo
-                              : "img/loghi/generic-restaurant.jpg",
-                            alt: restaurant.name,
-                          },
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "card-img-overlay d-flex flex-column",
-                          },
-                          [
-                            _c("div", { staticClass: "card-body" }, [
-                              _c("small", { staticClass: "card-meta mb-2" }, [
-                                _vm._v(
-                                  "p. iva: " + _vm._s(restaurant.vat_number)
-                                ),
-                              ]),
-                              _vm._v(" "),
-                              _c("h4", { staticClass: "card-title mt-0 " }, [
-                                _c(
-                                  "a",
-                                  {
-                                    staticClass: "text-white",
-                                    attrs: { herf: "#" },
-                                  },
-                                  [_vm._v(_vm._s(restaurant.name))]
-                                ),
-                              ]),
-                              _vm._v(" "),
-                              _c("small", [
-                                _c("i", { staticClass: "far fa-clock" }),
-                                _vm._v(" " + _vm._s(restaurant.email)),
-                              ]),
-                            ]),
+                        _c("div", { staticClass: "card-footer" }, [
+                          _c("div", { staticClass: "media" }, [
+                            _c("img", {
+                              staticClass: "mr-3 rounded-circle",
+                              staticStyle: { "max-width": "50px" },
+                              attrs: {
+                                src: restaurant.logo
+                                  ? restaurant.logo
+                                  : "img/loghi/generic-restaurant.jpg",
+                                alt: restaurant.name,
+                              },
+                            }),
                             _vm._v(" "),
-                            _c("div", { staticClass: "card-footer" }, [
-                              _c("div", { staticClass: "media" }, [
-                                _c("img", {
-                                  staticClass: "mr-3 rounded-circle",
-                                  staticStyle: { "max-width": "50px" },
-                                  attrs: {
-                                    src: restaurant.logo
-                                      ? restaurant.logo
-                                      : "img/loghi/generic-restaurant.jpg",
-                                    alt: restaurant.name,
-                                  },
-                                }),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "media-body" }, [
-                                  _c(
-                                    "h6",
-                                    { staticClass: "my-0 text-white d-block" },
-                                    [_vm._v(_vm._s(restaurant.address))]
-                                  ),
-                                ]),
-                              ]),
+                            _c("div", { staticClass: "media-body" }, [
+                              _c(
+                                "h6",
+                                { staticClass: "my-0 text-white d-block" },
+                                [_vm._v(_vm._s(restaurant.address))]
+                              ),
                             ]),
-                          ]
-                        ),
+                          ]),
+                        ]),
                       ]
                     ),
-                  ])
-                }),
-                0
-              ),
-            ]
-          ),
-          _vm._v(" "),
-          _vm._m(3),
-        ]),
+                  ]
+                ),
+              ]
+            )
+          }),
+          0
+        ),
       ]),
     ],
     1
@@ -38912,22 +38911,6 @@ var staticRenderFns = [
         ]
       ),
     ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "col-12 d-flex justify-content-center mt-5" },
-      [
-        _c(
-          "a",
-          { staticClass: "btn btn-lg btn-primary", attrs: { href: "#!" } },
-          [_vm._v("View All ")]
-        ),
-      ]
-    )
   },
 ]
 render._withStripped = true
@@ -51527,8 +51510,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\esercizi boolean\DeliveBoo-1\resources\js\front.js */"./resources/js/front.js");
-module.exports = __webpack_require__(/*! C:\esercizi boolean\DeliveBoo-1\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\giqua\Desktop\BOOLEAN\DeliveBoo\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\giqua\Desktop\BOOLEAN\DeliveBoo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
