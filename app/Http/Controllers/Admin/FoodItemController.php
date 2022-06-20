@@ -63,11 +63,15 @@ class FoodItemController extends Controller
 
         $newFoodItem->user_id = Auth::user()->id;
 
-        $newFoodItem->img = Storage::put('uploads', $data['img']);
+        if ($request->hasFile('img')) {
+            $newFoodItem->img = Storage::put('uploads', $data['img']);
+        };
 
         $newFoodItem->save();
 
-        $newFoodItem->categories()->attach($data['category']);
+        if (!empty($data["category"])) {
+            $newFoodItem->categories()->attach($data['category']);
+        };
 
         return redirect()->route("admin.foods.index")->with('create-message', 'Piatto inserito correttamente');
     }

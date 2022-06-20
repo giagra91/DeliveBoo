@@ -37205,7 +37205,7 @@ process.umask = function() { return 0; };
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
-* sweetalert2 v11.4.17
+* sweetalert2 v11.4.18
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -38123,7 +38123,7 @@ process.umask = function() { return 0; };
       youtubeId: 'saK5UTKroDA'
     }]); // The message will only be shown to Russian users visiting Russian sites
 
-    if (navigator.language === 'ru' && location.host.match(/\.(ru|su|xn--p1ai)$/)) {
+    if (/^ru\b/.test(navigator.language) && location.host.match(/\.(ru|su|xn--p1ai)$/)) {
       const noWar = document.createElement('div');
       noWar.className = swalClasses['no-war'];
       setInnerHtml(noWar, "<a href=\"https://www.youtube.com/watch?v=".concat(message.youtubeId, "\" target=\"_blank\">").concat(message.text, "</a>"));
@@ -41163,7 +41163,7 @@ process.umask = function() { return 0; };
     };
   });
   SweetAlert.DismissReason = DismissReason;
-  SweetAlert.version = '11.4.17';
+  SweetAlert.version = '11.4.18';
 
   const Swal = SweetAlert; // @ts-ignore
 
@@ -41336,7 +41336,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\esercizi boolean\DeliveBoo-1\resources\js\admin.js */"./resources/js/admin.js");
+module.exports = __webpack_require__(/*! C:\Users\Utente\Desktop\proj-finale\DeliveBoo\resources\js\admin.js */"./resources/js/admin.js");
 
 
 /***/ })
