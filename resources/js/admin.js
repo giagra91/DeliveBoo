@@ -1,17 +1,41 @@
 const { isEmpty } = require('lodash');
+const { default: Swal } = require('sweetalert2');
 
 require('./bootstrap');
 
 const deleteForms = document.querySelectorAll('.delete-form');
 
+
 deleteForms.forEach(form => {
     form.addEventListener('submit', function(e) {
+        let self = this;
+        Swal.fire({
+            text: 'Vuoi eliminare il Piatto?',
+            denyButton: 'No',
+            icon: 'error',
+            showCancelButton: true,
+            showConfirmButton: true
+        }).then(
+            function(isConfirm){
+                if(isConfirm.isConfirmed){
+                    self.submit();
+                    Swal.fire({
+                        title :'Deleted!',
+                        text: 'Your file has been deleted.',
+                        icon :'success',
+                        timer: 2000,
+                    })
+                }
+
+            }
+        )
         e.preventDefault();
-        if ( window.confirm(`Do you want to cancel ${this.getAttribute("dish-title")}?`) ) {
-            this.submit();
-        }
+
+
     })
 })
+
+
 
 
 

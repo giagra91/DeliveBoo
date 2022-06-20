@@ -10,9 +10,9 @@
 		<h2>Piatti:</h2>
 		<div class="col-6 text-center m-auto">
 			@if (session('create-message'))
-							<div class="alert alert-success">
-									{{ session('create-message')}}
-							</div>
+                <div class="alert alert-success">
+                        {{ session('create-message')}}
+                </div>
 			@endif
 		</div>
 
