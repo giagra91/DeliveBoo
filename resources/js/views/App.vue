@@ -31,19 +31,6 @@
                                     </div>
                                     </form>
                                 </div>
-                                <!-- <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                    <form class="row gx-4 gy-2 align-items-center">
-                                    <div class="col">
-                                        <div class="input-group-icon"><i class="fas fa-map-marker-alt text-danger input-box-icon"></i>
-                                        <label class="visually-hidden" for="inputPickup">Address</label>
-                                        <input class="form-control input-box form-foodwagon-control" id="inputPickup" type="text" placeholder="Enter Your Address" />
-                                        </div>
-                                    </div>
-                                    <div class="d-grid gap-3 col-sm-auto">
-                                        <button class="btn btn-danger" type="submit">Find Food</button>
-                                    </div>
-                                    </form>
-                                </div> -->
                                 </div>
                             </div>
                         </div>
@@ -54,10 +41,6 @@
 
         <div class="container">
         <div class="row m-4">
-            <!-- <div class="input-group-icon pe-2 m-4">
-                <i class="fas fa-search input-box-icon text-primary"></i>
-                <input class="form-control border-0 input-box bg-100 p-3" type="search" placeholder="Search Food" aria-label="Search" />
-            </div> -->
             <div class="col-sm-12 col-md-6 col-lg-4 mb-4" v-for="(restaurant, index) in restaurants" :key="index">
                 <div class="card text-white card-has-bg click-col" v-bind:style="{ 'background-image': 'url(' + restaurant.logo + ')' }">
                     <img class="card-img d-none" :src="(restaurant.logo) ? restaurant.logo : 'img/loghi/generic-restaurant.jpg'" :alt="restaurant.name">
@@ -72,7 +55,6 @@
                                 <img class="mr-3 rounded-circle" :src="(restaurant.logo) ? restaurant.logo : 'img/loghi/generic-restaurant.jpg'" :alt="restaurant.name" style="max-width:50px">
                                 <div class="media-body">
                                     <h6 class="my-0 text-white d-block">{{restaurant.address}}</h6>
-                                    <!-- <small>Director of UI/UX</small> -->
                                 </div>
                             </div>
                         </div>

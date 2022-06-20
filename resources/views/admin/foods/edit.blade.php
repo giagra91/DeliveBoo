@@ -87,7 +87,7 @@
 				{{ $foodItem->categories->contains($category) ? 'checked' : '' }}
 				>
 				<label class="form-check-label" for="flexCheckDefault">
-					<span class="badge rounded-pill mb-3">{{$category->name}}</span>
+					<span class="badge rounded-pill mb-3 text-danger">{{$category->name}}</span>
 				</label>
 			</div>
 			@endforeach
