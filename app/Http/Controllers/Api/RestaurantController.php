@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\User;
+use App\Models\FoodItem;
+use App\Models\CookingType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\CookingType;
 use FakerRestaurant\Provider\ar_SA\Restaurant;
 
 class RestaurantController extends Controller
@@ -17,7 +18,8 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        $users = User::with(["cookingTypes"])->get();
+
+        $users = User::with(["cookingTypes", "foodItems"])->get();
         return response()->json($users);
     }
 
@@ -50,6 +52,7 @@ class RestaurantController extends Controller
      */
     public function show($id)
     {
+        $foodItems = FoodItem::where($id, "user_id");
         $type = CookingType::with(["users"])->findOrFail($id);
         return response()->json([
             'success' => true,

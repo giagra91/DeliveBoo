@@ -2,7 +2,10 @@
     <div >
         <Header />
         <Jumbotron />
-
+        <!-- <div v-for="(element, index) in navItems" :key="index">
+            <router-link class="nav-link active" :to=" { name: element.routeName,  }">{{element.label}}</router-link>
+        </div> -->
+        <Main />
         <section class="py-5 overflow-hidden bg-primary" id="home">
             <div class="container">
                 <div class="row flex-center">
@@ -20,21 +23,24 @@
                                 <div class="tab-content mt-3" id="nav-tabContent">
                                 <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                                     <form class="row gx-2 gy-2 align-items-center">
-                                    <div class="col">
-                                        <div class="input-group-icon"><i class="fas fa-map-marker-alt text-danger input-box-icon"></i>
-                                            <select class="form-select" aria-label="Default select example" v-model='selectedItem' @change="getSingleRestaurant()">
-                                                <option value=" ">Tutti i Ristoranti</option>
-                                                <option value="1">uno</option>
-                                                <option value="2">due</option>
-                                                <option value="3">tre</option>
-                                                <option value="4">quattro</option>
-                                                <option value="5">cinque</option>
-                                                <option value="6">sei</option>
-                                            </select>
+                                        <div class="col">
+                                            <div class="input-group-icon"><i class="fas fa-map-marker-alt text-danger input-box-icon"></i>
+                                                <select class="form-select" aria-label="Default select example" v-model='selectedItem' @change="getSingleRestaurant()">
+                                                    <option value=" ">Tutti i Ristoranti</option>
+                                                    <option value="1">Giapponese</option>
+                                                    <option value="2">Cinese</option>
+                                                    <option value="3">Indiano</option>
+                                                    <option value="4">Pesce</option>
+                                                    <option value="5">Carne</option>
+                                                    <option value="6">Pizza</option>
+                                                    <option value="7">Italiano</option>
+                                                    <option value="8">Messicano</option>
+                                                    <option value="10">Fusion</option>
+                                                    <option value="11">Gourmet</option>
+                                                    <option value="12">Greco</option>
+                                                </select>
+                                            </div>
                                         </div>
-
-                                    </div>
-
                                     </form>
                                 </div>
                                 </div>
@@ -46,20 +52,19 @@
         </section>
 
         <div class="container">
-        <div class="row m-4">
+            <div class="row m-4" id="allRestaurants">
 
-            <!-- <div  class="col-sm-12 col-md-6 col-lg-4 mb-4" :selectedItem="selectedItem">
-
-
-                <div> -->
-                <div v-for="(restaurant, index) in restaurants" :key="index" class="col-sm-12 col-md-6 col-lg-4 mb-4">
+                <div v-for="(restaurant, index) in restaurants" :key="index" class="col-sm-12 col-md-6 col-lg-4 mb-4" >
                     <div class="card text-white card-has-bg click-col" v-bind:style="{ 'background-image': 'url(' + restaurant.logo + ')' }">
                         <p>{{selectedItem}}</p>
                         <img class="card-img d-none" :src="(restaurant.logo) ? restaurant.logo : 'img/loghi/generic-restaurant.jpg'" :alt="restaurant.name">
                         <div class="card-img-overlay d-flex flex-column">
                             <div class="card-body">
                                 <small class="card-meta mb-2">p. iva: {{restaurant.vat_number}}</small>
-                                <h4 class="card-title mt-0 "><a class="text-white" herf="#">{{restaurant.name}}</a></h4>
+                                <a href="#" class="text-decoration-none">
+                                    <h4 class="card-title mt-0 "><button class="text-white" @click="test(restaurant.id)">{{restaurant.name}}</button></h4>
+
+                                </a>
                                 <small><i class="far fa-clock"></i> {{restaurant.email}}</small>
                             </div>
                             <div class="card-footer">
@@ -74,12 +79,20 @@
                     </div>
                 </div>
             </div>
+            <div class="row m-4 d-none" id="singleRestaurant" >
+                <div >
+                <p>{{restaurantMenu.name}}</p>
+
+                <div v-for="(food, index) in restaurantMenu.food_items" :key="index">
+                    <p>{{food.name}}</p>
+                    <p>{{food.description}}</p>
+                </div>
+                </div>
+                <button @click="checkDisplay()">change</button>
+            </div>
         </div>
 
-<!-- 
-                <div class="col-12 d-flex justify-content-center mt-5">
-                    <a class="btn btn-lg btn-primary" href="#!">View All </a>
-                </div> -->
+
             
     </div>
 </template>
@@ -87,18 +100,34 @@
 <script>
 import Header from '../components/Header.vue';
 import Jumbotron from '../components/Jumbotron.vue';
+import Main from '../components/Main.vue';
+
 
 export default {
     name: "App",
     components: {
         Header,
         Jumbotron,
-
+        Main
     },
     data: function(){
         return{
             restaurants: [],
+            check : false,
+            restaurantMenu : [],
             selectedItem: " ",
+            navItems:[
+                {
+                    label: "Restaurants",
+                    routeName : "restaurants"
+                },
+                {
+                    label: "Restaurant",
+                    routeName : "restaurant"
+                },
+            ],
+            
+            
         }
     },
     methods:{
@@ -116,14 +145,32 @@ export default {
             else {
                 axios.get(`http://127.0.0.1:8000/api/users/`)
                 .then((result) => {
-                    // console.log(result.data);
                     this.restaurants = result.data;
+                    console.log(result.data)
                 })
                 .catch((error) => {
                     console.warn(error);
                 })
             }
         },
+        test(id){
+            this.restaurantMenu = [];
+            axios.get(`http://127.0.0.1:8000/api/users/`)
+                .then((result) => {
+                    this.restaurantMenu = result.data[id - 1];
+                    console.log(this.restaurantMenu)
+                })
+                .catch((error) => {
+                    console.warn(error);
+                })
+                this.checkDisplay();
+        },
+        checkDisplay(){
+            let allRestaurants = document.getElementById("allRestaurants");
+            let singleRestaurant = document.getElementById("singleRestaurant");
+            allRestaurants.classList.toggle("d-none");
+            singleRestaurant.classList.toggle("d-none");
+        }
     },
     created(){
         this.getSingleRestaurant();
