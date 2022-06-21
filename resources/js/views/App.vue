@@ -1,9 +1,17 @@
 <template>
     <div >
         <Header />
-        <!-- <div v-for="(element, index) in navItems" :key="index">
-            <router-link class="nav-link active" :to=" { name: element.routeName,  }">{{element.label}}</router-link>
-        </div> -->
+        <div class="d-flex justify-content-end position-relative">
+            <div id="cart " class="w-25 position-absolute" v-if="cart.length > 0">
+                <div v-for="(item, index) in cart" :key="index" >
+                
+                    <p >{{item.name}} {{item.quantity}}</p>
+                    <p>{{(cart.includes(item)) ? item.quantity : item.name}}</p>
+                    <p>{{item.price}}</p>
+                    <p>Totale: € {{item.quantity * item.price}}</p>
+                </div>
+            </div>
+        </div>
         
         <div id="my-wrapper">
             <Jumbotron />
@@ -84,17 +92,19 @@
         </div>
 
         <div class="container">
-            <div class="row m-4 d-none" id="singleRestaurant" >
-                <div >
-                <p>{{restaurantMenu.name}}</p>
-
-                <div v-for="(food, index) in restaurantMenu.food_items" :key="index">
+            <div class="row m-4 gap-3 d-none" id="singleRestaurant" >
+                    
+                <h2 class="fw-bold text-uppercase">{{restaurantMenu.name}}</h2>
+                    <div class="col-3 bg-primary rounded-3" v-for="(food, index) in restaurantMenu.food_items" :key="index">
                     <p>{{food.name}}</p>
                     <p>{{food.description}}</p>
-                </div>
+                    <button class="btn btn-success" @click="addToCart(food)">Aggiungi</button>
+                    <button class="btn btn-danger" @click="removeFromCart(food)">Rimuovi</button>
                 </div>
                 <button @click="checkDisplay()">change</button>
             </div>
+
+            
         </div>
 
 
@@ -119,8 +129,8 @@ export default {
     data: function(){
         return{
             restaurants: [],
-            check : false,
             restaurantMenu : [],
+            cart : [],
             selectedItem: " ",
             navItems:[
                 {
@@ -172,20 +182,59 @@ export default {
                 this.checkDisplay();
         },
         checkDisplay(){
-            // let allRestaurants = document.getElementById("allRestaurants");
-            // let jumbotron = document.getElementById("home");
-            // let singleRestaurant = document.getElementById("singleRestaurant");
-            // allRestaurants.classList.toggle("d-none");
-            // singleRestaurant.classList.toggle("d-none");
-            // jumbotron.classList.toggle("d-none");
             let wrapper = document.getElementById("my-wrapper");
             let singleRestaurant = document.getElementById("singleRestaurant");
             wrapper.classList.toggle("d-none");
             singleRestaurant.classList.toggle("d-none");
+        },
+        addToCart(food){
+            let item = {
+                "name" : food.name,
+                "price" : food.price,
+                "quantity" : 1
+            }
+            if(this.cart.length === 0){
+                this.cart.push(item);
+            }
+            for (let i = 0; i < this.cart.length; i++) {
+                if(this.cart[i].name !== item.name){
+                this.cart.push(item);
+                console.log("non presente");
+                    } else {
+                item.quantity ++;
+                console.log("presente");
+                }
+                
+            }
+            window.localStorage.setItem("cartItems", JSON.stringify(item));
+            // this.cart.push(JSON.parse(localStorage.getItem('cartItems')));
+            // this.cart.push(item);
+            // if(this.cart.includes(item.name)){
+            //     item.quantity += 1;
+            //     console.log("presente");
+            // } else {
+            //     this.cart.push(item);
+            //     console.log("non presente");
+            // }
+            console.log(item.quantity)
+            // console.log(this.cart);
+            // console.log(JSON.parse(localStorage.getItem('cartItems')));
+        },
+        removeFromCart(food){
+            this.cart.forEach((item, index) => {
+                if(food.name == item.name){
+                    window.localStorage.removeItem("cartItems", JSON.stringify(food[index]));
+                    this.cart.splice(index, 1);
+                    console.log(this.cart)
+                } else {
+                    console.log("non esiste");
+                }
+            });
         }
     },
     created(){
         this.getSingleRestaurant();
+        window.localStorage.clear()
     }
 }
 </script>
