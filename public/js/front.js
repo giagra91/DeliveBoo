@@ -2130,6 +2130,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2188,9 +2194,15 @@ __webpack_require__.r(__webpack_exports__);
       this.checkDisplay();
     },
     checkDisplay: function checkDisplay() {
-      var allRestaurants = document.getElementById("allRestaurants");
+      // let allRestaurants = document.getElementById("allRestaurants");
+      // let jumbotron = document.getElementById("home");
+      // let singleRestaurant = document.getElementById("singleRestaurant");
+      // allRestaurants.classList.toggle("d-none");
+      // singleRestaurant.classList.toggle("d-none");
+      // jumbotron.classList.toggle("d-none");
+      var wrapper = document.getElementById("my-wrapper");
       var singleRestaurant = document.getElementById("singleRestaurant");
-      allRestaurants.classList.toggle("d-none");
+      wrapper.classList.toggle("d-none");
       singleRestaurant.classList.toggle("d-none");
     }
   },
@@ -38667,316 +38679,335 @@ var render = function () {
     [
       _c("Header"),
       _vm._v(" "),
-      _c("Jumbotron"),
-      _vm._v(" "),
-      _c("Main"),
-      _vm._v(" "),
       _c(
-        "section",
-        {
-          staticClass: "py-5 overflow-hidden bg-primary",
-          attrs: { id: "home" },
-        },
+        "div",
+        { attrs: { id: "my-wrapper" } },
         [
-          _c("div", { staticClass: "container" }, [
-            _c("div", { staticClass: "row flex-center" }, [
-              _vm._m(0),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "col-md-7 col-lg-6 py-8 text-md-start text-center",
-                },
-                [
+          _c("Jumbotron"),
+          _vm._v(" "),
+          _c(
+            "section",
+            {
+              staticClass: "py-5 overflow-hidden bg-primary",
+              attrs: { id: "home" },
+            },
+            [
+              _c("div", { staticClass: "container" }, [
+                _c("div", { staticClass: "row flex-center" }, [
+                  _vm._m(0),
+                  _vm._v(" "),
                   _c(
-                    "h1",
+                    "div",
                     {
                       staticClass:
-                        "display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light",
+                        "col-md-7 col-lg-6 py-8 text-md-start text-center",
                     },
-                    [_vm._v("Hai fame?")]
-                  ),
-                  _vm._v(" "),
-                  _vm._m(1),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "card w-xxl-75" }, [
-                    _c("div", { staticClass: "card-body" }, [
-                      _vm._m(2),
-                      _vm._v(" "),
+                    [
                       _c(
-                        "div",
+                        "h1",
                         {
-                          staticClass: "tab-content mt-3",
-                          attrs: { id: "nav-tabContent" },
+                          staticClass:
+                            "display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light",
                         },
-                        [
+                        [_vm._v("Hai fame?")]
+                      ),
+                      _vm._v(" "),
+                      _vm._m(1),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "card w-xxl-75" }, [
+                        _c("div", { staticClass: "card-body" }, [
+                          _vm._m(2),
+                          _vm._v(" "),
                           _c(
                             "div",
                             {
-                              staticClass: "tab-pane fade show active",
-                              attrs: {
-                                id: "nav-home",
-                                role: "tabpanel",
-                                "aria-labelledby": "nav-home-tab",
-                              },
+                              staticClass: "tab-content mt-3",
+                              attrs: { id: "nav-tabContent" },
                             },
                             [
                               _c(
-                                "form",
+                                "div",
                                 {
-                                  staticClass:
-                                    "row gx-2 gy-2 align-items-center",
+                                  staticClass: "tab-pane fade show active",
+                                  attrs: {
+                                    id: "nav-home",
+                                    role: "tabpanel",
+                                    "aria-labelledby": "nav-home-tab",
+                                  },
                                 },
                                 [
-                                  _c("div", { staticClass: "col" }, [
-                                    _c(
-                                      "div",
-                                      { staticClass: "input-group-icon" },
-                                      [
-                                        _c("i", {
-                                          staticClass:
-                                            "fas fa-map-marker-alt text-danger input-box-icon",
-                                        }),
-                                        _vm._v(" "),
+                                  _c(
+                                    "form",
+                                    {
+                                      staticClass:
+                                        "row gx-2 gy-2 align-items-center",
+                                    },
+                                    [
+                                      _c("div", { staticClass: "col" }, [
                                         _c(
-                                          "select",
-                                          {
-                                            directives: [
-                                              {
-                                                name: "model",
-                                                rawName: "v-model",
-                                                value: _vm.selectedItem,
-                                                expression: "selectedItem",
-                                              },
-                                            ],
-                                            staticClass: "form-select",
-                                            attrs: {
-                                              "aria-label":
-                                                "Default select example",
-                                            },
-                                            on: {
-                                              change: [
-                                                function ($event) {
-                                                  var $$selectedVal =
-                                                    Array.prototype.filter
-                                                      .call(
-                                                        $event.target.options,
-                                                        function (o) {
-                                                          return o.selected
-                                                        }
-                                                      )
-                                                      .map(function (o) {
-                                                        var val =
-                                                          "_value" in o
-                                                            ? o._value
-                                                            : o.value
-                                                        return val
-                                                      })
-                                                  _vm.selectedItem = $event
-                                                    .target.multiple
-                                                    ? $$selectedVal
-                                                    : $$selectedVal[0]
-                                                },
-                                                function ($event) {
-                                                  return _vm.getSingleRestaurant()
-                                                },
-                                              ],
-                                            },
-                                          },
+                                          "div",
+                                          { staticClass: "input-group-icon" },
                                           [
-                                            _c(
-                                              "option",
-                                              { attrs: { value: " " } },
-                                              [_vm._v("Tutti i Ristoranti")]
-                                            ),
+                                            _c("i", {
+                                              staticClass:
+                                                "fas fa-map-marker-alt text-danger input-box-icon",
+                                            }),
                                             _vm._v(" "),
                                             _c(
-                                              "option",
-                                              { attrs: { value: "1" } },
-                                              [_vm._v("Giapponese")]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "option",
-                                              { attrs: { value: "2" } },
-                                              [_vm._v("Cinese")]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "option",
-                                              { attrs: { value: "3" } },
-                                              [_vm._v("Indiano")]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "option",
-                                              { attrs: { value: "4" } },
-                                              [_vm._v("Pesce")]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "option",
-                                              { attrs: { value: "5" } },
-                                              [_vm._v("Carne")]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "option",
-                                              { attrs: { value: "6" } },
-                                              [_vm._v("Pizza")]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "option",
-                                              { attrs: { value: "7" } },
-                                              [_vm._v("Italiano")]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "option",
-                                              { attrs: { value: "8" } },
-                                              [_vm._v("Messicano")]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "option",
-                                              { attrs: { value: "10" } },
-                                              [_vm._v("Fusion")]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "option",
-                                              { attrs: { value: "11" } },
-                                              [_vm._v("Gourmet")]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "option",
-                                              { attrs: { value: "12" } },
-                                              [_vm._v("Greco")]
+                                              "select",
+                                              {
+                                                directives: [
+                                                  {
+                                                    name: "model",
+                                                    rawName: "v-model",
+                                                    value: _vm.selectedItem,
+                                                    expression: "selectedItem",
+                                                  },
+                                                ],
+                                                staticClass: "form-select",
+                                                attrs: {
+                                                  "aria-label":
+                                                    "Default select example",
+                                                },
+                                                on: {
+                                                  change: [
+                                                    function ($event) {
+                                                      var $$selectedVal =
+                                                        Array.prototype.filter
+                                                          .call(
+                                                            $event.target
+                                                              .options,
+                                                            function (o) {
+                                                              return o.selected
+                                                            }
+                                                          )
+                                                          .map(function (o) {
+                                                            var val =
+                                                              "_value" in o
+                                                                ? o._value
+                                                                : o.value
+                                                            return val
+                                                          })
+                                                      _vm.selectedItem = $event
+                                                        .target.multiple
+                                                        ? $$selectedVal
+                                                        : $$selectedVal[0]
+                                                    },
+                                                    function ($event) {
+                                                      return _vm.getSingleRestaurant()
+                                                    },
+                                                  ],
+                                                },
+                                              },
+                                              [
+                                                _c(
+                                                  "option",
+                                                  { attrs: { value: " " } },
+                                                  [_vm._v("Tutti i Ristoranti")]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "option",
+                                                  { attrs: { value: "1" } },
+                                                  [_vm._v("Giapponese")]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "option",
+                                                  { attrs: { value: "2" } },
+                                                  [_vm._v("Cinese")]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "option",
+                                                  { attrs: { value: "3" } },
+                                                  [_vm._v("Indiano")]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "option",
+                                                  { attrs: { value: "4" } },
+                                                  [_vm._v("Pesce")]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "option",
+                                                  { attrs: { value: "5" } },
+                                                  [_vm._v("Carne")]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "option",
+                                                  { attrs: { value: "6" } },
+                                                  [_vm._v("Pizza")]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "option",
+                                                  { attrs: { value: "7" } },
+                                                  [_vm._v("Italiano")]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "option",
+                                                  { attrs: { value: "8" } },
+                                                  [_vm._v("Messicano")]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "option",
+                                                  { attrs: { value: "10" } },
+                                                  [_vm._v("Fusion")]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "option",
+                                                  { attrs: { value: "11" } },
+                                                  [_vm._v("Gourmet")]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "option",
+                                                  { attrs: { value: "12" } },
+                                                  [_vm._v("Greco")]
+                                                ),
+                                              ]
                                             ),
                                           ]
                                         ),
-                                      ]
-                                    ),
-                                  ]),
+                                      ]),
+                                    ]
+                                  ),
                                 ]
                               ),
                             ]
                           ),
-                        ]
-                      ),
-                    ]),
-                  ]),
-                ]
-              ),
-            ]),
-          ]),
-        ]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "container" }, [
-        _c(
-          "div",
-          { staticClass: "row m-4", attrs: { id: "allRestaurants" } },
-          _vm._l(_vm.restaurants, function (restaurant, index) {
-            return _c(
+                        ]),
+                      ]),
+                    ]
+                  ),
+                ]),
+              ]),
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "container" }, [
+            _c(
               "div",
-              { key: index, staticClass: "col-sm-12 col-md-6 col-lg-4 mb-4" },
-              [
-                _c(
+              { staticClass: "row m-4", attrs: { id: "allRestaurants" } },
+              _vm._l(_vm.restaurants, function (restaurant, index) {
+                return _c(
                   "div",
                   {
-                    staticClass: "card text-white card-has-bg click-col",
-                    style: {
-                      "background-image": "url(" + restaurant.logo + ")",
-                    },
+                    key: index,
+                    staticClass: "col-sm-12 col-md-6 col-lg-4 mb-4",
                   },
                   [
-                    _c("p", [_vm._v(_vm._s(_vm.selectedItem))]),
-                    _vm._v(" "),
-                    _c("img", {
-                      staticClass: "card-img d-none",
-                      attrs: {
-                        src: restaurant.logo
-                          ? restaurant.logo
-                          : "img/loghi/generic-restaurant.jpg",
-                        alt: restaurant.name,
-                      },
-                    }),
-                    _vm._v(" "),
                     _c(
                       "div",
-                      { staticClass: "card-img-overlay d-flex flex-column" },
+                      {
+                        staticClass: "card text-white card-has-bg click-col",
+                        style: {
+                          "background-image": "url(" + restaurant.logo + ")",
+                        },
+                      },
                       [
-                        _c("div", { staticClass: "card-body" }, [
-                          _c("small", { staticClass: "card-meta mb-2" }, [
-                            _vm._v("p. iva: " + _vm._s(restaurant.vat_number)),
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "a",
-                            {
-                              staticClass: "text-decoration-none",
-                              attrs: { href: "#" },
-                            },
-                            [
-                              _c("h4", { staticClass: "card-title mt-0 " }, [
-                                _c(
-                                  "button",
-                                  {
-                                    staticClass: "text-white",
-                                    on: {
-                                      click: function ($event) {
-                                        return _vm.test(restaurant.id)
-                                      },
-                                    },
-                                  },
-                                  [_vm._v(_vm._s(restaurant.name))]
+                        _c("p", [_vm._v(_vm._s(_vm.selectedItem))]),
+                        _vm._v(" "),
+                        _c("img", {
+                          staticClass: "card-img d-none",
+                          attrs: {
+                            src: restaurant.logo
+                              ? restaurant.logo
+                              : "img/loghi/generic-restaurant.jpg",
+                            alt: restaurant.name,
+                          },
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "card-img-overlay d-flex flex-column",
+                          },
+                          [
+                            _c("div", { staticClass: "card-body" }, [
+                              _c("small", { staticClass: "card-meta mb-2" }, [
+                                _vm._v(
+                                  "p. iva: " + _vm._s(restaurant.vat_number)
                                 ),
                               ]),
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c("small", [
-                            _c("i", { staticClass: "far fa-clock" }),
-                            _vm._v(" " + _vm._s(restaurant.email)),
-                          ]),
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "card-footer" }, [
-                          _c("div", { staticClass: "media" }, [
-                            _c("img", {
-                              staticClass: "mr-3 rounded-circle",
-                              staticStyle: { "max-width": "50px" },
-                              attrs: {
-                                src: restaurant.logo
-                                  ? restaurant.logo
-                                  : "img/loghi/generic-restaurant.jpg",
-                                alt: restaurant.name,
-                              },
-                            }),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "media-body" }, [
+                              _vm._v(" "),
                               _c(
-                                "h6",
-                                { staticClass: "my-0 text-white d-block" },
-                                [_vm._v(_vm._s(restaurant.address))]
+                                "a",
+                                {
+                                  staticClass: "text-decoration-none",
+                                  attrs: { href: "#" },
+                                },
+                                [
+                                  _c(
+                                    "h4",
+                                    { staticClass: "card-title mt-0 " },
+                                    [
+                                      _c(
+                                        "button",
+                                        {
+                                          staticClass: "text-white",
+                                          on: {
+                                            click: function ($event) {
+                                              return _vm.test(restaurant.id)
+                                            },
+                                          },
+                                        },
+                                        [_vm._v(_vm._s(restaurant.name))]
+                                      ),
+                                    ]
+                                  ),
+                                ]
                               ),
+                              _vm._v(" "),
+                              _c("small", [
+                                _c("i", { staticClass: "far fa-clock" }),
+                                _vm._v(" " + _vm._s(restaurant.email)),
+                              ]),
                             ]),
-                          ]),
-                        ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "card-footer" }, [
+                              _c("div", { staticClass: "media" }, [
+                                _c("img", {
+                                  staticClass: "mr-3 rounded-circle",
+                                  staticStyle: { "max-width": "50px" },
+                                  attrs: {
+                                    src: restaurant.logo
+                                      ? restaurant.logo
+                                      : "img/loghi/generic-restaurant.jpg",
+                                    alt: restaurant.name,
+                                  },
+                                }),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "media-body" }, [
+                                  _c(
+                                    "h6",
+                                    { staticClass: "my-0 text-white d-block" },
+                                    [_vm._v(_vm._s(restaurant.address))]
+                                  ),
+                                ]),
+                              ]),
+                            ]),
+                          ]
+                        ),
                       ]
                     ),
                   ]
-                ),
-              ]
-            )
-          }),
-          0
-        ),
-        _vm._v(" "),
+                )
+              }),
+              0
+            ),
+          ]),
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "container" }, [
         _c(
           "div",
           { staticClass: "row m-4 d-none", attrs: { id: "singleRestaurant" } },
