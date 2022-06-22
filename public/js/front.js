@@ -2145,7 +2145,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 
@@ -2160,15 +2159,11 @@ __webpack_require__.r(__webpack_exports__);
     return {
       restaurants: [],
       restaurantMenu: [],
+      checkCart: false,
       cart: [],
-      selectedItem: " ",
-      navItems: [{
-        label: "Restaurants",
-        routeName: "restaurants"
-      }, {
-        label: "Restaurant",
-        routeName: "restaurant"
-      }]
+      totaleQuantity: 0,
+      totalPrice: 0,
+      selectedItem: " "
     };
   },
   methods: {
@@ -2177,7 +2172,6 @@ __webpack_require__.r(__webpack_exports__);
 
       if (this.selectedItem !== " ") {
         axios.get("http://127.0.0.1:8000/api/users/".concat(this.selectedItem)).then(function (result) {
-          console.log(result.data.results.users);
           _this.restaurants = result.data.results.users;
         })["catch"](function (error) {
           console.warn(error);
@@ -2185,7 +2179,6 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         axios.get("http://127.0.0.1:8000/api/users/").then(function (result) {
           _this.restaurants = result.data;
-          console.log(result.data);
         })["catch"](function (error) {
           console.warn(error);
         });
@@ -2197,7 +2190,6 @@ __webpack_require__.r(__webpack_exports__);
       this.restaurantMenu = [];
       axios.get("http://127.0.0.1:8000/api/users/").then(function (result) {
         _this2.restaurantMenu = result.data[id - 1];
-        console.log(_this2.restaurantMenu);
       })["catch"](function (error) {
         console.warn(error);
       });
@@ -2208,50 +2200,31 @@ __webpack_require__.r(__webpack_exports__);
       var singleRestaurant = document.getElementById("singleRestaurant");
       wrapper.classList.toggle("d-none");
       singleRestaurant.classList.toggle("d-none");
+      this.checkCart = !this.checkCart;
     },
     addToCart: function addToCart(food) {
-      var item = {
-        "name": food.name,
-        "price": food.price,
-        "quantity": 1
+      this.checkCart = true;
+      var productInCart = {
+        name: food.name,
+        price: food.price
       };
+      this.cart.push(productInCart);
+      this.totalPrice += food.price;
+      window.localStorage.setItem("cart", JSON.stringify(this.cart));
+      window.localStorage.setItem("totalPrice", JSON.stringify(this.totalPrice)); // console.log(JSON.parse(localStorage.getItem('cart')));
 
-      if (this.cart.length === 0) {
-        this.cart.push(item);
-      }
-
-      for (var i = 0; i < this.cart.length; i++) {
-        if (this.cart[i].name !== item.name) {
-          this.cart.push(item);
-          console.log("non presente");
-        } else {
-          item.quantity++;
-          console.log("presente");
-        }
-      }
-
-      window.localStorage.setItem("cartItems", JSON.stringify(item)); // this.cart.push(JSON.parse(localStorage.getItem('cartItems')));
-      // this.cart.push(item);
-      // if(this.cart.includes(item.name)){
-      //     item.quantity += 1;
-      //     console.log("presente");
-      // } else {
-      //     this.cart.push(item);
-      //     console.log("non presente");
-      // }
-
-      console.log(item.quantity); // console.log(this.cart);
-      // console.log(JSON.parse(localStorage.getItem('cartItems')));
+      console.warn(window.localStorage.getItem("cart"), window.localStorage.getItem("totalPrice"));
     },
     removeFromCart: function removeFromCart(food) {
       var _this3 = this;
 
       this.cart.forEach(function (item, index) {
         if (food.name == item.name) {
-          window.localStorage.removeItem("cartItems", JSON.stringify(food[index]));
-
           _this3.cart.splice(index, 1);
 
+          _this3.totalPrice -= food.price;
+          window.localStorage.removeItem("cart", JSON.stringify(food[index]));
+          window.localStorage.setItem("totalPrice", JSON.stringify(_this3.totalPrice));
           console.log(_this3.cart);
         } else {
           console.log("non esiste");
@@ -2260,8 +2233,16 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   created: function created() {
-    this.getSingleRestaurant();
-    window.localStorage.clear();
+    this.getSingleRestaurant(); // window.localStorage.clear()
+  },
+  mounted: function mounted() {
+    try {
+      this.totalPrice = JSON.parse(localStorage.totalPrice);
+      this.cart = JSON.parse(localStorage.cart);
+    } catch (e) {
+      this.totalPrice = 0;
+      this.cart = [];
+    }
   }
 });
 
@@ -38737,35 +38718,29 @@ var render = function () {
         "div",
         { staticClass: "d-flex justify-content-end position-relative" },
         [
-          _vm.cart.length > 0
+          _vm.checkCart
             ? _c(
                 "div",
                 {
                   staticClass: "w-25 position-absolute",
                   attrs: { id: "cart " },
                 },
-                _vm._l(_vm.cart, function (item, index) {
-                  return _c("div", { key: index }, [
-                    _c("p", [
-                      _vm._v(_vm._s(item.name) + " " + _vm._s(item.quantity)),
-                    ]),
-                    _vm._v(" "),
-                    _c("p", [
-                      _vm._v(
-                        _vm._s(
-                          _vm.cart.includes(item) ? item.quantity : item.name
-                        )
-                      ),
-                    ]),
-                    _vm._v(" "),
-                    _c("p", [_vm._v(_vm._s(item.price))]),
-                    _vm._v(" "),
-                    _c("p", [
-                      _vm._v("Totale: € " + _vm._s(item.quantity * item.price)),
-                    ]),
-                  ])
-                }),
-                0
+                [
+                  _vm._l(_vm.cart, function (item, index) {
+                    return _c("div", { key: index }, [
+                      _c("p", [
+                        _vm._v(
+                          _vm._s(item.name) + " - € " + _vm._s(item.price)
+                        ),
+                      ]),
+                    ])
+                  }),
+                  _vm._v(" "),
+                  _vm.totalPrice == 0
+                    ? _c("p", [_vm._v(" Carrello vuoto")])
+                    : _c("p", [_vm._v("Totale € " + _vm._s(_vm.totalPrice))]),
+                ],
+                2
               )
             : _vm._e(),
         ]

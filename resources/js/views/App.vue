@@ -2,14 +2,13 @@
     <div >
         <Header />
         <div class="d-flex justify-content-end position-relative">
-            <div id="cart " class="w-25 position-absolute" v-if="cart.length > 0">
+            <div id="cart " class="w-25 position-absolute" v-if="checkCart">
                 <div v-for="(item, index) in cart" :key="index" >
                 
-                    <p >{{item.name}} {{item.quantity}}</p>
-                    <p>{{(cart.includes(item)) ? item.quantity : item.name}}</p>
-                    <p>{{item.price}}</p>
-                    <p>Totale: € {{item.quantity * item.price}}</p>
+                    <p>{{item.name}} - € {{item.price}}</p>
                 </div>
+                <p v-if="totalPrice == 0"> Carrello vuoto</p>
+                <p v-else>Totale € {{totalPrice}}</p>
             </div>
         </div>
         
@@ -130,20 +129,11 @@ export default {
         return{
             restaurants: [],
             restaurantMenu : [],
+            checkCart : false,
             cart : [],
+            totaleQuantity : 0,
+            totalPrice : 0,
             selectedItem: " ",
-            navItems:[
-                {
-                    label: "Restaurants",
-                    routeName : "restaurants"
-                },
-                {
-                    label: "Restaurant",
-                    routeName : "restaurant"
-                },
-            ],
-            
-            
         }
     },
     methods:{
@@ -151,7 +141,6 @@ export default {
             if(this.selectedItem !== " "){
                 axios.get(`http://127.0.0.1:8000/api/users/${this.selectedItem}`)
                 .then((result) => {
-                    console.log(result.data.results.users);
                     this.restaurants = result.data.results.users;
                 })
                 .catch((error) => {
@@ -162,7 +151,6 @@ export default {
                 axios.get(`http://127.0.0.1:8000/api/users/`)
                 .then((result) => {
                     this.restaurants = result.data;
-                    console.log(result.data)
                 })
                 .catch((error) => {
                     console.warn(error);
@@ -174,7 +162,6 @@ export default {
             axios.get(`http://127.0.0.1:8000/api/users/`)
                 .then((result) => {
                     this.restaurantMenu = result.data[id - 1];
-                    console.log(this.restaurantMenu)
                 })
                 .catch((error) => {
                     console.warn(error);
@@ -186,45 +173,25 @@ export default {
             let singleRestaurant = document.getElementById("singleRestaurant");
             wrapper.classList.toggle("d-none");
             singleRestaurant.classList.toggle("d-none");
+            this.checkCart = !this.checkCart;
         },
         addToCart(food){
-            let item = {
-                "name" : food.name,
-                "price" : food.price,
-                "quantity" : 1
-            }
-            if(this.cart.length === 0){
-                this.cart.push(item);
-            }
-            for (let i = 0; i < this.cart.length; i++) {
-                if(this.cart[i].name !== item.name){
-                this.cart.push(item);
-                console.log("non presente");
-                    } else {
-                item.quantity ++;
-                console.log("presente");
-                }
-                
-            }
-            window.localStorage.setItem("cartItems", JSON.stringify(item));
-            // this.cart.push(JSON.parse(localStorage.getItem('cartItems')));
-            // this.cart.push(item);
-            // if(this.cart.includes(item.name)){
-            //     item.quantity += 1;
-            //     console.log("presente");
-            // } else {
-            //     this.cart.push(item);
-            //     console.log("non presente");
-            // }
-            console.log(item.quantity)
-            // console.log(this.cart);
-            // console.log(JSON.parse(localStorage.getItem('cartItems')));
+            this.checkCart = true;
+            let productInCart = { name : food.name, price : food.price}
+            this.cart.push(productInCart);
+            this.totalPrice += food.price;
+            window.localStorage.setItem("cart", JSON.stringify(this.cart ));
+            window.localStorage.setItem("totalPrice", JSON.stringify(this.totalPrice ));
+            // console.log(JSON.parse(localStorage.getItem('cart')));
+            console.warn(window.localStorage.getItem("cart"),window.localStorage.getItem("totalPrice"));
         },
         removeFromCart(food){
             this.cart.forEach((item, index) => {
                 if(food.name == item.name){
-                    window.localStorage.removeItem("cartItems", JSON.stringify(food[index]));
                     this.cart.splice(index, 1);
+                    this.totalPrice -= food.price;
+                    window.localStorage.removeItem("cart", JSON.stringify(food[index]));
+                    window.localStorage.setItem("totalPrice", JSON.stringify(this.totalPrice ));
                     console.log(this.cart)
                 } else {
                     console.log("non esiste");
@@ -234,7 +201,16 @@ export default {
     },
     created(){
         this.getSingleRestaurant();
-        window.localStorage.clear()
+        // window.localStorage.clear()
+    },
+    mounted(){
+        try {
+            this.totalPrice = JSON.parse(localStorage.totalPrice);
+            this.cart = JSON.parse(localStorage.cart);        
+            } catch(e) {
+            this.totalPrice = 0;
+            this.cart = [];     
+        }
     }
 }
 </script>
