@@ -78,9 +78,10 @@
 								type="checkbox"
 								value="{{ $category->id }}"
 								name="category[]"
+								required
 								>
 								<label class="form-check-label" for="flexCheckDefault">
-										<span class="badge rounded-pill mb-3">{{$category->name}}</span>
+										<span class="badge rounded-pill mb-3 text-danger">{{$category->name}}</span>
 								</label>
 						</div>
 					@endforeach
@@ -117,26 +118,58 @@
 				price: "",
 		};
 		const keys = Object.keys(foodForm);
+
 		const formErrors = {};
+
 		const form_error_messages = document.getElementById("errors");
+
 		const categories = document.querySelectorAll(".my-categories");
-		let checkedCategories = false;
+
 		let formInputs = document.querySelectorAll('.my-form1');
+
+
 		function checkFormErrors() {
+
 				form_error_messages.innerHTML = "";
+
 				if (foodForm.name.trim() == "") formErrors.name = "Il nome non è valido.";
 				if (foodForm.description.trim() == "") formErrors.description = "La descrizione non è valida.";
 				if (foodForm.ingredients.trim() == "") formErrors.ingredients = "Ingredienti non validi.";
-				if(!checkedCategories) formErrors.categories = "Devi selezionare almeno una categoria.";
 				if (isNaN(foodForm.price) || foodForm.price <= 0) formErrors.price = "Il prezzo non è valido.";
+
+				let isChecked = false;
+
+				for (let i = 0; i < categories.length; i++) {
+					if(categories[i].checked){
+						isChecked = true;
+					}
+				}
+
+				if (isChecked) {
+					console.log('è checked');
+					for (let i = 0; i < categories.length; i++) {
+						categories[i].required = false;
+					} 
+				} else {
+					formErrors.categories = "Devi selezionare almeno una categoria.";
+					console.log('non è checked');
+					for (let i = 0; i < categories.length; i++) {
+						categories[i].required = true;
+					} 
+				}
+
 				for (const error in formErrors) {
 						form_error_messages.classList.add("alert", "alert-danger");
 						form_error_messages.innerHTML += formErrors[error] + "<br>";
 						console.log(formErrors[error])
 					}
-            };
+		};
+
+
 		let editBtn = document.getElementById('create-button');
+
 		editBtn.addEventListener('click', function(){
+
 			for (let i = 0; i < formInputs.length; i++) {
 					if(categories[i].checked){
 						checkedCategories = true;
@@ -148,7 +181,6 @@
 					}
 			}
 			checkFormErrors();
-
 
 		})
 

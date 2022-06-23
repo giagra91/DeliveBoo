@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Course;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -19,8 +20,9 @@ class FoodItemController extends Controller
      */
     public function index()
     {
+        $restaurant = User::where("id", Auth::user()->id)->get();
         $foods = FoodItem::where("user_id", Auth::user()->id)->get();
-        return view("admin.foods.index", compact("foods"));
+        return view("admin.foods.index", compact("foods", "restaurant"));
     }
 
     /**
@@ -61,11 +63,15 @@ class FoodItemController extends Controller
 
         $newFoodItem->user_id = Auth::user()->id;
 
-        $newFoodItem->img = Storage::put('uploads', $data['img']);
+        if ($request->hasFile('img')) {
+            $newFoodItem->img = Storage::put('uploads', $data['img']);
+        };
 
         $newFoodItem->save();
 
-        $newFoodItem->categories()->attach($data['category']);
+        if (!empty($data["category"])) {
+            $newFoodItem->categories()->attach($data['category']);
+        };
 
         return redirect()->route("admin.foods.index")->with('create-message', 'Piatto inserito correttamente');
     }

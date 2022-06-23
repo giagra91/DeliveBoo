@@ -8,8 +8,61 @@
 @import '~bootstrap/scss/bootstrap';
 
 //Fontawsome
-// Font-Awesome
-// @import "~@fortawesome/fontawesome-svg-core";
+// npm install @fortawesome/fontawesome-free
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/brands';
+
+
+
+//animations
+
+/**
+ * ----------------------------------------
+ * animation swing-entrance
+ * ----------------------------------------
+ */
+@-webkit-keyframes swing-entrance {
+  0% {
+    -webkit-transform: rotateX(-100deg);
+            transform: rotateX(-100deg);
+    -webkit-transform-origin: top;
+            transform-origin: top;
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: rotateX(0deg);
+            transform: rotateX(0deg);
+    -webkit-transform-origin: top;
+            transform-origin: top;
+    opacity: 1;
+  }
+}
+@keyframes swing-entrance {
+  0% {
+    -webkit-transform: rotateX(-100deg);
+            transform: rotateX(-100deg);
+    -webkit-transform-origin: top;
+            transform-origin: top;
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: rotateX(0deg);
+            transform: rotateX(0deg);
+    -webkit-transform-origin: top;
+            transform-origin: top;
+    opacity: 1;
+  }
+}
+
+// animation class
+.swing-entrance {
+	-webkit-animation: swing-entrance 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+	animation: swing-entrance 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+}
+
+
 
 
 

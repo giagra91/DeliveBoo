@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container" >
     <div  id="errors">
 
     </div>
@@ -109,18 +109,18 @@
                             <h5>Tipologia*</h5>
                         </div>
                         <div class="col w-75 mx-auto d-flex flex-wrap">
-                        
+
                         @foreach ($cookingTypes as $cookingType)
                             <div class="form-check">
-                                <input 
+                                <input
                                 class="form-check-input my-types"
                                 type="checkbox"
                                 form-title="cooking_types"
-                                value="{{ $cookingType->id }}" 
-                                name="cooking_types[]" 
+                                value="{{ $cookingType->id }}"
+                                name="cooking_types[]"
                                 >
                                 <label class="form-check-label" for="flexCheckDefault">
-                                    <span class="badge rounded-pill mb-3">{{$cookingType->name}}</span>
+                                    <span class="badge rounded-pill mb-3 text-dark">{{$cookingType->name}}</span>
                                 </label>
                             </div>
                         @endforeach
@@ -158,17 +158,17 @@
             confirm_password: "",
             cooking_types: "",
         };
-        
+
         const types = document.querySelectorAll(".my-types");
         const keys = Object.keys(form);
         let errors = {};
         let error_messages = document.getElementById("errors");
-        
+
         let checkedTypes = false;
         function checkErrors(){
             error_messages.innerHTML = "";
             if (form.name == "") errors.name = "Il nome non è valido.";
-            if (!form.email.trim() && 
+            if (!form.email.trim() &&
             !form.email.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) errors.email = "La mail non è valida.";
             if (!form.address.trim()) errors.address = "L'indirizzo non è valido.";
             if (!form.vat_number.trim()) errors.vat_number = "La partita IVA non è valida.";
@@ -181,11 +181,11 @@
                     error_messages.innerHTML += errors[error] + "<br>";
                     console.log(errors[error])
                 }
-            } 
+            }
         }
         const registerBtn = document.getElementById("register-button");
         registerBtn.addEventListener("click", function(){
-            
+
             const input = document.querySelectorAll(".my-form");
             for (let i = 0; i < input.length; i++) {
                 if(types[i].checked){
