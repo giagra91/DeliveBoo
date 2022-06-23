@@ -23,6 +23,10 @@ Route::namespace('Api')
     ->group(function(){
         // Route::get('/', 'HomeController@index')->name('home');   // | Aggiunta facoltativa ->middleware('password.confirm');
         Route::resource('users', 'RestaurantController');
+        Route::get('cooking-types', 'CookingTypesController@cookingTypes');
+        
+        
     });
-
-Route::get('/users/{cooking_types}', 'Api\RestaurantController@show');
+    
+    Route::get('/restaurants', 'Api\CookingTypesController@filteredApi');
+// Route::get('/users/{cooking_types}', 'Api\RestaurantController@show');

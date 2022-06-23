@@ -2145,6 +2145,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2163,10 +2171,25 @@ __webpack_require__.r(__webpack_exports__);
       cart: [],
       totaleQuantity: 0,
       totalPrice: 0,
-      selectedItem: " "
+      selectedItem: " ",
+      cookingTypes: [],
+      filteredRestaurants: [],
+      selectedCategories: [],
+      inputs: document.querySelectorAll(".my-checkbox")
     };
   },
   methods: {
+    selectRestaurants: function selectRestaurants() {
+      axios.get("http://127.0.0.1:8000/api/restaurants" + this.selectedCategories).then(function (result) {
+        // this.filteredRestaurants = result.data.results.users;
+        console.log(result);
+      })["catch"](function (error) {
+        console.warn(error);
+      });
+    },
+    getCategories: function getCategories(value) {
+      this.selectedCategories.push(value);
+    },
     getSingleRestaurant: function getSingleRestaurant() {
       var _this = this;
 
@@ -2230,6 +2253,15 @@ __webpack_require__.r(__webpack_exports__);
           console.log("non esiste");
         }
       });
+    },
+    getCookingTypes: function getCookingTypes() {
+      var _this4 = this;
+
+      axios.get("http://127.0.0.1:8000/api/cooking-types").then(function (result) {
+        _this4.cookingTypes = result.data;
+      })["catch"](function (error) {
+        console.warn(error);
+      });
     }
   },
   created: function created() {
@@ -2243,6 +2275,8 @@ __webpack_require__.r(__webpack_exports__);
       this.totalPrice = 0;
       this.cart = [];
     }
+
+    this.getCookingTypes();
   }
 });
 
@@ -38820,127 +38854,68 @@ var render = function () {
                                                 "fas fa-map-marker-alt text-danger input-box-icon",
                                             }),
                                             _vm._v(" "),
-                                            _c(
-                                              "select",
-                                              {
-                                                directives: [
+                                            _vm._l(
+                                              _vm.cookingTypes,
+                                              function (type, index) {
+                                                return _c(
+                                                  "div",
                                                   {
-                                                    name: "model",
-                                                    rawName: "v-model",
-                                                    value: _vm.selectedItem,
-                                                    expression: "selectedItem",
+                                                    key: index,
+                                                    staticClass: "form-check",
                                                   },
-                                                ],
-                                                staticClass: "form-select",
-                                                attrs: {
-                                                  "aria-label":
-                                                    "Default select example",
-                                                },
-                                                on: {
-                                                  change: [
-                                                    function ($event) {
-                                                      var $$selectedVal =
-                                                        Array.prototype.filter
-                                                          .call(
-                                                            $event.target
-                                                              .options,
-                                                            function (o) {
-                                                              return o.selected
-                                                            }
+                                                  [
+                                                    _c("input", {
+                                                      staticClass:
+                                                        "form-check-input my-checkbox",
+                                                      attrs: {
+                                                        name: "type",
+                                                        type: "checkbox",
+                                                        id: "flexCheckDefault",
+                                                      },
+                                                      domProps: {
+                                                        value: type.name,
+                                                      },
+                                                      on: {
+                                                        change: function (
+                                                          $event
+                                                        ) {
+                                                          return _vm.getCategories(
+                                                            type.name
                                                           )
-                                                          .map(function (o) {
-                                                            var val =
-                                                              "_value" in o
-                                                                ? o._value
-                                                                : o.value
-                                                            return val
-                                                          })
-                                                      _vm.selectedItem = $event
-                                                        .target.multiple
-                                                        ? $$selectedVal
-                                                        : $$selectedVal[0]
-                                                    },
-                                                    function ($event) {
-                                                      return _vm.getSingleRestaurant()
-                                                    },
-                                                  ],
-                                                },
-                                              },
-                                              [
-                                                _c(
-                                                  "option",
-                                                  { attrs: { value: " " } },
-                                                  [_vm._v("Tutti i Ristoranti")]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "option",
-                                                  { attrs: { value: "1" } },
-                                                  [_vm._v("Giapponese")]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "option",
-                                                  { attrs: { value: "2" } },
-                                                  [_vm._v("Cinese")]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "option",
-                                                  { attrs: { value: "3" } },
-                                                  [_vm._v("Indiano")]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "option",
-                                                  { attrs: { value: "4" } },
-                                                  [_vm._v("Pesce")]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "option",
-                                                  { attrs: { value: "5" } },
-                                                  [_vm._v("Carne")]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "option",
-                                                  { attrs: { value: "6" } },
-                                                  [_vm._v("Pizza")]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "option",
-                                                  { attrs: { value: "7" } },
-                                                  [_vm._v("Italiano")]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "option",
-                                                  { attrs: { value: "8" } },
-                                                  [_vm._v("Messicano")]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "option",
-                                                  { attrs: { value: "10" } },
-                                                  [_vm._v("Fusion")]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "option",
-                                                  { attrs: { value: "11" } },
-                                                  [_vm._v("Gourmet")]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "option",
-                                                  { attrs: { value: "12" } },
-                                                  [_vm._v("Greco")]
-                                                ),
-                                              ]
+                                                        },
+                                                        click: function (
+                                                          $event
+                                                        ) {
+                                                          return _vm.selectRestaurants()
+                                                        },
+                                                      },
+                                                    }),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "label",
+                                                      {
+                                                        staticClass:
+                                                          "form-check-label",
+                                                        attrs: {
+                                                          for: "flexCheckDefault",
+                                                        },
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          "\n                                                        " +
+                                                            _vm._s(type.name) +
+                                                            "\n                                                    "
+                                                        ),
+                                                      ]
+                                                    ),
+                                                  ]
+                                                )
+                                              }
                                             ),
-                                          ]
+                                            _vm._v(" "),
+                                            _c("button", [_vm._v("Cerca")]),
+                                          ],
+                                          2
                                         ),
                                       ]),
                                     ]

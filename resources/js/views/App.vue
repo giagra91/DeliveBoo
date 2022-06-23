@@ -33,7 +33,7 @@
                                         <form class="row gx-2 gy-2 align-items-center">
                                             <div class="col">
                                                 <div class="input-group-icon"><i class="fas fa-map-marker-alt text-danger input-box-icon"></i>
-                                                    <select class="form-select" aria-label="Default select example" v-model='selectedItem' @change="getSingleRestaurant()">
+                                                    <!-- <select class="form-select" aria-label="Default select example" v-model='selectedItem' @change="getSingleRestaurant()">
                                                         <option value=" ">Tutti i Ristoranti</option>
                                                         <option value="1">Giapponese</option>
                                                         <option value="2">Cinese</option>
@@ -46,7 +46,15 @@
                                                         <option value="10">Fusion</option>
                                                         <option value="11">Gourmet</option>
                                                         <option value="12">Greco</option>
-                                                    </select>
+                                                    </select> -->
+                                                    <div class="form-check" v-for="(type,index) in cookingTypes" :key="index">
+                                                        <input @change="getCategories(type.name)" @click="selectRestaurants()" class="form-check-input my-checkbox" name="type" 
+                                                        type="checkbox"  :value="type.name" id="flexCheckDefault" >
+                                                        <label class="form-check-label" for="flexCheckDefault">
+                                                            {{type.name}}
+                                                        </label>
+                                                    </div>
+                                                        <button >Cerca</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -134,9 +142,28 @@ export default {
             totaleQuantity : 0,
             totalPrice : 0,
             selectedItem: " ",
+            cookingTypes : [],
+            filteredRestaurants : [],
+            selectedCategories : [],
+            inputs : document.querySelectorAll(".my-checkbox"),
         }
     },
     methods:{
+        selectRestaurants(){
+            axios.get(`http://127.0.0.1:8000/api/restaurants` + this.selectedCategories)
+                .then((result) => {
+                    // this.filteredRestaurants = result.data.results.users;
+                    console.log(result);
+                })
+                .catch((error) => {
+                    console.warn(error);
+                })
+        },
+        getCategories(value){
+            this.selectedCategories.push(value);
+            },
+
+        
         getSingleRestaurant(){
             if(this.selectedItem !== " "){
                 axios.get(`http://127.0.0.1:8000/api/users/${this.selectedItem}`)
@@ -197,7 +224,16 @@ export default {
                     console.log("non esiste");
                 }
             });
-        }
+        },
+        getCookingTypes(){
+            axios.get(`http://127.0.0.1:8000/api/cooking-types`)
+            .then((result) => {
+                this.cookingTypes = result.data;
+            })
+            .catch((error) => {
+                console.warn(error);
+            })
+        },
     },
     created(){
         this.getSingleRestaurant();
@@ -211,7 +247,8 @@ export default {
             this.totalPrice = 0;
             this.cart = [];     
         }
-    }
+    this.getCookingTypes()
+    },
 }
 </script>
 
