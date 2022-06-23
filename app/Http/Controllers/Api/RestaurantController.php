@@ -52,13 +52,15 @@ class RestaurantController extends Controller
      */
     public function show($id)
     {
-        $foodItems = FoodItem::where($id, "user_id");
-        $type = CookingType::with(["users"])->findOrFail($id);
-        return response()->json([
-                'success' => true,
-                'results' => $type,
-        ]);
+        // $foodItems = FoodItem::where($id, "user_id");
+        // $type = CookingType::with(["users"])->findOrFail($id);
+        // return response()->json([
+        //         'success' => true,
+        //         'results' => $type,
+        // ]);
     }
+
+
 
     /**
      * Show the form for editing the specified resource.

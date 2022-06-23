@@ -18,9 +18,7 @@ use App\Http\Controllers\FoodItemController;
 
 
 
-
-
-
+Route::get('/pay', "Guest\BraintreeController@payOrder");
 
 Auth::routes();
 
