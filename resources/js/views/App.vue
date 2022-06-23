@@ -1,6 +1,8 @@
 <template>
-    <div >
+    <div>
         <Header />
+
+        <!-- carrello -->
         <div class="d-flex justify-content-end position-relative">
             <div id="cart " class="w-25 position-absolute" v-if="checkCart">
                 <div v-for="(item, index) in cart" :key="index" >
@@ -13,6 +15,8 @@
         </div>
         
         <div id="my-wrapper">
+
+            <!-- jumbo -->
             <Jumbotron />
             <section class="py-5 overflow-hidden bg-primary" id="home">
                 <div class="container">
@@ -33,28 +37,15 @@
                                         <form class="row gx-2 gy-2 align-items-center">
                                             <div class="col">
                                                 <div class="input-group-icon"><i class="fas fa-map-marker-alt text-danger input-box-icon"></i>
-                                                    <!-- <select class="form-select" aria-label="Default select example" v-model='selectedItem' @change="getSingleRestaurant()">
-                                                        <option value=" ">Tutti i Ristoranti</option>
-                                                        <option value="1">Giapponese</option>
-                                                        <option value="2">Cinese</option>
-                                                        <option value="3">Indiano</option>
-                                                        <option value="4">Pesce</option>
-                                                        <option value="5">Carne</option>
-                                                        <option value="6">Pizza</option>
-                                                        <option value="7">Italiano</option>
-                                                        <option value="8">Messicano</option>
-                                                        <option value="10">Fusion</option>
-                                                        <option value="11">Gourmet</option>
-                                                        <option value="12">Greco</option>
-                                                    </select> -->
+
+                                                    <!-- Cooking types checkboxes -->
                                                     <div class="form-check" v-for="(type,index) in cookingTypes" :key="index">
-                                                        <input @change="getCategories(type.name)" @click="selectRestaurants()" class="form-check-input my-checkbox" name="type" 
-                                                        type="checkbox"  :value="type.name" id="flexCheckDefault" >
+                                                        <input @click="filterRestaurants(type.id)" v-model="selectedCategories" class="form-check-input" name="type" 
+                                                        type="checkbox"  :value="type.id" id="flexCheckDefault" >
                                                         <label class="form-check-label" for="flexCheckDefault">
                                                             {{type.name}}
                                                         </label>
                                                     </div>
-                                                        <button >Cerca</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -66,141 +57,73 @@
                     </div>
                 </div>
             </section>
-    
-            <div class="container">
-                <div class="row m-4" id="allRestaurants">
-    
-                    <div v-for="(restaurant, index) in restaurants" :key="index" class="col-sm-12 col-md-6 col-lg-4 mb-4" >
-                        <div class="card text-white card-has-bg click-col" v-bind:style="{ 'background-image': 'url(' + restaurant.logo + ')' }">
-                            <p>{{selectedItem}}</p>
-                            <img class="card-img d-none" :src="(restaurant.logo) ? restaurant.logo : 'img/loghi/generic-restaurant.jpg'" :alt="restaurant.name">
-                            <div class="card-img-overlay d-flex flex-column">
-                                <div class="card-body">
-                                    <small class="card-meta mb-2">p. iva: {{restaurant.vat_number}}</small>
-                                    <a href="#" class="text-decoration-none">
-                                        <h4 class="card-title mt-0 "><button class="text-white" @click="test(restaurant.id)">{{restaurant.name}}</button></h4>
-    
-                                    </a>
-                                    <small><i class="far fa-clock"></i> {{restaurant.email}}</small>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="media">
-                                        <img class="mr-3 rounded-circle" :src="(restaurant.logo) ? restaurant.logo : 'img/loghi/generic-restaurant.jpg'" :alt="restaurant.name" style="max-width:50px">
-                                        <div class="media-body">
-                                            <h6 class="my-0 text-white d-block">{{restaurant.address}}</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="container">
-            <div class="row m-4 gap-3 d-none" id="singleRestaurant" >
-                    
-                <h2 class="fw-bold text-uppercase">{{restaurantMenu.name}}</h2>
-                    <div class="col-3 bg-primary rounded-3" v-for="(food, index) in restaurantMenu.food_items" :key="index">
-                    <p>{{food.name}}</p>
-                    <p>{{food.description}}</p>
-                    <button class="btn btn-success" @click="addToCart(food)">Aggiungi</button>
-                    <button class="btn btn-danger" @click="removeFromCart(food)">Rimuovi</button>
-                </div>
-                <button @click="checkDisplay()">change</button>
-            </div>
+            <Restaurants  :restaurants="getRestaurants" />
 
-            
-        </div>
-
-
-
-            
     </div>
+</div>
 </template>
 
 <script>
 import Header from '../components/Header.vue';
 import Jumbotron from '../components/Jumbotron.vue';
 import Main from '../components/Main.vue';
+import Restaurants from '../components/Restaurants.vue';
 
 
 export default {
     name: "App",
     components: {
-        Header,
-        Jumbotron,
-        Main
-    },
+    Header,
+    Jumbotron,
+    Main,
+    Restaurants
+},
     data: function(){
         return{
             restaurants: [],
-            restaurantMenu : [],
             checkCart : false,
             cart : [],
             totaleQuantity : 0,
             totalPrice : 0,
-            selectedItem: " ",
             cookingTypes : [],
             filteredRestaurants : [],
             selectedCategories : [],
-            inputs : document.querySelectorAll(".my-checkbox"),
         }
     },
     methods:{
-        selectRestaurants(){
-            axios.get(`http://127.0.0.1:8000/api/restaurants` + this.selectedCategories)
-                .then((result) => {
-                    // this.filteredRestaurants = result.data.results.users;
-                    console.log(result);
-                })
-                .catch((error) => {
-                    console.warn(error);
-                })
-        },
-        getCategories(value){
-            this.selectedCategories.push(value);
-            },
 
-        
+        filterRestaurants(value){
+            
+                // verifichiamo se la  è già presente
+                if( this.selectedCategories.includes(value) ) {
+                    let i = this.selectedCategories.indexOf(value);
+                    this.selectedCategories.splice(i, 1 );
+                } else {
+                    this.selectedCategories.push(value); // altrimenti aggiungiamo il valore della checkbox selezionata
+                }
+
+                console.log(`Gli id delle categorie selezionate sono: ${this.selectedCategories}`);
+
+                //facciamo una chiamata axios con l'array delle categorie selezionate, se almeno una è stata selezionata
+                if (this.selectedCategories.length > 0) {
+                    axios.get(`http://127.0.0.1:8000/api/filtered_restaurants/${this.selectedCategories}`)
+                        .then((result) => {
+                            this.filteredRestaurants = result.data;
+                        })
+                        .catch((error) => {
+                            console.warn(error);
+                        })
+                }
+        },
         getSingleRestaurant(){
-            if(this.selectedItem !== " "){
-                axios.get(`http://127.0.0.1:8000/api/users/${this.selectedItem}`)
-                .then((result) => {
-                    this.restaurants = result.data.results.users;
-                })
-                .catch((error) => {
-                    console.warn(error);
-                })
-            }
-            else {
-                axios.get(`http://127.0.0.1:8000/api/users/`)
-                .then((result) => {
-                    this.restaurants = result.data;
-                })
-                .catch((error) => {
-                    console.warn(error);
-                })
-            }
-        },
-        test(id){
-            this.restaurantMenu = [];
             axios.get(`http://127.0.0.1:8000/api/users/`)
-                .then((result) => {
-                    this.restaurantMenu = result.data[id - 1];
-                })
-                .catch((error) => {
-                    console.warn(error);
-                })
-                this.checkDisplay();
-        },
-        checkDisplay(){
-            let wrapper = document.getElementById("my-wrapper");
-            let singleRestaurant = document.getElementById("singleRestaurant");
-            wrapper.classList.toggle("d-none");
-            singleRestaurant.classList.toggle("d-none");
-            this.checkCart = !this.checkCart;
+            .then((result) => {
+                this.restaurants = result.data;
+            })
+            .catch((error) => {
+                console.warn(error);
+            })
         },
         addToCart(food){
             this.checkCart = true;
@@ -229,14 +152,28 @@ export default {
             axios.get(`http://127.0.0.1:8000/api/cooking-types`)
             .then((result) => {
                 this.cookingTypes = result.data;
+                console.log(this.cookingTypes);
             })
             .catch((error) => {
                 console.warn(error);
             })
         },
     },
+    computed: {
+        getRestaurants() {
+
+            if ( this.selectedCategories.length == 0) {
+                console.log('ritornano tutti i ristoranti')
+                return this.restaurants
+            } else {
+                console.log('ritornano i ristoranti filtrati')
+                return this.filteredRestaurants 
+            }
+        }
+    },
     created(){
         this.getSingleRestaurant();
+        this.getCookingTypes()
         // window.localStorage.clear()
     },
     mounted(){
@@ -247,7 +184,7 @@ export default {
             this.totalPrice = 0;
             this.cart = [];     
         }
-    this.getCookingTypes()
+    
     },
 }
 </script>

@@ -22,43 +22,43 @@ class CookingTypesController extends Controller
         return response()->json($cookingTypes);
     }
 
-    public function filteredApi(array $data)
-    {
-        $userInput = $request->input("type");
+    // public function filteredApi(array $data)
+    // {
+    //     $userInput = $request->input("type");
 
-        // $restaurants = User::whereHas('cookingTypes', function ($q) {
-        //     $q->where('name', "pesce");
-        // })->get();
-        $users = User::all();
-        // $categories = CookingType::where("name", $type)::whereHas("users");
-        // if ($type != "All") {
-        //     $restaurants = User::whereHas('cookingTypes', function ($query) use ($type) {
-        //     $query->where('name', $type);
-        //     })->get();
-        // } else {
-        //     $restaurants = User::all();
-        // }
-        $restaurants = [];
-        if(Str::length($data) > 0){
+    //     // $restaurants = User::whereHas('cookingTypes', function ($q) {
+    //     //     $q->where('name', "pesce");
+    //     // })->get();
+    //     $users = User::all();
+    //     // $categories = CookingType::where("name", $type)::whereHas("users");
+    //     // if ($type != "All") {
+    //     //     $restaurants = User::whereHas('cookingTypes', function ($query) use ($type) {
+    //     //     $query->where('name', $type);
+    //     //     })->get();
+    //     // } else {
+    //     //     $restaurants = User::all();
+    //     // }
+    //     $restaurants = [];
+    //     if(Str::length($data) > 0){
 
-            foreach ($users as $user) {
-                foreach ($user->cookingTypes as $cookingType) {
-                    if(in_array($data, $cookingType)){
-                        array_push($restaurants, $user);
-                    }
-                }
-            }
-        }
+    //         foreach ($users as $user) {
+    //             foreach ($user->cookingTypes as $cookingType) {
+    //                 if(in_array($data, $cookingType)){
+    //                     array_push($restaurants, $user);
+    //                 }
+    //             }
+    //         }
+    //     }
     
     
-        // foreach ($restaurants as $restaurant) {
-        //     $types = [];
-        //     $types = $restaurant->types;
-        //     $restaurant->types = $types;
-        // };
+    //     // foreach ($restaurants as $restaurant) {
+    //     //     $types = [];
+    //     //     $types = $restaurant->types;
+    //     //     $restaurant->types = $types;
+    //     // };
     
-        // return response()->json($restaurants);
-        return response()->json($restaurants);
+    //     // return response()->json($restaurants);
+    //     return response()->json($restaurants);
 
-    }
+    // }
 }
