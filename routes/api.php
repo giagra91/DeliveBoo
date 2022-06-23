@@ -29,6 +29,6 @@ Route::namespace('Api')
     });
     
     // Route::get('/restaurants', 'Api\CookingTypesController@filteredApi');
-// Route::get('/users/{cooking_types}', 'Api\RestaurantController@show');
+Route::get('/users/{id}', 'Api\RestaurantController@show');
 
 Route::get('/filtered_restaurants/{ids}', 'Api\RestaurantController@filterRestaurants');

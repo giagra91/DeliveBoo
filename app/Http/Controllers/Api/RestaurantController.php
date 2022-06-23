@@ -40,13 +40,6 @@ class RestaurantController extends Controller
         })->get();
 
         return response()->json($filteredRestaurants);
-
-        // return response()->json([
-        // 'success' => true,
-        // 'ids' => $ids,
-        // 'lenght' => count($filteredRestaurants),
-        // 'results' => $filteredRestaurants,
-        // ]);
     }
     
 
@@ -79,12 +72,14 @@ class RestaurantController extends Controller
      */
     public function show($id)
     {
-        // $foodItems = FoodItem::where($id, "user_id");
-        // $type = CookingType::with(["users"])->findOrFail($id);
-        // return response()->json([
-        //         'success' => true,
-        //         'results' => $type,
-        // ]);
+        $foodItems = FoodItem::whereHas('user', function($q) use($id) {
+            $q->where('user_id', $id)->with(['user']);
+        })->get();
+
+        return response()->json([
+                'success' => true,
+                'results' => $foodItems,
+        ]);
     }
 
 

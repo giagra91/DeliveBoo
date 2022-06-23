@@ -1,24 +1,10 @@
 <template>
     <div>
         <Header />
-
-        <!-- carrello -->
-        <div class="d-flex justify-content-end position-relative">
-            <div id="cart " class="w-25 position-absolute" v-if="checkCart">
-                <div v-for="(item, index) in cart" :key="index" >
-                
-                    <p>{{item.name}} - € {{item.price}}</p>
-                </div>
-                <p v-if="totalPrice == 0"> Carrello vuoto</p>
-                <p v-else>Totale € {{totalPrice}}</p>
-            </div>
-        </div>
-        
         <div id="my-wrapper">
-
             <!-- jumbo -->
             <Jumbotron />
-            <section class="py-5 overflow-hidden bg-primary" id="home">
+            <section class="py-5 overflow-hidden bg-primary" id="home" v-show="!isMenuClicked">
                 <div class="container">
                     <div class="row flex-center">
                         <div class="col-md-5 col-lg-6 order-0 order-md-1 mt-8 mt-md-0"><a class="img-landing-banner" href="#!"><img class="img-fluid" src="../../../public/img/logo-deliveboo/gallery/hero-header.png" alt="hero-header" /></a></div>
@@ -28,28 +14,27 @@
                                 <div class="card w-xxl-75">
                                 <div class="card-body">
                                     <nav>
-                                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                        <button class="nav-link active mb-3" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true"><i class="fas fa-motorcycle me-2"></i>Delivery</button>
-                                    </div>
+                                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                            <button class="nav-link active mb-3" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true"><i class="fas fa-motorcycle me-2"></i>Delivery</button>
+                                        </div>
                                     </nav>
                                     <div class="tab-content mt-3" id="nav-tabContent">
-                                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                        <form class="row gx-2 gy-2 align-items-center">
-                                            <div class="col">
-                                                <div class="input-group-icon"><i class="fas fa-map-marker-alt text-danger input-box-icon"></i>
-
-                                                    <!-- Cooking types checkboxes -->
-                                                    <div class="form-check" v-for="(type,index) in cookingTypes" :key="index">
-                                                        <input @click="filterRestaurants(type.id)" v-model="selectedCategories" class="form-check-input" name="type" 
-                                                        type="checkbox"  :value="type.id" id="flexCheckDefault" >
-                                                        <label class="form-check-label" for="flexCheckDefault">
-                                                            {{type.name}}
-                                                        </label>
+                                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                            <form class="row gx-2 gy-2 align-items-center">
+                                                <div class="col">
+                                                    <h5>Filtra per una o più categorie:</h5>
+                                                    <div class="input-group-icon">
+                                                        <div class="form-check mb-2" v-for="(type,index) in cookingTypes" :key="index">
+                                                            <input @click="filterRestaurants(type.id)" v-model="selectedCategories" class="form-check-input" name="type" 
+                                                            type="checkbox"  :value="type.id" id="flexCheckDefault" >
+                                                            <label class="form-check-label" for="flexCheckDefault">
+                                                                {{type.name}}
+                                                            </label>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </form>
-                                    </div>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -58,7 +43,7 @@
                 </div>
             </section>
 
-            <Restaurants  :restaurants="getRestaurants" />
+            <Restaurants  :restaurants="getRestaurants" @hasClickedMenu="updateJumbo()" />
 
     </div>
 </div>
@@ -82,39 +67,33 @@ export default {
     data: function(){
         return{
             restaurants: [],
-            checkCart : false,
-            cart : [],
-            totaleQuantity : 0,
-            totalPrice : 0,
             cookingTypes : [],
+            isMenuClicked: false,
             filteredRestaurants : [],
             selectedCategories : [],
         }
     },
     methods:{
-
-        filterRestaurants(value){
-            
-                // verifichiamo se la  è già presente
-                if( this.selectedCategories.includes(value) ) {
-                    let i = this.selectedCategories.indexOf(value);
-                    this.selectedCategories.splice(i, 1 );
-                } else {
-                    this.selectedCategories.push(value); // altrimenti aggiungiamo il valore della checkbox selezionata
-                }
-
-                console.log(`Gli id delle categorie selezionate sono: ${this.selectedCategories}`);
-
-                //facciamo una chiamata axios con l'array delle categorie selezionate, se almeno una è stata selezionata
-                if (this.selectedCategories.length > 0) {
-                    axios.get(`http://127.0.0.1:8000/api/filtered_restaurants/${this.selectedCategories}`)
-                        .then((result) => {
-                            this.filteredRestaurants = result.data;
-                        })
-                        .catch((error) => {
-                            console.warn(error);
-                        })
-                }
+        // metodo per effettuare una ricerca filtrata dei ristoranti
+        filterRestaurants(value){          
+            // verifichiamo se la categoria selezionata è già presente..
+            if( this.selectedCategories.includes(value) ) {
+                let i = this.selectedCategories.indexOf(value); 
+                this.selectedCategories.splice(i, 1 ); // ..la cancelliamo
+            } else {
+                this.selectedCategories.push(value); // altrimenti la aggiungiamo all'array
+            }
+            console.log(`Gli id delle categorie selezionate sono: ${this.selectedCategories}`);
+            //facciamo una chiamata axios con l'array delle categorie selezionate, se almeno una è stata selezionata
+            if (this.selectedCategories.length > 0) {
+                axios.get(`http://127.0.0.1:8000/api/filtered_restaurants/${this.selectedCategories}`)
+                    .then((result) => {
+                        this.filteredRestaurants = result.data;
+                    })
+                    .catch((error) => {
+                        console.warn(error);
+                    })
+            }
         },
         getSingleRestaurant(){
             axios.get(`http://127.0.0.1:8000/api/users/`)
@@ -124,29 +103,6 @@ export default {
             .catch((error) => {
                 console.warn(error);
             })
-        },
-        addToCart(food){
-            this.checkCart = true;
-            let productInCart = { name : food.name, price : food.price}
-            this.cart.push(productInCart);
-            this.totalPrice += food.price;
-            window.localStorage.setItem("cart", JSON.stringify(this.cart ));
-            window.localStorage.setItem("totalPrice", JSON.stringify(this.totalPrice ));
-            // console.log(JSON.parse(localStorage.getItem('cart')));
-            console.warn(window.localStorage.getItem("cart"),window.localStorage.getItem("totalPrice"));
-        },
-        removeFromCart(food){
-            this.cart.forEach((item, index) => {
-                if(food.name == item.name){
-                    this.cart.splice(index, 1);
-                    this.totalPrice -= food.price;
-                    window.localStorage.removeItem("cart", JSON.stringify(food[index]));
-                    window.localStorage.setItem("totalPrice", JSON.stringify(this.totalPrice ));
-                    console.log(this.cart)
-                } else {
-                    console.log("non esiste");
-                }
-            });
         },
         getCookingTypes(){
             axios.get(`http://127.0.0.1:8000/api/cooking-types`)
@@ -158,10 +114,12 @@ export default {
                 console.warn(error);
             })
         },
+        updateJumbo() {
+            this.isMenuClicked = true;
+        }
     },
     computed: {
         getRestaurants() {
-
             if ( this.selectedCategories.length == 0) {
                 console.log('ritornano tutti i ristoranti')
                 return this.restaurants
@@ -175,17 +133,7 @@ export default {
         this.getSingleRestaurant();
         this.getCookingTypes()
         // window.localStorage.clear()
-    },
-    mounted(){
-        try {
-            this.totalPrice = JSON.parse(localStorage.totalPrice);
-            this.cart = JSON.parse(localStorage.cart);        
-            } catch(e) {
-            this.totalPrice = 0;
-            this.cart = [];     
-        }
-    
-    },
+    }
 }
 </script>
 
@@ -280,5 +228,73 @@ background: linear-gradient(0deg, rgba(165, 48, 19, 0.379) 0%, rgb(189, 177, 68)
 }
 @media (max-width: 767px){
 
+}
+
+
+ul.ks-cboxtags {
+    list-style: none;
+    padding: 20px;
+}
+ul.ks-cboxtags li{
+  display: inline;
+}
+ul.ks-cboxtags li label{
+    display: inline-block;
+    background-color: rgba(255, 255, 255, .9);
+    border: 2px solid rgba(139, 139, 139, .3);
+    color: #adadad;
+    border-radius: 25px;
+    white-space: nowrap;
+    margin: 3px 0px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: all .2s;
+}
+
+ul.ks-cboxtags li label {
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+ul.ks-cboxtags li label::before {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 12px;
+    padding: 2px 6px 2px 2px;
+    content: "\f067";
+    transition: transform .3s ease-in-out;
+}
+
+ul.ks-cboxtags li input[type="checkbox"]:checked + label::before {
+    content: "\f00c";
+    transform: rotate(-360deg);
+    transition: transform .3s ease-in-out;
+}
+
+ul.ks-cboxtags li input[type="checkbox"]:checked + label {
+    border: 2px solid #1bdbf8;
+    background-color: #12bbd4;
+    color: #fff;
+    transition: all .2s;
+}
+
+ul.ks-cboxtags li input[type="checkbox"] {
+  display: absolute;
+}
+ul.ks-cboxtags li input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+}
+ul.ks-cboxtags li input[type="checkbox"]:focus + label {
+  border: 2px solid #e9a1ff;
 }
 </style>

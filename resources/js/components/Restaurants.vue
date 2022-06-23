@@ -1,45 +1,56 @@
 <template>
-<div class="container">
-	<div class="row m-4" id="allRestaurants">
-    <div v-for="(restaurant, index) in restaurants" :key="index" class="col-sm-12 col-md-6 col-lg-4 mb-4" >
-
-			<div class="card text-white card-has-bg click-col" v-bind:style="{ 'background-image': 'url(' + restaurant.logo + ')' }">
-				<p>{{selectedItem}}</p>
-				<img class="card-img d-none" :src="(restaurant.logo) ? restaurant.logo : 'img/loghi/generic-restaurant.jpg'" :alt="restaurant.name">
-				<div class="card-img-overlay d-flex flex-column">
-						<div class="card-body">
-								<small class="card-meta mb-2">p. iva: {{restaurant.vat_number}}</small>
-								<a href="#" class="text-decoration-none">
-										<h4 class="card-title mt-0 "><button class="text-white" @click="test(restaurant.id)">{{restaurant.name}}</button></h4>
-
-								</a>
-								<small><i class="far fa-clock"></i> {{restaurant.email}}</small>
+<div>
+	<div class="container">
+		<!-- carrello -->
+		<div class="d-flex justify-content-end position-relative p-5 mb-3">
+				
+				<div id="cart " class="w-25 position-absolute" v-if="checkCart">
+						<div v-for="(item, index) in cart" :key="index" >
+								<p>{{item.name}} - € {{item.price}}
+									<i @click.prevent="removeFromCart(item)" class="fa-solid fa-trash-can"></i>
+								</p>
 						</div>
-						<div class="card-footer">
-								<div class="media">
-										<img class="mr-3 rounded-circle" :src="(restaurant.logo) ? restaurant.logo : 'img/loghi/generic-restaurant.jpg'" :alt="restaurant.name" style="max-width:50px">
-										<div class="media-body">
-												<h6 class="my-0 text-white d-block">{{restaurant.address}}</h6>
-										</div>
-								</div>
-						</div>
+						<p v-if="totalPrice == 0"> Carrello vuoto</p>
+						<p v-else class="text-danger">Totale € {{totalPrice}}</p>
+				</div>
+		</div>
+
+		<div class="row m-4" id="allRestaurants" v-show="!isMenuClicked">
+			<div v-for="(restaurant, index) in restaurants" :key="index" class="col-sm-12 col-md-6 col-lg-4 mb-4" >
+				<div class="card text-white card-has-bg click-col" v-bind:style="{ 'background-image': 'url(' + restaurant.logo + ')' }">
+					<img class="card-img d-none" :src="(restaurant.logo) ? restaurant.logo : 'img/loghi/generic-restaurant.jpg'" :alt="restaurant.name">
+					<div class="card-img-overlay d-flex flex-column">
+							<div class="card-body">
+									<h6 @click.prevent="test(restaurant.id)" class="text-white fw-bold menu-icon">
+										Menu 
+										<i class="fa-solid fa-utensils" ></i>
+									</h6>
+									<!-- <small class="card-meta mb-2">p. iva: {{restaurant.vat_number}}</small> -->
+										<h4 class="card-title mt-0 ">
+											{{restaurant.name}}
+										</h4>
+									<small><i class="far fa-clock"></i> {{restaurant.email}}</small>
+							</div>
+							<div class="card-footer">
+									<div class="media">
+											<img class="mr-3 rounded-circle" :src="(restaurant.logo) ? restaurant.logo : 'img/loghi/generic-restaurant.jpg'" :alt="restaurant.name" style="max-width:50px">
+											<div class="media-body">
+													<h6 class="my-0 text-white d-block">{{restaurant.address}}</h6>
+											</div>
+									</div>
+							</div>
+					</div>
 				</div>
 			</div>
-
-			<div class="container">
-            <div class="row m-4 gap-3 d-none" id="singleRestaurant" >
-                    
-                <h2 class="fw-bold text-uppercase">{{restaurantMenu.name}}</h2>
-                    <div class="col-3 bg-primary rounded-3" v-for="(food, index) in restaurantMenu.food_items" :key="index">
-                    <p>{{food.name}}</p>
-                    <p>{{food.description}}</p>
-                    <button class="btn btn-success" @click="addToCart(food)">Aggiungi</button>
-                    <button class="btn btn-danger" @click="removeFromCart(food)">Rimuovi</button>
-                </div>
-                <button @click="checkDisplay()">change</button>
-            </div>
-        </div>
-
+		</div>
+	</div>
+	<div class="container">
+		<div class="row m-4 gap-3 " id="singleRestaurant" >					
+			<div class="col-3 rounded-3 p-4 my-food-card d-flex flex-column" v-for="(food, index) in restaurantMenu" :key="index">
+				<i @click.prevent="addToCart(food)" class="fa-solid fa-square-plus"></i>
+				<h5>{{food.name}}<span class="text-danger ms-2"> &euro;{{food.price}}</span></h5>
+				<p class="fst-italic">{{food.description}}</p>
+			</div>
 		</div>
 	</div>
 </div>
@@ -58,36 +69,80 @@ export default {
             cart : [],
             totaleQuantity : 0,
             totalPrice : 0,
-            selectedItem: " ",
-            cookingTypes : [],
-            filteredRestaurants : [],
-            selectedCategories : [],
+						isMenuClicked: false,
         }
     },
 	methods: {
-			test(id){
+		test(id){
 			this.restaurantMenu = [];
-			axios.get(`http://127.0.0.1:8000/api/users/`)
-					.then((result) => {
-							this.restaurantMenu = result.data[id - 1];
-					})
-					.catch((error) => {
-							console.warn(error);
-					})
-					this.checkDisplay();
-	},
-	checkDisplay(){
-			let wrapper = document.getElementById("my-wrapper");
-			let singleRestaurant = document.getElementById("singleRestaurant");
-			wrapper.classList.toggle("d-none");
-			singleRestaurant.classList.toggle("d-none");
-			this.checkCart = !this.checkCart;
-	},
-	}
+			axios.get(`http://127.0.0.1:8000/api/users/${id}`)
+				.then((result) => {
+						this.restaurantMenu = result.data.results;
+						console.log(this.restaurantMenu);
+				})
+				.catch((error) => {
+						console.warn(error);
+				})
+				this.isMenuClicked = true;
+				this.$emit('hasClickedMenu', this.isMenuClicked);
+		},
 
+		addToCart(food){
+			this.checkCart = true;
+
+			let productInCart = { 
+				name : food.name, price : food.price
+				};
+
+			this.cart.push(productInCart);
+
+			this.totalPrice += food.price;
+
+			window.localStorage.setItem("cart", JSON.stringify(this.cart ));
+
+			window.localStorage.setItem("totalPrice", JSON.stringify(this.totalPrice ));
+			// console.log(JSON.parse(localStorage.getItem('cart')));
+			console.warn(window.localStorage.getItem("cart"),window.localStorage.getItem("totalPrice"));
+		},
+		removeFromCart(food){
+
+			this.cart.forEach((item, index) => {
+
+					if(food.name == item.name){
+							this.cart.splice(index, 1);
+							this.totalPrice -= food.price;
+							window.localStorage.removeItem("cart", JSON.stringify(food[index]));
+							window.localStorage.setItem("totalPrice", JSON.stringify(this.totalPrice ));
+							console.log(this.cart)
+					} else {
+							console.log("non esiste");
+					}
+			});
+		},
+	},
+	mounted: function mounted() {
+    try {
+      this.totalPrice = JSON.parse(localStorage.totalPrice);
+      this.cart = JSON.parse(localStorage.cart);
+    } catch (e) {
+      this.totalPrice = 0;
+      this.cart = [];
+    }
+	}
 }
+
 </script>
 
-<style>
+<style lang="scss" scoped>
+	i {
+		font-size: 1.3rem;
+		cursor: pointer;
+		color: #FFB30E;
+	}
 
+	h6.menu-icon {
+		&:hover {
+			text-decoration: underline;
+		}
+	}
 </style>
