@@ -1,5 +1,5 @@
-<!-- <template>
-<div>
+<template>
+	<div>
 	<div class="container">
 		<!-- carrello -->
 		<div class="d-flex justify-content-end position-relative p-5 mb-3">
@@ -63,10 +63,11 @@
 </div>
 </template>
 
+
 <script>
 export default {
-	name: 'Restaurants',
-	props: {
+		name: 'RestaurantsPage',
+		props: {
 		restaurants: Array,
 	},
 	data: function(){
@@ -165,4 +166,4 @@ export default {
 			text-decoration: underline;
 		}
 	}
-</style> -->
+</style>
