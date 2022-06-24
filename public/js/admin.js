@@ -41271,8 +41271,8 @@ deleteForms.forEach(function (form) {
       if (isConfirm.isConfirmed) {
         self.submit();
         Swal.fire({
-          title: 'Deleted!',
-          text: 'Your file has been deleted.',
+          title: 'Cancellato!',
+          text: 'Il piatto è stato cancellato.',
           icon: 'success',
           timer: 2000
         });
