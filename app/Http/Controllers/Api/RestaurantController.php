@@ -24,6 +24,26 @@ class RestaurantController extends Controller
     }
 
     /**
+     * Display a listing of restaurants filtered by categories.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function filterRestaurants($ids)
+    {
+
+        if (!is_array($ids)) {
+            $ids = explode(',', $ids);
+        }
+
+        $filteredRestaurants = User::whereHas('cookingTypes', function($q) use($ids) {
+            $q->whereIn('cooking_type_id', $ids);
+        })->get();
+
+        return response()->json($filteredRestaurants);
+    }
+    
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -52,13 +72,17 @@ class RestaurantController extends Controller
      */
     public function show($id)
     {
-        $foodItems = FoodItem::where($id, "user_id");
-        $type = CookingType::with(["users"])->findOrFail($id);
+        $foodItems = FoodItem::whereHas('user', function($q) use($id) {
+            $q->where('user_id', $id)->with(['user']);
+        })->get();
+
         return response()->json([
                 'success' => true,
-                'results' => $type,
+                'results' => $foodItems,
         ]);
     }
+
+
 
     /**
      * Show the form for editing the specified resource.

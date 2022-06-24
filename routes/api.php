@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Braintree\Gateway;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,15 @@ Route::namespace('Api')
     ->group(function(){
         // Route::get('/', 'HomeController@index')->name('home');   // | Aggiunta facoltativa ->middleware('password.confirm');
         Route::resource('users', 'RestaurantController');
+        Route::get('cooking-types', 'CookingTypesController@cookingTypes');
+        
+        
     });
+    
+    // Route::get('/restaurants', 'Api\CookingTypesController@filteredApi');
+Route::get('/users/{id}', 'Api\RestaurantController@show');
 
-Route::get('/users/{cooking_types}', 'Api\RestaurantController@show');
+Route::get('/filtered_restaurants/{ids}', 'Api\RestaurantController@filterRestaurants');
+
+Route::get('orders/token', 'Api\OrdersController@generate'); /* Per generare il token del pagamento */
+Route::post('orders/payment', 'Api\OrdersController@makePayment'); /* Per confermare il pagamento */
