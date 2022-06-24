@@ -11,7 +11,7 @@
                         <p class="mb-0 fw-bold text-lg-center ">Sede legale: <span class="text-gradient">Via Firenze 4, Roma</span></p>
                     </div>
                     <form class="d-flex mt-4 mt-lg-0 ms-lg-auto ms-xl-0">
-                        <a class="btn btn-white shadow-warning text-danger" type="submit" href="http://127.0.0.1:8000/register">Area Ristoratore</a>
+                        <a class="btn btn-outline-warning" type="submit" href="http://127.0.0.1:8000/register">Area Ristoratore</a>
                     </form>
                 </div>
         </div>

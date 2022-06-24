@@ -7,7 +7,7 @@
 <section class="container-fluid p-5" id="add-form">
 	<div class="row">
 		<div class="col-12 mb-3">
-			<a href="{{ route('admin.foods.index') }}" class="btn btn-secondary" tabindex="-1" role="button" aria-disabled="true">Back</a>
+			<a href="{{ route('admin.foods.index') }}" class="btn btn-secondary btn-sm" tabindex="-1" role="button" aria-disabled="true">Back</a>
 		</div>
 	</div>
 
@@ -29,95 +29,102 @@
 					@endif
 
 			<div id="errors"></div>
-
-			<div class="col">
-					<label for="name">Nome*</label>
-					<input
-						type="text"
-						name="name"
-						id="name"
-						class="form-control my-form1"
-						form-title="name"
-						value="{{ old('name', $foodItem->name ) }}"
-						required
-					>
-			</div>
-
-			<div class="col py-2">
-				<label for="description">Descrizione*</label>
-				<input 
-					type="text"
-					name="description"
-					id="description"
-					class="form-control my-form1"
-					form-title="description"
-					value="{{ old('description', $foodItem->description ) }}"
-					required
-				>
-			</div>
-
-			<div class="col py-2">
-				<label for="ingredients">Ingredienti*</label>
-				<input 
-					type="text"
-					name="ingredients"
-					id="ingredients"
-					class="form-control my-form1"
-					form-title="ingredients"
-					value="{{ old('ingredients', $foodItem->ingredients ) }}"
-					required
-					>
-			</div>
-
-			<div class="col">
-				<img
-					class="w-100"
-					src="{{ str_starts_with($foodItem->img, 'img') ? asset($foodItem->img) : asset('storage') . '/' . $foodItem->img }}"
-					alt="image of {{$foodItem->name}}"
-				>
-			</div>
-
-			<div class="col">
-					<label for="img">Carica l'immagine</label>
-					<input 
-						type="file"
-						name="img"
-						id="img"
-						class="form-control"
-						value="{{ old('img',$foodItem->img ) }}"
-					>
-			</div>
-
-			<div class="col">
-				<label for="price">Inserisci il prezzo*</label>
-				<input 
-					type="number"
-					step="0.01"
-					name="price"
-					id="price"
-					class="form-control my-form1"
-					form-title="price"
-					value="{{ old('price', $foodItem->price) }}"
-					required
-				>
-			</div>
-
-			<div class="col py-2">
-				<h5>Portata*</h5>
-				<select
-				class="form-select"
-				name="course_id"
-				>
-				@foreach ($courses as $course)
-					<option 
-						value="{{old( 'course_id', $course->id)}}"
-						{{ $foodItem->course_id === $course->id ? "selected='selected'" : '' }}
-					>
-						{{$course->name}}
-				</option>
-				@endforeach
-				</select>
-		</div>
+            <div class="col-md-6">
+                <div class="input-group input-group-static mb-4 ">
+                        <label for="name">Nome*</label>
+                        <input
+                            type="text"
+                            name="name"
+                            id="name"
+                            class="form-control my-form1"
+                            form-title="name"
+                            value="{{ old('name', $foodItem->name ) }}"
+                            required
+                        >
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group input-group-static mb-4">
+                    <label for="description" class="">Descrizione*</label>
+                    <textarea
+                        type="text"
+                        name="description"
+                        id="description"
+                        class="form-control  my-form1"
+                        form-title="description"
+                        value="{{ old('description', $foodItem->description ) }}"
+                        required
+                    >{{ old('description', $foodItem->description ) }}</textarea>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group input-group-static mb-4">
+                    <label for="ingredients">Ingredienti*</label>
+                    <input
+                        type="text"
+                        name="ingredients"
+                        id="ingredients"
+                        class="form-control my-form1"
+                        form-title="ingredients"
+                        value="{{ old('ingredients', $foodItem->ingredients ) }}"
+                        required
+                        >
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group input-group-static mb-4">
+                    <img
+                        class="w-100"
+                        src="{{ str_starts_with($foodItem->img, 'img') ? asset($foodItem->img) : asset('storage') . '/' . $foodItem->img }}"
+                        alt="image of {{$foodItem->name}}"
+                    >
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group input-group-static mb-4">
+                        <label for="img">Carica l'immagine</label>
+                        <input
+                            type="file"
+                            name="img"
+                            id="img"
+                            class="form-control"
+                            value="{{ old('img',$foodItem->img ) }}"
+                        >
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group input-group-static mb-4">
+                    <label for="price">Inserisci il prezzo*</label>
+                    <input
+                        type="number"
+                        step="0.01"
+                        name="price"
+                        id="price"
+                        class="form-control my-form1"
+                        form-title="price"
+                        value="{{ old('price', $foodItem->price) }}"
+                        required
+                    >
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="input-group input-group-static mb-4">
+                    <h5>Portata*</h5>
+                    <select
+                    class="form-select"
+                    name="course_id"
+                    >
+                    @foreach ($courses as $course)
+                        <option
+                            value="{{old( 'course_id', $course->id)}}"
+                            {{ $foodItem->course_id === $course->id ? "selected='selected'" : '' }}
+                        >
+                            {{$course->name}}
+                    </option>
+                    @endforeach
+                    </select>
+            </div>
+            </div>
 
 
 		<div class="col py-2">
@@ -195,7 +202,7 @@
 		let formInputs = document.querySelectorAll('.my-form1');
 
 		function checkFormErrors() {
-				
+
 				let formErrors = {};
 
 				form_error_messages.innerHTML = "";
@@ -224,13 +231,13 @@
 					console.log('è checked');
 					for (let i = 0; i < categories.length; i++) {
 						categories[i].required = false;
-					} 
+					}
 				} else {
 					formErrors.categories = "Devi selezionare almeno una categoria.";
 					console.log('non è checked');
 					for (let i = 0; i < categories.length; i++) {
 						categories[i].required = true;
-					} 
+					}
 				}
 
 				if ( Object.keys(formErrors).length){

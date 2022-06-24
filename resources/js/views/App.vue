@@ -48,7 +48,7 @@
                 </div>
             </section>
             
-            <router-view :restaurants="getRestaurants"></router-view>
+            <router-view  :restaurants="getRestaurants"></router-view>
 
             <section class="footer">
                 <div class="container">
