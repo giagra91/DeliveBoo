@@ -7,23 +7,20 @@
 	<section class="p-4">
 		<div class="container-fluid px-5">
 			<div class="row justify-content-center">
-
-					<div class="col-12 text-center m-auto pt-3">
-						@if (session('create-message'))
-											<div class="alert alert-success">
-															{{ session('create-message')}}
-											</div>
-						@endif
-					</div>
-
-					<div class="col-12 text-center m-auto">
-						@if (session('edit-message'))
-										<div class="alert alert-warning">
-												{{ session('edit-message')}}
-										</div>
-						@endif
-					</div>
-
+                <div class="col-12 text-center m-auto pt-3">
+                    @if (session('create-message'))
+                        <div class="alert alert-success">
+                                        {{ session('create-message')}}
+                        </div>
+                    @endif
+                </div>
+                <div class="col-12 text-center m-auto">
+                    @if (session('edit-message'))
+                                    <div class="alert alert-warning">
+                                            {{ session('edit-message')}}
+                                    </div>
+                    @endif
+                </div>
 					<div class="col-12 text-center m-auto">
 								@if (session('delete-message'))
 												<div class="alert alert-danger">
@@ -34,14 +31,14 @@
 
 					@foreach ($restaurant as $attribute)
 					<div class="col-sm-12 col-md-6 col-lg-4 mb-4">
-							<img  src="../{{$attribute->logo}}" alt="logo ristorante">
+							<img  src="../{{$attribute->logo}}" alt="logo ristorante" class="img-fluid">
 							<h4 class="card-title mt-0 "><a herf="#">{{$attribute->name}}</a></h4>
 							<small><i class="far fa-clock"></i> {{$attribute->email}}</small>
 							<h6 class="my-0 d-block">{{$attribute->address}}</h6>
 							<small class="card-meta mb-2">p. iva: {{$attribute->vat_number}}</small>
 					</div>
 					@endforeach
-					
+
 					<div class="col-12 pb-4">
 
 						<a href="{{route('admin.foods.create' )}}">
@@ -61,7 +58,7 @@
 								<i class="fa-solid fa-eye"></i>
 							</a>
 							<a href="{{route('admin.foods.edit', $food)}}">
-								<i class="fa-solid fa-pencil mx-3"></i>
+								<i class="fa-solid fa-pencil mx-3 text-danger"></i>
 							</a>
 
 							<form
