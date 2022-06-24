@@ -31,6 +31,8 @@
                                                                 {{type.name}}
                                                             </label>
                                                         </div>
+                                                        <!-- <router-link :to="{name: 'restaurants', props: { restaurants: getRestaurants } }">Tutti i ristoranti</router-link>  -->
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -44,8 +46,11 @@
                 <h4 class="text-white mx-4" v-if="selectedCategories.length > 0 && filteredRestaurants.length == 0">Non ci sono ristoranti per questa categoria</h4>
 
             </section>
+            
+            <router-view></router-view>
 
-            <Restaurants  :restaurants="getRestaurants" @hasClickedMenu="updateJumbo()" />
+
+            <!-- <Restaurants   @hasClickedMenu="updateJumbo()" /> -->
     </div>
 </div>
 </template>
