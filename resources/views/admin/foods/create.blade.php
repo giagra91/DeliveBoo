@@ -21,7 +21,7 @@
 						Inserisci un nuovo piatto
 					</h2>
 					@if ( $errors->any() )
-					<ul class="alert alert-danger">
+					<ul class="alert alert-danger text-white font-weight-bold">
 							@foreach ( $errors->all() as $error)
 									<li>{{ $error }}</li>
 							@endforeach
@@ -30,39 +30,49 @@
 			</div>
 			<div id="errors"></div>
 
-			<div class="col">
+			<div class="col-md-6">
+                <div class="input-group input-group-static mb-4">
 					<label for="name">Titolo*</label>
 					<input type="text" form-title="name" name="name" id="name" class="form-control my-form1" required>
+                </div>
 			</div>
 
-			<div class="col py-2">
-				<label for="description">Descrizione*</label>
-				<textarea type="text" form-title="description" name="description" id="description" class="form-control my-form1" required></textarea>
+			<div class="col-md-6 py-2">
+                <div class="input-group input-group-static mb-4">
+                    <label for="description">Descrizione*</label>
+                    <textarea type="text" form-title="description" name="description" id="description" class="form-control my-form1" required></textarea>
+                </div>
+            </div>
+
+			<div class="col-md-6 py-2">
+                <div class="input-group input-group-static mb-4">
+                    <label for="ingredients">Ingredienti*</label>
+                    <textarea type="text" form-title="ingredients" name="ingredients" id="ingredients" class="form-control my-form1" required></textarea>
+                </div>
 			</div>
 
-			<div class="col py-2">
-				<label for="ingredients">Ingredienti*</label>
-				<textarea type="text" form-title="ingredients" name="ingredients" id="ingredients" class="form-control my-form1" required></textarea>
+			<div class="col-md-6 mb-3">
+                <div class="input-group input-group-static mb-4">
+                    <label for="img" class="form-label">Carica l'immagine</label>
+                    <input class="btn bg-gradient-primary w-auto me-2" name="img" type="file" id="img">
+                </div>
 			</div>
 
-			<div class="col mb-3">
-				<label for="img" class="form-label">Carica l'immagine</label>
-				<input class="form-control" name="img" type="file" id="img">
+			<div class="col-md-6 mb-3">
+                <div class="input-group input-group-static mb-4">
+                    <label for="price">Inserisci il prezzo</label>
+                    <input type="number" step="0.01" form-title="price" name="price" id="price" class="form-control my-form1">
+                </div>
 			</div>
 
-			<div class="col mb-3">
-				<label for="price">Inserisci il prezzo</label>
-				<input type="number" step="0.01" form-title="price" name="price" id="price" class="form-control my-form1">
-			</div>
-
-			<div class="col mb-3">
-				<div class="form-check">
+			<div class="col-md-6 mb-3">
+				<div class="form-check input-group-static mb-4 ">
 					<input class="form-check-input" type="radio" value="0" name="is_visible" checked>
 					<label class="form-check-label">
 						Non visibile
 					</label>
 				</div>
-				<div class="form-check">
+				<div class="form-check input-group-static mb-4">
 					<input class="form-check-input" type="radio" value="1" name="is_visible">
 					<label class="form-check-label">
 						Visibile
@@ -70,9 +80,9 @@
 				</div>
 			</div>
 
-			<div class="col py-2 d-flex">
+			<div class="col-md-6 py-2 d-flex">
 					@foreach ($categories as $category)
-						<div class="form-check">
+						<div class=" form-check input-group-static mb-4">
 								<input
 								class="form-check-input my-categories"
 								type="checkbox"
@@ -87,13 +97,14 @@
 					@endforeach
 			</div>
 
-			<div class="col mb-3">
+			<div class="col mb-3 ">
 				<select
-				class="form-select"
+				class="form-select bg-primary text-white fw-bold"
 				name="course_id"
 				>
+
 					@foreach ($courses as $course)
-						<option value="{{$course->id}}">{{$course->name}}</option>
+						<option class="btn bg-gradient-secondary w-auto me-2" value="{{$course->id}}">{{$course->name}} <i class="fa-solid fa-angle-down"></i></option>
 					@endforeach
 				</select>
 			</div>
@@ -149,13 +160,13 @@
 					console.log('è checked');
 					for (let i = 0; i < categories.length; i++) {
 						categories[i].required = false;
-					} 
+					}
 				} else {
 					formErrors.categories = "Devi selezionare almeno una categoria.";
 					console.log('non è checked');
 					for (let i = 0; i < categories.length; i++) {
 						categories[i].required = true;
-					} 
+					}
 				}
 
 				for (const error in formErrors) {

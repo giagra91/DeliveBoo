@@ -9,7 +9,7 @@
 			<div class="row justify-content-center">
                 <div class="col-12 text-center m-auto pt-3">
                     @if (session('create-message'))
-                        <div class="alert alert-success">
+                        <div class="alert alert-success text-white font-weight-bold">
                                         {{ session('create-message')}}
                         </div>
                     @endif
