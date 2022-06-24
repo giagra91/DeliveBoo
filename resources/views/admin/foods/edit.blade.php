@@ -21,14 +21,16 @@
 
 				</div>
 					@if ( $errors->any() )
-					<ul class="alert alert-danger">
-							@foreach ( $errors->all() as $error)
-									<li>{{ $error }}</li>
-							@endforeach
-					</ul>
+                    <div class="alert alert-danger text-white font-weight-bold">
+                        <ul class="alert alert-danger text-white font-weight-bold">
+                                @foreach ( $errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                @endforeach
+                        </ul>
+                    </div>
 					@endif
 
-			<div id="errors"></div>
+			<div id="errors" ></div>
             <div class="col-md-6">
                 <div class="input-group input-group-static mb-4 ">
                         <label for="name">Nome*</label>
@@ -243,7 +245,7 @@
 				if ( Object.keys(formErrors).length){
 					console.log(Object.keys(formErrors).length);
 					for (const error in formErrors) {
-						form_error_messages.classList.add("alert", "alert-danger");
+						form_error_messages.classList.add("alert", "alert-danger", "text-white", "font-weight-bold");
 						form_error_messages.innerHTML += formErrors[error] + "<br>";
 						console.log(formErrors[error])
 					}
