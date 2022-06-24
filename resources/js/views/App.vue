@@ -31,7 +31,7 @@
                                                                 {{type.name}}
                                                             </label>
                                                         </div>
-                                                        <!-- <router-link :to="{name: 'restaurants', props: { restaurants: getRestaurants } }">Tutti i ristoranti</router-link>  -->
+                                                        <router-link :restaurants="getRestaurants" :to="{name: 'restaurants'}">Tutti i ristoranti</router-link> 
 
                                                     </div>
                                                 </div>
@@ -45,7 +45,7 @@
                 </div>
             </section>
             
-            <router-view></router-view>
+            <router-view :restaurants="getRestaurants"></router-view>
 
 
             <!-- <Restaurants   @hasClickedMenu="updateJumbo()" /> -->
@@ -57,7 +57,6 @@
 import Header from '../components/Header.vue';
 import Jumbotron from '../components/Jumbotron.vue';
 import Main from '../components/Main.vue';
-import Restaurants from '../components/Restaurants.vue';
 
 
 export default {
@@ -66,7 +65,6 @@ export default {
     Header,
     Jumbotron,
     Main,
-    Restaurants
 },
     data: function(){
         return{

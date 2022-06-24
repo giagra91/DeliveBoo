@@ -2019,163 +2019,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Restaurants.vue?vue&type=script&lang=js&":
-/*!**********************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Restaurants.vue?vue&type=script&lang=js& ***!
-  \**********************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Restaurants',
-  props: {
-    restaurants: Array
-  },
-  data: function data() {
-    return {
-      restaurantMenu: [],
-      checkCart: false,
-      cart: [],
-      totaleQuantity: 0,
-      totalPrice: 0,
-      isMenuClicked: false
-    };
-  },
-  methods: {
-    test: function test(id) {
-      var _this = this;
-
-      this.restaurantMenu = [];
-      axios.get("http://127.0.0.1:8000/api/users/".concat(id)).then(function (result) {
-        _this.restaurantMenu = result.data.results;
-        console.log(_this.restaurantMenu);
-      })["catch"](function (error) {
-        console.warn(error);
-      });
-      this.isMenuClicked = true;
-      this.$emit('hasClickedMenu', this.isMenuClicked);
-    },
-    addToCart: function addToCart(food) {
-      this.checkCart = true;
-      var productInCart = {
-        name: food.name,
-        price: food.price
-      }; // this.cart.forEach(item => {
-      // 	if (item.name === productInCart.name ) {
-      // 		console.log(item.price)
-      // 		item.price += item.price;
-      // 		item.quantity++;
-      // 		console.log(item.price)
-      // 		console.log(item.quantity)
-      // 	} else {
-      // 		this.cart.push(productInCart);
-      // 	}
-      // });
-
-      this.cart.push(productInCart);
-      this.totalPrice += food.price;
-      window.localStorage.setItem("cart", JSON.stringify(this.cart));
-      window.localStorage.setItem("totalPrice", JSON.stringify(this.totalPrice)); // console.log(JSON.parse(localStorage.getItem('cart')));
-
-      console.warn(window.localStorage.getItem("cart"), window.localStorage.getItem("totalPrice"));
-    },
-    removeFromCart: function removeFromCart(food) {
-      var _this2 = this;
-
-      this.cart.forEach(function (item, index) {
-        if (food.name == item.name) {
-          _this2.cart.splice(index, 1);
-
-          _this2.totalPrice -= food.price;
-          window.localStorage.removeItem("cart", JSON.stringify(food[index]));
-          window.localStorage.setItem("totalPrice", JSON.stringify(_this2.totalPrice));
-          console.log(_this2.cart);
-        } else {
-          console.log("non esiste");
-        }
-      });
-    }
-  },
-  mounted: function mounted() {
-    try {
-      this.totalPrice = JSON.parse(localStorage.totalPrice);
-      this.cart = JSON.parse(localStorage.cart);
-    } catch (e) {
-      this.totalPrice = 0;
-      this.cart = [];
-    }
-  }
-});
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Menu.vue?vue&type=script&lang=js&":
 /*!**********************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/Menu.vue?vue&type=script&lang=js& ***!
@@ -2206,8 +2049,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
 //
 //
 //
@@ -2367,7 +2208,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Header_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/Header.vue */ "./resources/js/components/Header.vue");
 /* harmony import */ var _components_Jumbotron_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Jumbotron.vue */ "./resources/js/components/Jumbotron.vue");
 /* harmony import */ var _components_Main_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Main.vue */ "./resources/js/components/Main.vue");
-/* harmony import */ var _components_Restaurants_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Restaurants.vue */ "./resources/js/components/Restaurants.vue");
 //
 //
 //
@@ -2423,7 +2263,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
 
 
 
@@ -2432,8 +2271,7 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     Header: _components_Header_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     Jumbotron: _components_Jumbotron_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    Main: _components_Main_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-    Restaurants: _components_Restaurants_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+    Main: _components_Main_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   data: function data() {
     return {
@@ -31306,25 +31144,6 @@ module.exports = VenmoView;
 });
 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Restaurants.vue?vue&type=style&index=0&id=b2e8868a&lang=scss&scoped=true&":
-/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Restaurants.vue?vue&type=style&index=0&id=b2e8868a&lang=scss&scoped=true& ***!
-  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "i[data-v-b2e8868a] {\n  font-size: 1.3rem;\n  cursor: pointer;\n  color: #FFB30E;\n}\nh6.menu-icon[data-v-b2e8868a]:hover {\n  text-decoration: underline;\n}", ""]);
-
-// exports
-
 
 /***/ }),
 
@@ -62582,36 +62401,6 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Restaurants.vue?vue&type=style&index=0&id=b2e8868a&lang=scss&scoped=true&":
-/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Restaurants.vue?vue&type=style&index=0&id=b2e8868a&lang=scss&scoped=true& ***!
-  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-2!../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../node_modules/vue-loader/lib??vue-loader-options!./Restaurants.vue?vue&type=style&index=0&id=b2e8868a&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Restaurants.vue?vue&type=style&index=0&id=b2e8868a&lang=scss&scoped=true&");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/Restaurants.vue?vue&type=style&index=0&id=ccd76a46&lang=scss&scoped=true&":
 /*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/Restaurants.vue?vue&type=style&index=0&id=ccd76a46&lang=scss&scoped=true& ***!
@@ -63903,39 +63692,46 @@ var render = function () {
                     "div",
                     { staticClass: "card-img-overlay d-flex flex-column" },
                     [
-                      _c(
-                        "div",
-                        { staticClass: "card-body" },
-                        [
-                          _c(
-                            "router-link",
-                            {
-                              attrs: { to: { name: "menu" } },
-                              on: {
-                                click: function ($event) {
-                                  $event.preventDefault()
-                                  return _vm.test(restaurant.id)
+                      _c("div", { staticClass: "card-body" }, [
+                        _c(
+                          "h6",
+                          { staticClass: "text-white fw-bold menu-icon" },
+                          [
+                            _c(
+                              "router-link",
+                              {
+                                attrs: { to: { name: "menu" } },
+                                on: {
+                                  click: function ($event) {
+                                    $event.preventDefault()
+                                    return _vm.test(restaurant.id)
+                                  },
                                 },
                               },
-                            },
-                            [_vm._v("Menu")]
-                          ),
-                          _vm._v(" "),
-                          _c("h4", { staticClass: "card-title mt-0 " }, [
-                            _vm._v(
-                              "\n\t\t\t\t\t\t\t\t\t\t\t" +
-                                _vm._s(restaurant.name) +
-                                "\n\t\t\t\t\t\t\t\t\t\t"
+                              [
+                                _vm._v("Menu"),
+                                _c("i", {
+                                  staticClass: "fa-solid fa-utensils",
+                                }),
+                              ]
                             ),
-                          ]),
-                          _vm._v(" "),
-                          _c("small", [
-                            _c("i", { staticClass: "far fa-clock" }),
-                            _vm._v(" " + _vm._s(restaurant.email)),
-                          ]),
-                        ],
-                        1
-                      ),
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c("h4", { staticClass: "card-title mt-0 " }, [
+                          _vm._v(
+                            "\n\t\t\t\t\t\t\t\t\t\t\t" +
+                              _vm._s(restaurant.name) +
+                              "\n\t\t\t\t\t\t\t\t\t\t"
+                          ),
+                        ]),
+                        _vm._v(" "),
+                        _c("small", [
+                          _c("i", { staticClass: "far fa-clock" }),
+                          _vm._v(" " + _vm._s(restaurant.email)),
+                        ]),
+                      ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "card-footer" }, [
                         _c("div", { staticClass: "media" }, [
@@ -64132,116 +63928,136 @@ var render = function () {
                                         _c(
                                           "div",
                                           { staticClass: "input-group-icon" },
-                                          _vm._l(
-                                            _vm.cookingTypes,
-                                            function (type, index) {
-                                              return _c(
-                                                "div",
-                                                {
-                                                  key: index,
-                                                  staticClass:
-                                                    "form-check mb-2",
-                                                },
-                                                [
-                                                  _c("input", {
-                                                    directives: [
-                                                      {
-                                                        name: "model",
-                                                        rawName: "v-model",
-                                                        value:
-                                                          _vm.selectedCategories,
-                                                        expression:
-                                                          "selectedCategories",
-                                                      },
-                                                    ],
+                                          [
+                                            _vm._l(
+                                              _vm.cookingTypes,
+                                              function (type, index) {
+                                                return _c(
+                                                  "div",
+                                                  {
+                                                    key: index,
                                                     staticClass:
-                                                      "form-check-input",
-                                                    attrs: {
-                                                      name: "type",
-                                                      type: "checkbox",
-                                                      id: "flexCheckDefault",
-                                                    },
-                                                    domProps: {
-                                                      value: type.id,
-                                                      checked: Array.isArray(
-                                                        _vm.selectedCategories
-                                                      )
-                                                        ? _vm._i(
+                                                      "form-check mb-2",
+                                                  },
+                                                  [
+                                                    _c("input", {
+                                                      directives: [
+                                                        {
+                                                          name: "model",
+                                                          rawName: "v-model",
+                                                          value:
                                                             _vm.selectedCategories,
-                                                            type.id
-                                                          ) > -1
-                                                        : _vm.selectedCategories,
-                                                    },
-                                                    on: {
-                                                      click: function ($event) {
-                                                        return _vm.filterRestaurants(
-                                                          type.id
-                                                        )
-                                                      },
-                                                      change: function (
-                                                        $event
-                                                      ) {
-                                                        var $$a =
-                                                            _vm.selectedCategories,
-                                                          $$el = $event.target,
-                                                          $$c = $$el.checked
-                                                            ? true
-                                                            : false
-                                                        if (
-                                                          Array.isArray($$a)
-                                                        ) {
-                                                          var $$v = type.id,
-                                                            $$i = _vm._i(
-                                                              $$a,
-                                                              $$v
-                                                            )
-                                                          if ($$el.checked) {
-                                                            $$i < 0 &&
-                                                              (_vm.selectedCategories =
-                                                                $$a.concat([
-                                                                  $$v,
-                                                                ]))
-                                                          } else {
-                                                            $$i > -1 &&
-                                                              (_vm.selectedCategories =
-                                                                $$a
-                                                                  .slice(0, $$i)
-                                                                  .concat(
-                                                                    $$a.slice(
-                                                                      $$i + 1
-                                                                    )
-                                                                  ))
-                                                          }
-                                                        } else {
-                                                          _vm.selectedCategories =
-                                                            $$c
-                                                        }
-                                                      },
-                                                    },
-                                                  }),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "label",
-                                                    {
+                                                          expression:
+                                                            "selectedCategories",
+                                                        },
+                                                      ],
                                                       staticClass:
-                                                        "form-check-label",
+                                                        "form-check-input",
                                                       attrs: {
-                                                        for: "flexCheckDefault",
+                                                        name: "type",
+                                                        type: "checkbox",
+                                                        id: "flexCheckDefault",
                                                       },
-                                                    },
-                                                    [
-                                                      _vm._v(
-                                                        "\n                                                                " +
-                                                          _vm._s(type.name) +
-                                                          "\n                                                            "
-                                                      ),
-                                                    ]
-                                                  ),
-                                                ]
-                                              )
-                                            }
-                                          ),
-                                          0
+                                                      domProps: {
+                                                        value: type.id,
+                                                        checked: Array.isArray(
+                                                          _vm.selectedCategories
+                                                        )
+                                                          ? _vm._i(
+                                                              _vm.selectedCategories,
+                                                              type.id
+                                                            ) > -1
+                                                          : _vm.selectedCategories,
+                                                      },
+                                                      on: {
+                                                        click: function (
+                                                          $event
+                                                        ) {
+                                                          return _vm.filterRestaurants(
+                                                            type.id
+                                                          )
+                                                        },
+                                                        change: function (
+                                                          $event
+                                                        ) {
+                                                          var $$a =
+                                                              _vm.selectedCategories,
+                                                            $$el =
+                                                              $event.target,
+                                                            $$c = $$el.checked
+                                                              ? true
+                                                              : false
+                                                          if (
+                                                            Array.isArray($$a)
+                                                          ) {
+                                                            var $$v = type.id,
+                                                              $$i = _vm._i(
+                                                                $$a,
+                                                                $$v
+                                                              )
+                                                            if ($$el.checked) {
+                                                              $$i < 0 &&
+                                                                (_vm.selectedCategories =
+                                                                  $$a.concat([
+                                                                    $$v,
+                                                                  ]))
+                                                            } else {
+                                                              $$i > -1 &&
+                                                                (_vm.selectedCategories =
+                                                                  $$a
+                                                                    .slice(
+                                                                      0,
+                                                                      $$i
+                                                                    )
+                                                                    .concat(
+                                                                      $$a.slice(
+                                                                        $$i + 1
+                                                                      )
+                                                                    ))
+                                                            }
+                                                          } else {
+                                                            _vm.selectedCategories =
+                                                              $$c
+                                                          }
+                                                        },
+                                                      },
+                                                    }),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "label",
+                                                      {
+                                                        staticClass:
+                                                          "form-check-label",
+                                                        attrs: {
+                                                          for: "flexCheckDefault",
+                                                        },
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          "\n                                                                " +
+                                                            _vm._s(type.name) +
+                                                            "\n                                                            "
+                                                        ),
+                                                      ]
+                                                    ),
+                                                  ]
+                                                )
+                                              }
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "router-link",
+                                              {
+                                                attrs: {
+                                                  restaurants:
+                                                    _vm.getRestaurants,
+                                                  to: { name: "restaurants" },
+                                                },
+                                              },
+                                              [_vm._v("Tutti i ristoranti")]
+                                            ),
+                                          ],
+                                          2
                                         ),
                                       ]),
                                     ]
@@ -64259,7 +64075,7 @@ var render = function () {
             ]
           ),
           _vm._v(" "),
-          _c("router-view"),
+          _c("router-view", { attrs: { restaurants: _vm.getRestaurants } }),
         ],
         1
       ),
@@ -80033,121 +79849,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/Restaurants.vue":
-/*!*************************************************!*\
-  !*** ./resources/js/components/Restaurants.vue ***!
-  \*************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Restaurants_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Restaurants.vue?vue&type=script&lang=js& */ "./resources/js/components/Restaurants.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _Restaurants_vue_vue_type_style_index_0_id_b2e8868a_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Restaurants.vue?vue&type=style&index=0&id=b2e8868a&lang=scss&scoped=true& */ "./resources/js/components/Restaurants.vue?vue&type=style&index=0&id=b2e8868a&lang=scss&scoped=true&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-/* harmony import */ var _Restaurants_vue_vue_type_custom_index_0_blockType_div_class_d_flex_20justify_content_end_20position_relative_20p_5_20mb_3__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Restaurants.vue?vue&type=custom&index=0&blockType=div&class=d-flex%20justify-content-end%20position-relative%20p-5%20mb-3 */ "./resources/js/components/Restaurants.vue?vue&type=custom&index=0&blockType=div&class=d-flex%20justify-content-end%20position-relative%20p-5%20mb-3");
-/* harmony import */ var _Restaurants_vue_vue_type_custom_index_0_blockType_div_class_d_flex_20justify_content_end_20position_relative_20p_5_20mb_3__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_Restaurants_vue_vue_type_custom_index_0_blockType_div_class_d_flex_20justify_content_end_20position_relative_20p_5_20mb_3__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _Restaurants_vue_vue_type_custom_index_1_blockType_div_class_row_20m_4__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Restaurants.vue?vue&type=custom&index=1&blockType=div&class=row%20m-4 */ "./resources/js/components/Restaurants.vue?vue&type=custom&index=1&blockType=div&class=row%20m-4");
-/* harmony import */ var _Restaurants_vue_vue_type_custom_index_1_blockType_div_class_row_20m_4__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_Restaurants_vue_vue_type_custom_index_1_blockType_div_class_row_20m_4__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _Restaurants_vue_vue_type_custom_index_2_blockType_div_class_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Restaurants.vue?vue&type=custom&index=2&blockType=div&class=container */ "./resources/js/components/Restaurants.vue?vue&type=custom&index=2&blockType=div&class=container");
-/* harmony import */ var _Restaurants_vue_vue_type_custom_index_2_blockType_div_class_container__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_Restaurants_vue_vue_type_custom_index_2_blockType_div_class_container__WEBPACK_IMPORTED_MODULE_5__);
-var render, staticRenderFns
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _Restaurants_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"],
-  render,
-  staticRenderFns,
-  false,
-  null,
-  "b2e8868a",
-  null
-  
-)
-
-/* custom blocks */
-
-if (typeof _Restaurants_vue_vue_type_custom_index_0_blockType_div_class_d_flex_20justify_content_end_20position_relative_20p_5_20mb_3__WEBPACK_IMPORTED_MODULE_3___default.a === 'function') _Restaurants_vue_vue_type_custom_index_0_blockType_div_class_d_flex_20justify_content_end_20position_relative_20p_5_20mb_3__WEBPACK_IMPORTED_MODULE_3___default()(component)
-
-if (typeof _Restaurants_vue_vue_type_custom_index_1_blockType_div_class_row_20m_4__WEBPACK_IMPORTED_MODULE_4___default.a === 'function') _Restaurants_vue_vue_type_custom_index_1_blockType_div_class_row_20m_4__WEBPACK_IMPORTED_MODULE_4___default()(component)
-
-if (typeof _Restaurants_vue_vue_type_custom_index_2_blockType_div_class_container__WEBPACK_IMPORTED_MODULE_5___default.a === 'function') _Restaurants_vue_vue_type_custom_index_2_blockType_div_class_container__WEBPACK_IMPORTED_MODULE_5___default()(component)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/Restaurants.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/Restaurants.vue?vue&type=custom&index=0&blockType=div&class=d-flex%20justify-content-end%20position-relative%20p-5%20mb-3":
-/*!***********************************************************************************************************************************************************!*\
-  !*** ./resources/js/components/Restaurants.vue?vue&type=custom&index=0&blockType=div&class=d-flex%20justify-content-end%20position-relative%20p-5%20mb-3 ***!
-  \***********************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-
-
-/***/ }),
-
-/***/ "./resources/js/components/Restaurants.vue?vue&type=custom&index=1&blockType=div&class=row%20m-4":
-/*!*******************************************************************************************************!*\
-  !*** ./resources/js/components/Restaurants.vue?vue&type=custom&index=1&blockType=div&class=row%20m-4 ***!
-  \*******************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-
-
-/***/ }),
-
-/***/ "./resources/js/components/Restaurants.vue?vue&type=custom&index=2&blockType=div&class=container":
-/*!*******************************************************************************************************!*\
-  !*** ./resources/js/components/Restaurants.vue?vue&type=custom&index=2&blockType=div&class=container ***!
-  \*******************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-
-
-/***/ }),
-
-/***/ "./resources/js/components/Restaurants.vue?vue&type=script&lang=js&":
-/*!**************************************************************************!*\
-  !*** ./resources/js/components/Restaurants.vue?vue&type=script&lang=js& ***!
-  \**************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Restaurants_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Restaurants.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Restaurants.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Restaurants_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/Restaurants.vue?vue&type=style&index=0&id=b2e8868a&lang=scss&scoped=true&":
-/*!***********************************************************************************************************!*\
-  !*** ./resources/js/components/Restaurants.vue?vue&type=style&index=0&id=b2e8868a&lang=scss&scoped=true& ***!
-  \***********************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Restaurants_vue_vue_type_style_index_0_id_b2e8868a_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--7-2!../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../node_modules/vue-loader/lib??vue-loader-options!./Restaurants.vue?vue&type=style&index=0&id=b2e8868a&lang=scss&scoped=true& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Restaurants.vue?vue&type=style&index=0&id=b2e8868a&lang=scss&scoped=true&");
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Restaurants_vue_vue_type_style_index_0_id_b2e8868a_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Restaurants_vue_vue_type_style_index_0_id_b2e8868a_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Restaurants_vue_vue_type_style_index_0_id_b2e8868a_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Restaurants_vue_vue_type_style_index_0_id_b2e8868a_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-
-
-/***/ }),
-
 /***/ "./resources/js/front.js":
 /*!*******************************!*\
   !*** ./resources/js/front.js ***!
@@ -80157,7 +79858,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue_braintree__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-braintree */ "./node_modules/vue-braintree/dist/vue-braintree.esm.js");
+/* harmony import */ var vue_braintree__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-braintree */ "./node_modules/vue-braintree/dist/vue-braintree.esm.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _router_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./router.js */ "./resources/js/router.js");
@@ -80167,7 +79868,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 
-vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_braintree__WEBPACK_IMPORTED_MODULE_4__["default"]); // import Axios from 'axios';
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_braintree__WEBPACK_IMPORTED_MODULE_0__["default"]); // import Axios from 'axios';
 // import App from "./views/App.vue";
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");

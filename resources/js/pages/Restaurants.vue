@@ -20,12 +20,10 @@
 					<img class="card-img d-none" :src="(restaurant.logo) ? restaurant.logo : 'img/loghi/generic-restaurant.jpg'" :alt="restaurant.name">
 					<div class="card-img-overlay d-flex flex-column">
 							<div class="card-body">
-								<router-link  @click.prevent="test(restaurant.id)" :to="{ name: 'menu' }">Menu</router-link>
-									<!-- <h6 class="text-white fw-bold menu-icon">
-										Menu 
-										<i class="fa-solid fa-utensils" ></i>
+								
+									<h6 class="text-white fw-bold menu-icon">
+										<router-link  @click.prevent="test(restaurant.id)" :to="{ name: 'menu' }">Menu<i class="fa-solid fa-utensils" ></i></router-link>
 									</h6>
-									<small class="card-meta mb-2">p. iva: {{restaurant.vat_number}}</small> -->
 										<h4 class="card-title mt-0 ">
 											{{restaurant.name}}
 										</h4>
