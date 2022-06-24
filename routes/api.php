@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Braintree\Gateway;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,3 +33,6 @@ Route::namespace('Api')
 Route::get('/users/{id}', 'Api\RestaurantController@show');
 
 Route::get('/filtered_restaurants/{ids}', 'Api\RestaurantController@filterRestaurants');
+
+Route::get('orders/token', 'Api\OrdersController@generate'); /* Per generare il token del pagamento */
+Route::post('orders/payment', 'Api\OrdersController@makePayment'); /* Per confermare il pagamento */
