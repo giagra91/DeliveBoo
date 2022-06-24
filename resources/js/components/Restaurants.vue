@@ -3,12 +3,11 @@
 	<div class="container">
 		<!-- carrello -->
 		<div class="d-flex justify-content-end position-relative p-5 mb-3">
-				
-				<div id="cart " class="w-25 position-absolute" v-if="checkCart">
-						<div v-for="(item, index) in cart" :key="index" >
-								<p>{{item.name}} - € {{item.price}}
-									<i @click.prevent="removeFromCart(item)" class="fa-solid fa-trash-can"></i>
-								</p>
+
+				<div id="cart" class="w-25 position-absolute" v-if="checkCart">
+						<div v-for="(item, index) in cart" :key="index" class="d-flex py-2">
+								<p>{{item.name}} - € {{item.price}}</p>
+								
 						</div>
 						<p v-if="totalPrice == 0"> Carrello vuoto</p>
 						<p v-else class="text-danger">Totale € {{totalPrice}}</p>
@@ -47,7 +46,10 @@
 	<div class="container">
 		<div class="row m-4 gap-3 " id="singleRestaurant" >					
 			<div class="col-3 rounded-3 p-4 my-food-card d-flex flex-column" v-for="(food, index) in restaurantMenu" :key="index">
-				<i @click.prevent="addToCart(food)" class="fa-solid fa-square-plus"></i>
+				<div class="icons mb-2">
+					<i @click.prevent="addToCart(food)" class="fa-solid fa-square-plus"></i>
+					<i @click.prevent="removeFromCart(food)" class="ms-2 fa-solid fa-circle-minus"></i>
+				</div>
 				<h5>{{food.name}}<span class="text-danger ms-2"> &euro;{{food.price}}</span></h5>
 				<p class="fst-italic">{{food.description}}</p>
 			</div>
@@ -91,8 +93,21 @@ export default {
 			this.checkCart = true;
 
 			let productInCart = { 
-				name : food.name, price : food.price
+				name : food.name, 
+				price : food.price,
 				};
+
+			// this.cart.forEach(item => {
+			// 	if (item.name === productInCart.name ) {
+			// 		console.log(item.price)
+			// 		item.price += item.price;
+			// 		item.quantity++;
+			// 		console.log(item.price)
+			// 		console.log(item.quantity)
+			// 	} else {
+			// 		this.cart.push(productInCart);
+			// 	}
+			// });
 
 			this.cart.push(productInCart);
 
