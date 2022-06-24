@@ -20,9 +20,9 @@
                                     </nav>
                                     <div class="tab-content mt-3" id="nav-tabContent">
                                         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                            <form class="row gx-2 gy-2 align-items-center">
-                                                <div class="col">
-                                                    <h5>Filtra per una o più categorie:</h5>
+                                            <div class="row gx-2 gy-2">
+                                                <h5>Filtra per una o più categorie:</h5>
+                                                <div class="col d-flex flex-wrap">
                                                     <div class="input-group-icon">
                                                         <div class="form-check mb-2" v-for="(type,index) in cookingTypes" :key="index">
                                                             <input @click="filterRestaurants(type.id)" v-model="selectedCategories" class="form-check-input" name="type" 
@@ -33,7 +33,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -41,10 +41,11 @@
                         </div>
                     </div>
                 </div>
+                <h4 class="text-white mx-4" v-if="selectedCategories.length > 0 && filteredRestaurants.length == 0">Non ci sono ristoranti per questa categoria</h4>
+
             </section>
 
             <Restaurants  :restaurants="getRestaurants" @hasClickedMenu="updateJumbo()" />
-
     </div>
 </div>
 </template>
