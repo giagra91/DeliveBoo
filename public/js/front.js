@@ -2278,6 +2278,43 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -31193,7 +31230,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".custom-video {\n  position: absolute;\n  top: 0;\n  left: 0;\n  -o-object-fit: cover;\n     object-fit: cover;\n  width: 100%;\n  height: 100%;\n}\n.btn-primary {\n  background-color: #FFB30E !important;\n  border-color: #FFB30E !important;\n}\n.bg-primary {\n  background-color: #FFB30E !important;\n}\n.wrapper {\n  margin: 10vh;\n}\n.card {\n  border: none;\n  transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);\n  overflow: hidden;\n  border-radius: 20px;\n  min-height: 450px;\n  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);\n}\n@media (max-width: 768px) {\n.card {\n    min-height: 350px;\n}\n}\n@media (max-width: 420px) {\n.card {\n    min-height: 300px;\n}\n}\n.card.card-has-bg {\n  transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);\n  background-size: 120%;\n  background-repeat: no-repeat;\n  background-position: center center;\n}\n.card.card-has-bg:before {\n  content: \"\";\n  position: absolute;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  background: inherit;\n  -moz-filter: grayscale(100%);\n  -ms-filter: grayscale(100%);\n  -o-filter: grayscale(100%);\n  filter: grayscale(100%);\n}\n.card.card-has-bg:hover {\n  transform: scale(0.98);\n  box-shadow: 0 0 5px -2px rgba(0, 0, 0, 0.3);\n  background-size: 130%;\n  transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);\n}\n.card.card-has-bg:hover .card-img-overlay {\n  transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);\n  background: rgb(146, 117, 36);\n  background: linear-gradient(0deg, rgba(103, 114, 4, 0.5) 0%, rgb(187, 59, 20) 100%);\n}\n.card .card-footer {\n  background: none;\n  border-top: none;\n}\n.card .card-footer .media img {\n  border: solid 3px rgba(255, 255, 255, 0.3);\n}\n.card .card-meta {\n  color: #bd2626;\n}\n.card .card-body {\n  transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);\n}\n.card:hover {\n  cursor: pointer;\n  transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);\n}\n.card:hover .card-body {\n  margin-top: 30px;\n  transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);\n}\n.card .card-img-overlay {\n  transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);\n  background: rgb(165, 179, 44);\n  background: linear-gradient(0deg, rgba(165, 48, 19, 0.379) 0%, rgb(189, 177, 68) 100%);\n}\nul.ks-cboxtags {\n  list-style: none;\n  padding: 20px;\n}\nul.ks-cboxtags li {\n  display: inline;\n}\nul.ks-cboxtags li label {\n  display: inline-block;\n  background-color: rgba(255, 255, 255, 0.9);\n  border: 2px solid rgba(139, 139, 139, 0.3);\n  color: #adadad;\n  border-radius: 25px;\n  white-space: nowrap;\n  margin: 3px 0px;\n  -webkit-touch-callout: none;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  user-select: none;\n  -webkit-tap-highlight-color: transparent;\n  transition: all 0.2s;\n}\nul.ks-cboxtags li label {\n  padding: 8px 12px;\n  cursor: pointer;\n}\nul.ks-cboxtags li label::before {\n  display: inline-block;\n  font-style: normal;\n  font-variant: normal;\n  text-rendering: auto;\n  -webkit-font-smoothing: antialiased;\n  font-family: \"Font Awesome 5 Free\";\n  font-weight: 900;\n  font-size: 12px;\n  padding: 2px 6px 2px 2px;\n  content: \"\\F067\";\n  transition: transform 0.3s ease-in-out;\n}\nul.ks-cboxtags li input[type=checkbox]:checked + label::before {\n  content: \"\\F00C\";\n  transform: rotate(-360deg);\n  transition: transform 0.3s ease-in-out;\n}\nul.ks-cboxtags li input[type=checkbox]:checked + label {\n  border: 2px solid #1bdbf8;\n  background-color: #12bbd4;\n  color: #fff;\n  transition: all 0.2s;\n}\nul.ks-cboxtags li input[type=checkbox] {\n  display: absolute;\n}\nul.ks-cboxtags li input[type=checkbox] {\n  position: absolute;\n  opacity: 0;\n}\nul.ks-cboxtags li input[type=checkbox]:focus + label {\n  border: 2px solid #e9a1ff;\n}", ""]);
+exports.push([module.i, ".custom-video {\n  position: absolute;\n  top: 0;\n  left: 0;\n  -o-object-fit: cover;\n     object-fit: cover;\n  width: 100%;\n  height: 100%;\n}\nul {\n  list-style-type: none;\n}\nli > h2, .footer h1 {\n  color: #f75555;\n  font-family: \"Source Sans Pro\";\n}\n.footer {\n  background-image: url(\"https://qul.imgix.net/087432a9-1412-4fcf-8df5-a0ebf917cf80/579807_sld.jpg\");\n  background-size: cover;\n  padding-top: 7rem;\n  padding-bottom: 7rem;\n  position: relative;\n  background-repeat: no-repeat;\n  height: 700px;\n  background-position: bottom;\n  font-size: 16px;\n  font-weight: 400;\n  line-height: 24px;\n  color: rgb(33, 37, 41);\n  text-align: start;\n  font-family: sans-serif;\n}\n.footer-row {\n  --bs-gutter-x: 1.5rem;\n  --bs-gutter-y: 0;\n  display: flex;\n  flex-wrap: wrap;\n  margin-top: calc(-1 * var(--bs-gutter-y));\n  margin-right: 37px;\n  margin-left: 37px;\n}\n.btn-primary {\n  background-color: #FFB30E !important;\n  border-color: #FFB30E !important;\n}\n.bg-primary {\n  background-color: #FFB30E !important;\n}\n.wrapper {\n  margin: 10vh;\n}\n.card {\n  border: none;\n  transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);\n  overflow: hidden;\n  border-radius: 20px;\n  min-height: 450px;\n  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);\n}\n@media (max-width: 768px) {\n.card {\n    min-height: 350px;\n}\n}\n@media (max-width: 420px) {\n.card {\n    min-height: 300px;\n}\n}\n.card.card-has-bg {\n  transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);\n  background-size: 120%;\n  background-repeat: no-repeat;\n  background-position: center center;\n}\n.card.card-has-bg:before {\n  content: \"\";\n  position: absolute;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  background: inherit;\n  -moz-filter: grayscale(100%);\n  -ms-filter: grayscale(100%);\n  -o-filter: grayscale(100%);\n  filter: grayscale(100%);\n}\n.card.card-has-bg:hover {\n  transform: scale(0.98);\n  box-shadow: 0 0 5px -2px rgba(0, 0, 0, 0.3);\n  background-size: 130%;\n  transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);\n}\n.card.card-has-bg:hover .card-img-overlay {\n  transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);\n  background: rgb(146, 117, 36);\n  background: linear-gradient(0deg, rgba(103, 114, 4, 0.5) 0%, rgb(187, 59, 20) 100%);\n}\n.card .card-footer {\n  background: none;\n  border-top: none;\n}\n.card .card-footer .media img {\n  border: solid 3px rgba(255, 255, 255, 0.3);\n}\n.card .card-meta {\n  color: #bd2626;\n}\n.card .card-body {\n  transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);\n}\n.card:hover {\n  cursor: pointer;\n  transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);\n}\n.card:hover .card-body {\n  margin-top: 30px;\n  transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);\n}\n.card .card-img-overlay {\n  transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);\n  background: rgb(165, 179, 44);\n  background: linear-gradient(0deg, rgba(165, 48, 19, 0.379) 0%, rgb(189, 177, 68) 100%);\n}\nul.ks-cboxtags {\n  list-style: none;\n  padding: 20px;\n}\nul.ks-cboxtags li {\n  display: inline;\n}\nul.ks-cboxtags li label {\n  display: inline-block;\n  background-color: rgba(255, 255, 255, 0.9);\n  border: 2px solid rgba(139, 139, 139, 0.3);\n  color: #adadad;\n  border-radius: 25px;\n  white-space: nowrap;\n  margin: 3px 0px;\n  -webkit-touch-callout: none;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  user-select: none;\n  -webkit-tap-highlight-color: transparent;\n  transition: all 0.2s;\n}\nul.ks-cboxtags li label {\n  padding: 8px 12px;\n  cursor: pointer;\n}\nul.ks-cboxtags li label::before {\n  display: inline-block;\n  font-style: normal;\n  font-variant: normal;\n  text-rendering: auto;\n  -webkit-font-smoothing: antialiased;\n  font-family: \"Font Awesome 5 Free\";\n  font-weight: 900;\n  font-size: 12px;\n  padding: 2px 6px 2px 2px;\n  content: \"\\F067\";\n  transition: transform 0.3s ease-in-out;\n}\nul.ks-cboxtags li input[type=checkbox]:checked + label::before {\n  content: \"\\F00C\";\n  transform: rotate(-360deg);\n  transition: transform 0.3s ease-in-out;\n}\nul.ks-cboxtags li input[type=checkbox]:checked + label {\n  border: 2px solid #1bdbf8;\n  background-color: #12bbd4;\n  color: #fff;\n  transition: all 0.2s;\n}\nul.ks-cboxtags li input[type=checkbox] {\n  display: absolute;\n}\nul.ks-cboxtags li input[type=checkbox] {\n  position: absolute;\n  opacity: 0;\n}\nul.ks-cboxtags li input[type=checkbox]:focus + label {\n  border: 2px solid #e9a1ff;\n}", ""]);
 
 // exports
 
@@ -64163,6 +64200,8 @@ var render = function () {
           ),
           _vm._v(" "),
           _c("router-view", { attrs: { restaurants: _vm.getRestaurants } }),
+          _vm._v(" "),
+          _vm._m(3),
         ],
         1
       ),
@@ -64233,6 +64272,62 @@ var staticRenderFns = [
           ),
         ]
       ),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("section", { staticClass: "footer" }, [
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "row footer-row justify-content-end" }, [
+          _c("div", { staticClass: "col-6 text-end " }, [
+            _c("h1", { staticClass: "text-white" }, [_vm._v("About Us:")]),
+            _vm._v(" "),
+            _c("ul", [
+              _c("li", [
+                _c("h2", [
+                  _vm._v(
+                    "\n                                        Gianfranco Grande\n                                    "
+                  ),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _c("h2", [
+                  _vm._v(
+                    "\n                                        Matteo Anselmo\n                                    "
+                  ),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _c("h2", [
+                  _vm._v(
+                    "\n                                        Viviana Cifarelli\n                                    "
+                  ),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _c("h2", [
+                  _vm._v(
+                    "\n                                        Matteo Lopez\n                                    "
+                  ),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _c("h2", [
+                  _vm._v(
+                    "\n                                        Alessandro Ordetti\n                                    "
+                  ),
+                ]),
+              ]),
+            ]),
+          ]),
+        ]),
+      ]),
     ])
   },
 ]

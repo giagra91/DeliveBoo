@@ -50,6 +50,43 @@
             
             <router-view :restaurants="getRestaurants"></router-view>
 
+            <section class="footer">
+                <div class="container">
+                    <div class="row footer-row justify-content-end">
+                        <div class="col-6 text-end ">
+                            <h1 class="text-white">About Us:</h1> 
+                            <ul>
+                                <li>
+                                    <h2>
+                                        Gianfranco Grande
+                                    </h2>
+                                </li>
+                                                                <li>
+                                    <h2>
+                                        Matteo Anselmo
+                                    </h2>
+                                </li>
+                                                                <li>
+                                    <h2>
+                                        Viviana Cifarelli
+                                    </h2>
+                                </li>
+                                                                <li>
+                                    <h2>
+                                        Matteo Lopez
+                                    </h2>
+                                </li>
+                                                                <li>
+                                    <h2>
+                                        Alessandro Ordetti
+                                    </h2>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
 
             <!-- <Restaurants   @hasClickedMenu="updateJumbo()" /> -->
     </div>
@@ -151,6 +188,42 @@ left: 0;
 object-fit: cover;
 width: 100%;
 height: 100%;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li>h2, .footer h1{
+    color: #f75555;
+    font-family: 'Source Sans Pro';
+}
+
+.footer {
+  background-image: url('https://qul.imgix.net/087432a9-1412-4fcf-8df5-a0ebf917cf80/579807_sld.jpg');
+  background-size: cover;
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+  position: relative;
+  background-repeat: no-repeat;
+  height: 700px;
+  background-position: bottom;
+  font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: rgb(33, 37, 41);
+    text-align: start;
+    font-family: sans-serif;
+}
+
+.footer-row {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(-1 * var(--bs-gutter-y));
+  margin-right: 37px;
+  margin-left: 37px;
 }
 
 .btn-primary{
