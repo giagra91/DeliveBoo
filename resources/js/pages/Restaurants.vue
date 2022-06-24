@@ -2,7 +2,7 @@
 	<div>
 	<div class="container">
 		<!-- carrello -->
-		<div class="d-flex justify-content-end position-relative p-5 mb-3">
+		<!-- <div class="d-flex justify-content-end position-relative p-5 mb-3">
 
 				<div id="cart" class="w-25 position-absolute" v-if="checkCart">
 						<div v-for="(item, index) in cart" :key="index" class="d-flex py-2">
@@ -12,7 +12,7 @@
 						<p v-if="totalPrice == 0"> Carrello vuoto</p>
 						<p v-else class="text-danger">Totale € {{totalPrice}}</p>
 				</div>
-		</div>
+		</div> -->
 
 		<div class="row m-4" id="allRestaurants" >
 			<div v-for="(restaurant, index) in restaurants" :key="index" class="col-sm-12 col-md-6 col-lg-4 mb-4" >
@@ -22,10 +22,10 @@
 							<div class="card-body">
 								
 									<h6 class="text-white fw-bold menu-icon">
-										<router-link  @click.prevent="test(restaurant.id)" :to="{ name: 'menu' }">Menu<i class="fa-solid fa-utensils" ></i></router-link>
+										<router-link :restaurantMenu="restaurantMenu" @click.prevent="test(restaurant.id)" :to="{ name: 'menu', params : { id : index} }">Menu<i class="fa-solid fa-utensils" ></i></router-link>
 									</h6>
 										<h4 class="card-title mt-0 ">
-											{{restaurant.name}}
+											{{restaurant.name}} {{index}}
 										</h4>
 									<small><i class="far fa-clock"></i> {{restaurant.email}}</small>
 							</div>
@@ -33,7 +33,7 @@
 									<div class="media">
 											<img class="mr-3 rounded-circle" :src="(restaurant.logo) ? restaurant.logo : 'img/loghi/generic-restaurant.jpg'" :alt="restaurant.name" style="max-width:50px">
 											<div class="media-body">
-													<h6 class="my-0 text-white d-block">{{restaurant.address}}</h6>
+												<h6 class="my-0 text-white d-block">{{restaurant.address}}</h6>
 											</div>
 									</div>
 							</div>
@@ -43,7 +43,7 @@
 		</div>
 	</div>
 	
-	<div class="container">
+	<!-- <div class="container">
 		<div class="row m-4 gap-3 " id="singleRestaurant" >					
 			<div class="col-3 rounded-3 p-4 my-food-card d-flex flex-column" v-for="(food, index) in restaurantMenu" :key="index">
 				<div class="icons mb-2">
@@ -54,7 +54,7 @@
 				<p class="fst-italic">{{food.description}}</p>
 			</div>
 		</div>
-	</div>
+	</div> -->
 
 	
 
