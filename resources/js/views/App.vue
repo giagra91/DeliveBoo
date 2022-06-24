@@ -31,6 +31,8 @@
                                                                 {{type.name}}
                                                             </label>
                                                         </div>
+                                                        <!-- <router-link :to="{name: 'restaurants', props: { restaurants: getRestaurants } }">Tutti i ristoranti</router-link>  -->
+
                                                     </div>
                                                 </div>
                                             </form>
@@ -42,8 +44,11 @@
                     </div>
                 </div>
             </section>
+            
+            <router-view></router-view>
 
-            <Restaurants  :restaurants="getRestaurants" @hasClickedMenu="updateJumbo()" />
+
+            <!-- <Restaurants   @hasClickedMenu="updateJumbo()" /> -->
     </div>
 </div>
 </template>

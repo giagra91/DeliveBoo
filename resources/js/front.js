@@ -6,20 +6,18 @@ import vueBraintree from 'vue-braintree';
 
 Vue.use(vueBraintree);
 
-window.Vue = require('vue');
-import Vue from 'vue';
-
 // import Axios from 'axios';
 // import App from "./views/App.vue";
 
 window.Vue = require('vue');
 import Vue from 'vue';
 
-
+import router from './router.js';
 
 import App from "./views/App.vue";
 
 const app = new Vue({
     el: '#root',
+    router: router,
     render: h => h(App),
 });
