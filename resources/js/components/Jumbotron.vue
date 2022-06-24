@@ -1,5 +1,16 @@
 <template>
 <div id="jumbotron">
+
+
+    <section class="hero">
+      <div class="video-wrapper">
+        <video autoplay="" loop="" muted="" class="custom-video" poster="">
+          <source src="video/production_ID_3769033.mp4" type="video/mp4">
+        </video> 
+      </div>
+    </section>
+
+
     <section class="py-0 bg-primary-gradient">
         <div class="container">
           <div class="row justify-content-center g-0">
@@ -21,7 +32,8 @@
         </div><!-- end of .container-->
       </section>
 
-
+      <section class="BgImage">
+      </section>
 </div>
 </template>
 
@@ -58,6 +70,29 @@ export default {
 </script>
 
 <style scoped>
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding-top: 24.542rem;
+  padding-bottom: 24.542rem;
+}
 
+.custom-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+}
+
+.BgImage {
+  background-image: url('https://static.winenews.it/2019/12/ThFork.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 500px;
+}
 
 </style>

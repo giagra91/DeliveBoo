@@ -3,6 +3,9 @@
         <Header />
         <div id="my-wrapper">
             <!-- jumbo -->
+
+
+
             <Jumbotron />
             <section class="py-5 overflow-hidden bg-primary" id="home" v-show="!isMenuClicked">
                 <div class="container">
@@ -140,6 +143,15 @@ export default {
 </script>
 
 <style lang="scss">
+
+.custom-video {
+position: absolute;
+top: 0;
+left: 0;
+object-fit: cover;
+width: 100%;
+height: 100%;
+}
 
 .btn-primary{
     background-color: #FFB30E !important;

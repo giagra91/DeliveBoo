@@ -1970,6 +1970,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Jumbotron',
   data: function data() {
@@ -2208,6 +2220,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Header_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/Header.vue */ "./resources/js/components/Header.vue");
 /* harmony import */ var _components_Jumbotron_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Jumbotron.vue */ "./resources/js/components/Jumbotron.vue");
 /* harmony import */ var _components_Main_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Main.vue */ "./resources/js/components/Main.vue");
+//
+//
+//
 //
 //
 //
@@ -31178,7 +31193,26 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".btn-primary {\n  background-color: #FFB30E !important;\n  border-color: #FFB30E !important;\n}\n.bg-primary {\n  background-color: #FFB30E !important;\n}\n.wrapper {\n  margin: 10vh;\n}\n.card {\n  border: none;\n  transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);\n  overflow: hidden;\n  border-radius: 20px;\n  min-height: 450px;\n  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);\n}\n@media (max-width: 768px) {\n.card {\n    min-height: 350px;\n}\n}\n@media (max-width: 420px) {\n.card {\n    min-height: 300px;\n}\n}\n.card.card-has-bg {\n  transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);\n  background-size: 120%;\n  background-repeat: no-repeat;\n  background-position: center center;\n}\n.card.card-has-bg:before {\n  content: \"\";\n  position: absolute;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  background: inherit;\n  -moz-filter: grayscale(100%);\n  -ms-filter: grayscale(100%);\n  -o-filter: grayscale(100%);\n  filter: grayscale(100%);\n}\n.card.card-has-bg:hover {\n  transform: scale(0.98);\n  box-shadow: 0 0 5px -2px rgba(0, 0, 0, 0.3);\n  background-size: 130%;\n  transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);\n}\n.card.card-has-bg:hover .card-img-overlay {\n  transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);\n  background: rgb(146, 117, 36);\n  background: linear-gradient(0deg, rgba(103, 114, 4, 0.5) 0%, rgb(187, 59, 20) 100%);\n}\n.card .card-footer {\n  background: none;\n  border-top: none;\n}\n.card .card-footer .media img {\n  border: solid 3px rgba(255, 255, 255, 0.3);\n}\n.card .card-meta {\n  color: #bd2626;\n}\n.card .card-body {\n  transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);\n}\n.card:hover {\n  cursor: pointer;\n  transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);\n}\n.card:hover .card-body {\n  margin-top: 30px;\n  transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);\n}\n.card .card-img-overlay {\n  transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);\n  background: rgb(165, 179, 44);\n  background: linear-gradient(0deg, rgba(165, 48, 19, 0.379) 0%, rgb(189, 177, 68) 100%);\n}\nul.ks-cboxtags {\n  list-style: none;\n  padding: 20px;\n}\nul.ks-cboxtags li {\n  display: inline;\n}\nul.ks-cboxtags li label {\n  display: inline-block;\n  background-color: rgba(255, 255, 255, 0.9);\n  border: 2px solid rgba(139, 139, 139, 0.3);\n  color: #adadad;\n  border-radius: 25px;\n  white-space: nowrap;\n  margin: 3px 0px;\n  -webkit-touch-callout: none;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  user-select: none;\n  -webkit-tap-highlight-color: transparent;\n  transition: all 0.2s;\n}\nul.ks-cboxtags li label {\n  padding: 8px 12px;\n  cursor: pointer;\n}\nul.ks-cboxtags li label::before {\n  display: inline-block;\n  font-style: normal;\n  font-variant: normal;\n  text-rendering: auto;\n  -webkit-font-smoothing: antialiased;\n  font-family: \"Font Awesome 5 Free\";\n  font-weight: 900;\n  font-size: 12px;\n  padding: 2px 6px 2px 2px;\n  content: \"\\F067\";\n  transition: transform 0.3s ease-in-out;\n}\nul.ks-cboxtags li input[type=checkbox]:checked + label::before {\n  content: \"\\F00C\";\n  transform: rotate(-360deg);\n  transition: transform 0.3s ease-in-out;\n}\nul.ks-cboxtags li input[type=checkbox]:checked + label {\n  border: 2px solid #1bdbf8;\n  background-color: #12bbd4;\n  color: #fff;\n  transition: all 0.2s;\n}\nul.ks-cboxtags li input[type=checkbox] {\n  display: absolute;\n}\nul.ks-cboxtags li input[type=checkbox] {\n  position: absolute;\n  opacity: 0;\n}\nul.ks-cboxtags li input[type=checkbox]:focus + label {\n  border: 2px solid #e9a1ff;\n}", ""]);
+exports.push([module.i, ".custom-video {\n  position: absolute;\n  top: 0;\n  left: 0;\n  -o-object-fit: cover;\n     object-fit: cover;\n  width: 100%;\n  height: 100%;\n}\n.btn-primary {\n  background-color: #FFB30E !important;\n  border-color: #FFB30E !important;\n}\n.bg-primary {\n  background-color: #FFB30E !important;\n}\n.wrapper {\n  margin: 10vh;\n}\n.card {\n  border: none;\n  transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);\n  overflow: hidden;\n  border-radius: 20px;\n  min-height: 450px;\n  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);\n}\n@media (max-width: 768px) {\n.card {\n    min-height: 350px;\n}\n}\n@media (max-width: 420px) {\n.card {\n    min-height: 300px;\n}\n}\n.card.card-has-bg {\n  transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);\n  background-size: 120%;\n  background-repeat: no-repeat;\n  background-position: center center;\n}\n.card.card-has-bg:before {\n  content: \"\";\n  position: absolute;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  background: inherit;\n  -moz-filter: grayscale(100%);\n  -ms-filter: grayscale(100%);\n  -o-filter: grayscale(100%);\n  filter: grayscale(100%);\n}\n.card.card-has-bg:hover {\n  transform: scale(0.98);\n  box-shadow: 0 0 5px -2px rgba(0, 0, 0, 0.3);\n  background-size: 130%;\n  transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);\n}\n.card.card-has-bg:hover .card-img-overlay {\n  transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);\n  background: rgb(146, 117, 36);\n  background: linear-gradient(0deg, rgba(103, 114, 4, 0.5) 0%, rgb(187, 59, 20) 100%);\n}\n.card .card-footer {\n  background: none;\n  border-top: none;\n}\n.card .card-footer .media img {\n  border: solid 3px rgba(255, 255, 255, 0.3);\n}\n.card .card-meta {\n  color: #bd2626;\n}\n.card .card-body {\n  transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);\n}\n.card:hover {\n  cursor: pointer;\n  transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);\n}\n.card:hover .card-body {\n  margin-top: 30px;\n  transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);\n}\n.card .card-img-overlay {\n  transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);\n  background: rgb(165, 179, 44);\n  background: linear-gradient(0deg, rgba(165, 48, 19, 0.379) 0%, rgb(189, 177, 68) 100%);\n}\nul.ks-cboxtags {\n  list-style: none;\n  padding: 20px;\n}\nul.ks-cboxtags li {\n  display: inline;\n}\nul.ks-cboxtags li label {\n  display: inline-block;\n  background-color: rgba(255, 255, 255, 0.9);\n  border: 2px solid rgba(139, 139, 139, 0.3);\n  color: #adadad;\n  border-radius: 25px;\n  white-space: nowrap;\n  margin: 3px 0px;\n  -webkit-touch-callout: none;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  user-select: none;\n  -webkit-tap-highlight-color: transparent;\n  transition: all 0.2s;\n}\nul.ks-cboxtags li label {\n  padding: 8px 12px;\n  cursor: pointer;\n}\nul.ks-cboxtags li label::before {\n  display: inline-block;\n  font-style: normal;\n  font-variant: normal;\n  text-rendering: auto;\n  -webkit-font-smoothing: antialiased;\n  font-family: \"Font Awesome 5 Free\";\n  font-weight: 900;\n  font-size: 12px;\n  padding: 2px 6px 2px 2px;\n  content: \"\\F067\";\n  transition: transform 0.3s ease-in-out;\n}\nul.ks-cboxtags li input[type=checkbox]:checked + label::before {\n  content: \"\\F00C\";\n  transform: rotate(-360deg);\n  transition: transform 0.3s ease-in-out;\n}\nul.ks-cboxtags li input[type=checkbox]:checked + label {\n  border: 2px solid #1bdbf8;\n  background-color: #12bbd4;\n  color: #fff;\n  transition: all 0.2s;\n}\nul.ks-cboxtags li input[type=checkbox] {\n  display: absolute;\n}\nul.ks-cboxtags li input[type=checkbox] {\n  position: absolute;\n  opacity: 0;\n}\nul.ks-cboxtags li input[type=checkbox]:focus + label {\n  border: 2px solid #e9a1ff;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Jumbotron.vue?vue&type=style&index=0&id=0b8439d1&scoped=true&lang=css&":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Jumbotron.vue?vue&type=style&index=0&id=0b8439d1&scoped=true&lang=css& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.hero[data-v-0b8439d1] {\r\n  position: relative;\r\n  overflow: hidden;\r\n  padding-top: 24.542rem;\r\n  padding-bottom: 24.542rem;\n}\n.custom-video[data-v-0b8439d1] {\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  -o-object-fit: cover;\r\n     object-fit: cover;\r\n  width: 100%;\r\n  height: 100%;\r\n  background-position: center;\n}\n.BgImage[data-v-0b8439d1] {\r\n  background-image: url('https://static.winenews.it/2019/12/ThFork.jpg');\r\n  background-repeat: no-repeat;\r\n  background-size: cover;\r\n  background-attachment: fixed;\r\n  height: 500px;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -62461,6 +62495,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Jumbotron.vue?vue&type=style&index=0&id=0b8439d1&scoped=true&lang=css&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Jumbotron.vue?vue&type=style&index=0&id=0b8439d1&scoped=true&lang=css& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./Jumbotron.vue?vue&type=style&index=0&id=0b8439d1&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Jumbotron.vue?vue&type=style&index=0&id=0b8439d1&scoped=true&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/lib/addStyles.js":
 /*!****************************************************!*\
   !*** ./node_modules/style-loader/lib/addStyles.js ***!
@@ -63484,6 +63548,27 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "jumbotron" } }, [
+    _c("section", { staticClass: "hero" }, [
+      _c("div", { staticClass: "video-wrapper" }, [
+        _c(
+          "video",
+          {
+            staticClass: "custom-video",
+            attrs: { autoplay: "", loop: "", muted: "", poster: "" },
+            domProps: { muted: true },
+          },
+          [
+            _c("source", {
+              attrs: {
+                src: "video/production_ID_3769033.mp4",
+                type: "video/mp4",
+              },
+            }),
+          ]
+        ),
+      ]),
+    ]),
+    _vm._v(" "),
     _c("section", { staticClass: "py-0 bg-primary-gradient" }, [
       _c("div", { staticClass: "container" }, [
         _c("div", { staticClass: "row justify-content-center g-0" }, [
@@ -63525,6 +63610,8 @@ var render = function () {
         ]),
       ]),
     ]),
+    _vm._v(" "),
+    _c("section", { staticClass: "BgImage" }),
   ])
 }
 var staticRenderFns = [
@@ -79722,7 +79809,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Jumbotron_vue_vue_type_template_id_0b8439d1_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Jumbotron.vue?vue&type=template&id=0b8439d1&scoped=true& */ "./resources/js/components/Jumbotron.vue?vue&type=template&id=0b8439d1&scoped=true&");
 /* harmony import */ var _Jumbotron_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Jumbotron.vue?vue&type=script&lang=js& */ "./resources/js/components/Jumbotron.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _Jumbotron_vue_vue_type_style_index_0_id_0b8439d1_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Jumbotron.vue?vue&type=style&index=0&id=0b8439d1&scoped=true&lang=css& */ "./resources/js/components/Jumbotron.vue?vue&type=style&index=0&id=0b8439d1&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -79730,7 +79819,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _Jumbotron_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _Jumbotron_vue_vue_type_template_id_0b8439d1_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
   _Jumbotron_vue_vue_type_template_id_0b8439d1_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -79759,6 +79848,22 @@ component.options.__file = "resources/js/components/Jumbotron.vue"
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Jumbotron_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Jumbotron.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Jumbotron.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Jumbotron_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Jumbotron.vue?vue&type=style&index=0&id=0b8439d1&scoped=true&lang=css&":
+/*!********************************************************************************************************!*\
+  !*** ./resources/js/components/Jumbotron.vue?vue&type=style&index=0&id=0b8439d1&scoped=true&lang=css& ***!
+  \********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Jumbotron_vue_vue_type_style_index_0_id_0b8439d1_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./Jumbotron.vue?vue&type=style&index=0&id=0b8439d1&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Jumbotron.vue?vue&type=style&index=0&id=0b8439d1&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Jumbotron_vue_vue_type_style_index_0_id_0b8439d1_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Jumbotron_vue_vue_type_style_index_0_id_0b8439d1_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Jumbotron_vue_vue_type_style_index_0_id_0b8439d1_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Jumbotron_vue_vue_type_style_index_0_id_0b8439d1_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+
 
 /***/ }),
 
@@ -80198,8 +80303,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Utente\Desktop\proj-finale\DeliveBoo\resources\js\front.js */"./resources/js/front.js");
-module.exports = __webpack_require__(/*! C:\Users\Utente\Desktop\proj-finale\DeliveBoo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\aless\Documents\Boolean\DeliveBoo-2\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\aless\Documents\Boolean\DeliveBoo-2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
