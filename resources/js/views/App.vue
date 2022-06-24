@@ -45,7 +45,7 @@
                 </div>
             </section>
             
-            <router-view :restaurants="getRestaurants"></router-view>
+            <router-view  :restaurants="getRestaurants"></router-view>
 
 
             <!-- <Restaurants   @hasClickedMenu="updateJumbo()" /> -->

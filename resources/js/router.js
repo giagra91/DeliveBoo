@@ -12,7 +12,7 @@ const router = new VueRouter({
 	mode: 'history',
 	routes : [
 			{
-					path: '/menu',
+					path: '/menu/:id',
 					name: 'menu',
 					component: Menu
 			},
