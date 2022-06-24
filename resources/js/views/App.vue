@@ -30,34 +30,30 @@
                                     </div>
                                     </nav>
                                     <div class="tab-content mt-3" id="nav-tabContent">
-                                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                        <form class="row gx-2 gy-2 align-items-center">
-                                            <div class="col">
-                                                <div class="input-group-icon"><i class="fas fa-map-marker-alt text-danger input-box-icon"></i>
-                                                    <select class="form-select" aria-label="Default select example" v-model='selectedItem' @change="getSingleRestaurant()">
-                                                        <option value=" ">Tutti i Ristoranti</option>
-                                                        <option value="1">Giapponese</option>
-                                                        <option value="2">Cinese</option>
-                                                        <option value="3">Indiano</option>
-                                                        <option value="4">Pesce</option>
-                                                        <option value="5">Carne</option>
-                                                        <option value="6">Pizza</option>
-                                                        <option value="7">Italiano</option>
-                                                        <option value="8">Messicano</option>
-                                                        <option value="10">Fusion</option>
-                                                        <option value="11">Gourmet</option>
-                                                        <option value="12">Greco</option>
-                                                    </select>
+                                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                            <div class="row gx-2 gy-2">
+                                                <h5>Filtra per una o più categorie:</h5>
+                                                <div class="col d-flex flex-wrap">
+                                                    <div class="input-group-icon">
+                                                        <div class="form-check mb-2" v-for="(type,index) in cookingTypes" :key="index">
+                                                            <input @click="filterRestaurants(type.id)" v-model="selectedCategories" class="form-check-input" name="type" 
+                                                            type="checkbox"  :value="type.id" id="flexCheckDefault" >
+                                                            <label class="form-check-label" for="flexCheckDefault">
+                                                                {{type.name}}
+                                                            </label>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </form>
-                                    </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <h4 class="text-white mx-4" v-if="selectedCategories.length > 0 && filteredRestaurants.length == 0">Non ci sono ristoranti per questa categoria</h4>
+
             </section>
     
             <div class="container">
@@ -91,23 +87,7 @@
             </div>
         </div>
 
-        <div class="container">
-            <div class="row m-4 gap-3 d-none" id="singleRestaurant" >
-                    
-                <h2 class="fw-bold text-uppercase">{{restaurantMenu.name}}</h2>
-                    <div class="col-3 bg-primary rounded-3" v-for="(food, index) in restaurantMenu.food_items" :key="index">
-                    <p>{{food.name}}</p>
-                    <p>{{food.description}}</p>
-                    <button class="btn btn-success" @click="addToCart(food)">Aggiungi</button>
-                    <button class="btn btn-danger" @click="removeFromCart(food)">Rimuovi</button>
-                </div>
-                <button @click="checkDisplay()">change</button>
-            </div>
-        </div>
-
-
-
-            
+            <Restaurants  :restaurants="getRestaurants" @hasClickedMenu="updateJumbo()" />
     </div>
 </template>
 
