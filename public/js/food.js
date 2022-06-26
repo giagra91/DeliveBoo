@@ -104,7 +104,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\esercizi boolean\DeliveBoo-1\resources\js\food.js */"./resources/js/food.js");
+module.exports = __webpack_require__(/*! C:\Users\aless\Documents\Boolean\DeliveBoo-2\resources\js\food.js */"./resources/js/food.js");
 
 
 /***/ })

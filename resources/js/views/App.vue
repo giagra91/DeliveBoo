@@ -54,34 +54,6 @@
                 <div class="container">
                     <div class="row footer-row justify-content-end">
                         <div class="col-6 text-end ">
-                            <h1 class="text-white">About Us:</h1>
-                            <ul>
-                                <li>
-                                    <h2>
-                                        Gianfranco Grande
-                                    </h2>
-                                </li>
-                                                                <li>
-                                    <h2>
-                                        Matteo Anselmo
-                                    </h2>
-                                </li>
-                                                                <li>
-                                    <h2>
-                                        Viviana Cifarelli
-                                    </h2>
-                                </li>
-                                                                <li>
-                                    <h2>
-                                        Matteo Lopez
-                                    </h2>
-                                </li>
-                                                                <li>
-                                    <h2>
-                                        Alessandro Ordetti
-                                    </h2>
-                                </li>
-                            </ul>
                         </div>
                     </div>
                 </div>

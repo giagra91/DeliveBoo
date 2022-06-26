@@ -4,6 +4,9 @@ import VueRouter from 'vue-router';
 // components
 import Menu from './pages/Menu';
 import Restaurants from './pages/Restaurants';
+import Payment from './checkout/Payment';
+import Checkout from './checkout/Checkout.vue';
+import Thanks from './pages/Thanks.vue'
 
 Vue.use(VueRouter);
 
@@ -21,6 +24,22 @@ const router = new VueRouter({
 					name: 'restaurants',
 					component: Restaurants
 			},
+			{
+				path: '/payment',
+				name: 'payment',
+				component: Payment
+			},
+			{
+				path: '/checkout',
+				name: 'checkout',
+				component: Checkout
+			},
+			{
+				path: '/thanks',
+				name: 'Thanks',
+				component: Thanks
+			},
+			
 			// {
 			// 		path: '/about-us',
 			// 		name: 'about-us',
