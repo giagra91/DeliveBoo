@@ -30,52 +30,49 @@
                     <a class="navbar-brand text-1000 fs-3 fw-bold ms-2 text-gradient" href="{{ route('guest') }}">
                         DeliveBoo
                     </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav navbar-nav-hover mx-auto">
+                <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon mt-2">
+                      <span class="navbar-toggler-bar bar1"></span>
+                      <span class="navbar-toggler-bar bar2"></span>
+                      <span class="navbar-toggler-bar bar3"></span>
+                    </span>
+                  </button>
 
-                    </ul>
-
+                <div class="navbar-collapse w-100 pt-3 pb-2 py-lg-0  collapse" id="navbarSupportedContent">
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item mx-2">
-                                <a class=" btn bg-gradient-success" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
+                        <ul class="navbar-nav navbar-nav-hover mx-auto ">
+                            <!-- Authentication Links -->
+                            @guest
                                 <li class="nav-item mx-2">
-                                    <a class=" btn bg-gradient-warning" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class=" btn bg-gradient-success dropdown-item" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
-                            @endif
-                        @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                @if (Route::has('register'))
+                                    <li class="nav-item mx-2">
+                                        <a class=" btn bg-gradient-warning dropdown-item" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    </li>
+                                @endif
+                            @else
+                        </ul>
+                        <div class="dropdown">
+                            <a  class="btn bg-gradient-warning dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                             </a>
-
-                        </li>
-
-                        <li>
-                            <a class="dropdown-item btn bg-gradient-warning"  href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                            </a>
-                        </li>
+                            <ul class="dropdown-menu px-2 py-3" aria-labelledby="dropdownMenuButton">
+                              <li>
+                                <a class="dropdown-item btn bg-gradient-danger"  href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+                            </li>
 
 
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            </div>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                          </div>
                         @endguest
                     </ul>
                 </div>
@@ -88,5 +85,8 @@
         </main>
     </div>
     @yield('script')
+
 </body>
 </html>
+
+

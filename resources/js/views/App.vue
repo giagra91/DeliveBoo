@@ -28,13 +28,13 @@
                                                     <h5>Filtra per una o più categorie:</h5>
                                                     <div class="input-group-icon">
                                                         <div class="form-check mb-2" v-for="(type,index) in cookingTypes" :key="index">
-                                                            <input @click="filterRestaurants(type.id)" v-model="selectedCategories" class="form-check-input" name="type" 
+                                                            <input @click="filterRestaurants(type.id)" v-model="selectedCategories" class="form-check-input" name="type"
                                                             type="checkbox"  :value="type.id" id="flexCheckDefault" >
                                                             <label class="form-check-label" for="flexCheckDefault">
                                                                 {{type.name}}
                                                             </label>
                                                         </div>
-                                                        <router-link :restaurants="getRestaurants" :to="{name: 'restaurants'}">Tutti i ristoranti</router-link> 
+                                                        <router-link :restaurants="getRestaurants" :to="{name: 'restaurants'}">Tutti i ristoranti</router-link>
 
                                                     </div>
                                                 </div>
@@ -47,14 +47,14 @@
                     </div>
                 </div>
             </section>
-            
+
             <router-view  :restaurants="getRestaurants"></router-view>
 
             <section class="footer">
                 <div class="container">
                     <div class="row footer-row justify-content-end">
                         <div class="col-6 text-end ">
-                            <h1 class="text-white">About Us:</h1> 
+                            <h1 class="text-white">About Us:</h1>
                             <ul>
                                 <li>
                                     <h2>
@@ -98,7 +98,6 @@ import Header from '../components/Header.vue';
 import Jumbotron from '../components/Jumbotron.vue';
 import Main from '../components/Main.vue';
 
-
 export default {
     name: "App",
     components: {
@@ -117,10 +116,10 @@ export default {
     },
     methods:{
         // metodo per effettuare una ricerca filtrata dei ristoranti
-        filterRestaurants(value){          
+        filterRestaurants(value){
             // verifichiamo se la categoria selezionata è già presente..
             if( this.selectedCategories.includes(value) ) {
-                let i = this.selectedCategories.indexOf(value); 
+                let i = this.selectedCategories.indexOf(value);
                 this.selectedCategories.splice(i, 1 ); // ..la cancelliamo
             } else {
                 this.selectedCategories.push(value); // altrimenti la aggiungiamo all'array
@@ -167,7 +166,7 @@ export default {
                 return this.restaurants
             } else {
                 console.log('ritornano i ristoranti filtrati')
-                return this.filteredRestaurants 
+                return this.filteredRestaurants
             }
         }
     },
