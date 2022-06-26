@@ -83,13 +83,13 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="input-group input-group-static mb-4">
-                        <label for="img">Carica l'immagine</label>
+                <div class="breadcrumb  mb-4">
+                        <label for="img" >Carica l'immagine</label>
                         <input
                             type="file"
                             name="img"
                             id="img"
-                            class="form-control"
+                            class=" breadcrumb-item form-control btn bg-gradient-primary text-white"
                             value="{{ old('img',$foodItem->img ) }}"
                         >
                 </div>
@@ -110,10 +110,10 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="input-group input-group-static mb-4">
+                <div class="breadcrumb mb-4">
                     <h5>Portata*</h5>
                     <select
-                    class="form-select"
+                    class="form-select p-2 "
                     name="course_id"
                     >
                     @foreach ($courses as $course)
@@ -176,7 +176,7 @@
 		</div>
 
 			<div class="col text-center pt-4">
-					<button type="submit" id="edit-button" class="btn btn-primary">Modifica il piatto</button>
+					<button type="submit" id="edit-button" class="btn btn-success ">Modifica il piatto</button>
 			</div>
 	</form>
 </section>

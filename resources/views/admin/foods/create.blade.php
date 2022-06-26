@@ -52,9 +52,9 @@
 			</div>
 
 			<div class="col-md-6 mb-3">
-                <div class="input-group input-group-static mb-4">
+                <div class="breadcrumb  mb-4">
                     <label for="img" class="form-label">Carica l'immagine</label>
-                    <input class="btn bg-gradient-primary w-auto me-2" name="img" type="file" id="img">
+                    <input class=" breadcrumb-item btn bg-gradient-primary  text-white w-auto me-2" name="img" type="file" id="img">
                 </div>
 			</div>
 
@@ -110,7 +110,7 @@
 			</div>
 
 			<div class="col text-center py-3">
-					<button type="submit" class="btn btn-primary" id="create-button">Inserisci</button>
+					<button type="submit" class="btn btn-success" id="create-button">Inserisci</button>
 			</div>
 
     </form>

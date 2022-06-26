@@ -1,9 +1,4 @@
-/*!
- * Bootstrap v5.1.1 (https://getbootstrap.com/)
- * Copyright 2011-2021 The Bootstrap Authors
- * Copyright 2011-2021 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
- */
+
 :root {
   --bs-blue: #63B3ED;
   --bs-indigo: #596CFF;
@@ -21231,7 +21226,7 @@ body.dark-version {
     cursor: pointer;
   }
 
-  .dropdown .dropdown-toggle:after,
+  /* .dropdown .dropdown-toggle:after,
   .dropup .dropdown-toggle:after,
   .dropstart .dropdown-toggle:after,
   .dropend .dropdown-toggle:after {
@@ -21240,7 +21235,7 @@ body.dark-version {
     border: none;
     vertical-align: middle;
     font-weight: 600;
-  }
+  } */
 
   .dropdown .dropdown-toggle.show:after,
   .dropup .dropdown-toggle.show:after,
@@ -21304,7 +21299,7 @@ body.dark-version {
     margin-top: 2.8125rem !important;
   }
 
-  .dropdown .dropdown-menu:before {
+  /* .dropdown .dropdown-menu:before {
     font-family: "FontAwesome";
     content: "\f0d8";
     position: absolute;
@@ -21314,7 +21309,7 @@ body.dark-version {
     font-size: 22px;
     color: #fff;
     transition: top 0.35s ease;
-  }
+  } */
 
   .dropdown .dropdown-item .arrow {
     transform: rotate(-90deg);
@@ -24110,7 +24105,7 @@ hr.horizontal.gray-light {
   }
 
   .g-sidenav-hidden .navbar-vertical .nav-item .collapse .nav .nav-item .nav-link[data-bs-toggle="collapse"]:after {
-    content: "\f107";
+    /* content: "\f107"; */
   }
 
   .g-sidenav-hidden .navbar-vertical .card.card-background .icon-shape {
@@ -24142,7 +24137,7 @@ hr.horizontal.gray-light {
   }
 
   .g-sidenav-hidden .navbar-vertical:hover .nav-item .nav-link[data-bs-toggle="collapse"]:after {
-    content: "\f107";
+    /* content: "\f107"; */
     opacity: 1;
   }
 
