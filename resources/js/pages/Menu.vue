@@ -6,17 +6,20 @@
                     <div class="icons mb-2">
                         <i @click.prevent="addToCart(food)" class="fa-solid fa-square-plus"></i>
                         <i @click.prevent="removeFromCart(food)" class="ms-2 fa-solid fa-circle-minus"></i>
-				    </div>
+				</div>
                     <h5>{{food.name}}<span class="text-danger ms-2"> &euro;{{food.price}}</span></h5>
                     <p class="fst-italic">{{food.description}}</p>
                 </div>
                 <div class="col-sm-3 col-6 mx-auto d-flex justify-content-center align-items-center">
-                     <button type="button" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <span class="badge bg-gradient-danger" id="cart-badge">
-                            {{ cartBadge }}
-                        </span>
-                    </button>
+					<router-link :to="{name: 'payment' }">
+						<button type="button" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+							<i class="fa-solid fa-cart-shopping"></i>
+							<span class="badge bg-gradient-danger" id="cart-badge">
+								{{ cartBadge }}
+							</span>
+						</button>
+					</router-link>
+
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -71,7 +74,7 @@ export default {
 	},
 	props: ["restaurants"],
 	methods:{
-				addToCart(food){
+			addToCart(food){
 			this.checkCart = true;
 
 			let productInCart = {
