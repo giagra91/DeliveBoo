@@ -2,23 +2,31 @@
 	<div>
         <div class="container">
             <div class="row m-4 ">
-                <div class="col-12 col-lg-7 rounded-3 p-4 my-food-card d-flex flex-column" v-for="(food, index) in restaurants[this.$route.params.id].food_items" :key="index">
+                <div class="col-12 col-lg-7 rounded-3 p-4 my-food-card d-flex " v-for="(food, index) in restaurants[this.$route.params.id].food_items" :key="index">
                     <div class="icons mb-2">
                         <i @click.prevent="addToCart(food)" class="fa-solid fa-square-plus"></i>
-                        <i @click.prevent="removeFromCart(food)" class="ms-2 fa-solid fa-circle-minus"></i>
-				</div>
-                    <h5>{{food.name}}<span class="text-danger ms-2"> &euro;{{food.price}}</span></h5>
-                    <p class="fst-italic">{{food.description}}</p>
+                        <!-- <i @click.prevent="removeFromCart(food)" class="ms-2 fa-solid fa-circle-minus"></i> -->
+				    </div>
+                    <div>
+                        <h5>{{food.name}}<span class="text-danger ms-2"> &euro;{{food.price}}</span></h5>
+                        <p class="fst-italic">{{food.description}}</p>
+                    </div>
                 </div>
-                <div class="col-sm-3 col-6 mx-auto d-flex justify-content-center align-items-center">
-					<router-link :to="{name: 'payment' }">
-						<button type="button" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <div class="col-5 mx-auto d-flex justify-content-center align-items-center flex-column">
+					<!-- <router-link :to="{name: 'payment' }"> -->
+						<button type="button" class="btn bg-gradient-primary mb-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
 							<i class="fa-solid fa-cart-shopping"></i>
 							<span class="badge bg-gradient-danger" id="cart-badge">
 								{{ cartBadge }}
 							</span>
 						</button>
-					</router-link>
+					<!-- </router-link> -->
+                    <router-link :to="{name: 'payment' }" >
+                        <p class="m-0">
+                            <i class="fa-solid fa-credit-card" ></i>
+                            Credit-Card
+                        </p>
+                    </router-link>
 
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -46,16 +54,13 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-sm-12 col-lg-6  d-flex justify-content-center align-items-center">
+
+                    </div>
+                </div>
             </div>
         </div>
-
-	<!-- <div class="container">
-		<div class="row m-4 gap-3 " id="singleRestaurant" >
-			<div class="col-3 rounded-3 p-4 my-food-card d-flex flex-column" >
-
-			</div>
-		</div>
-	</div> -->
 	</div>
 </template>
 
@@ -81,47 +86,30 @@ export default {
 				name : food.name,
 				price : food.price,
 				};
-
-			// this.cart.forEach(item => {
-			// 	if (item.name === productInCart.name ) {
-			// 		console.log(item.price)
-			// 		item.price += item.price;
-			// 		item.quantity++;
-			// 		console.log(item.price)
-			// 		console.log(item.quantity)
-			// 	} else {
-			// 		this.cart.push(productInCart);
-			// 	}
-			// });
-
 			this.cart.push(productInCart);
-
 			this.totalPrice += food.price;
-
 			window.localStorage.setItem("cart", JSON.stringify(this.cart ));
 
 			window.localStorage.setItem("totalPrice", JSON.stringify(this.totalPrice ));
-			// console.log(JSON.parse(localStorage.getItem('cart')));
-			console.warn(window.localStorage.getItem("cart"),window.localStorage.getItem("totalPrice"));
             this.cartBadge = this.cart.length ;
 
 
 		},
 		removeFromCart(food){
-
-			this.cart.forEach((item, index) => {
-
-			if(food.name == item.name){
-					this.cart.splice(index, 1);
-					this.totalPrice -= food.price;
-					window.localStorage.removeItem("cart", JSON.stringify(food[index]));
-					window.localStorage.setItem("totalPrice", JSON.stringify(this.totalPrice ));
-					console.log(this.cart)
-                    this.cartBadge = this.cart.length ;
+            console.log(food);
+				let index = this.cart.indexOf(food)
+            console.log(index);
+            //l'errore è che quando rimuovo fuori dal carrello index = -1
+			if (this.cart.includes(food)){
+				this.cart.splice(index, 1);
+				window.localStorage.removeItem("cart", JSON.stringify(food[index]));
+				window.localStorage.setItem("totalPrice", JSON.stringify(this.totalPrice ));
+				this.totalPrice -= food.price;
+				this.cartBadge = this.cart.length;
 			} else {
-					console.log("non esiste");
+				console.log("non esiste");
 			}
-			});
+
 		},
 	},
 		mounted: function mounted() {
@@ -140,6 +128,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    .fa-square-plus{
+        font-size: 3.5rem;
+        margin-right: 0.5rem;
+    }
 	i {
 		font-size: 1.3rem;
 		cursor: pointer;

@@ -50,4 +50,8 @@ class OrdersController extends Controller
             return response()->json($data, 401);
         }
     }
+
+    public function addOrder(Request $request){
+
+    }
 }
