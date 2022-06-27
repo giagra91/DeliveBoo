@@ -45,6 +45,9 @@
                                         </div>
                                         <p v-if="totalPrice == 0" class="text-dark fw-bold text-center"> Carrello vuoto</p>
                                         <p v-else class="text-info fw-bold">Totale:  <i class="fa-solid fa-euro-sign "></i> {{totalPrice}}</p>
+                                        <div v-if="totalPrice >= 200">
+                                            <img class="img-fluid" src="../../../public/img/rocco.jpg" alt="">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="modal-footer justify-content-between">
