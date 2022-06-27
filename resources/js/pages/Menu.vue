@@ -115,19 +115,17 @@ export default {
 		},
 		removeFromCart(food){
 
-			this.cart.forEach((item, index) => {
-
-			if(food.name == item.name){
-					this.cart.splice(index, 1);
-					this.totalPrice -= food.price;
-					window.localStorage.removeItem("cart", JSON.stringify(food[index]));
-					window.localStorage.setItem("totalPrice", JSON.stringify(this.totalPrice ));
-					console.log(this.cart)
-                    this.cartBadge = this.cart.length ;
+			if (this.cart.includes(food)){
+				let index = this.cart.indexOf(food)
+				this.cart.splice(index, 1);
+				window.localStorage.removeItem("cart", JSON.stringify(food[index]));
+				window.localStorage.setItem("totalPrice", JSON.stringify(this.totalPrice ));
+				this.totalPrice -= food.price;
+				this.cartBadge = this.cart.length;
 			} else {
-					console.log("non esiste");
+				console.log("non esiste");
 			}
-			});
+
 		},
 	},
 		mounted: function mounted() {
