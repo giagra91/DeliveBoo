@@ -56,7 +56,10 @@
 
 						@foreach ($foods as $food)
 						<div class="col-12 d-flex align-items-center pb-4">
-							<h3 class="fst-italic">{{$food->name}}</h3>
+                            <div class="avatar me-3 " style="width: 8rem !important; height: 8rem !important" >
+                                <img class="rounded-pill" alt="Image placeholder" src="{{ asset($food->img) }}" style="width: 8rem !important; height: 8rem !important; object-fit: cover;">
+                            </div>
+                            <h3 class="fst-italic">{{$food->name}}</h3>
 							<div class="d-flex align-items-center ms-3">
 								<a href="{{route('admin.foods.show', $food)}}">
 									<i class="fa-solid fa-eye"></i>

@@ -39,11 +39,11 @@
                     </span>
                   </button>
 
-                <div class="navbar-collapse w-100 pt-3 pb-2 py-lg-0  collapse" id="navbarSupportedContent">
+                <div class="navbar-collapse w-100 pt-3 pb-2 py-lg-0  collapse justify-content-end align-items-center" id="navbarSupportedContent">
                     <!-- Right Side Of Navbar -->
-                        <ul class="navbar-nav navbar-nav-hover mx-auto ">
-                            <!-- Authentication Links -->
-                            @guest
+                    <!-- Authentication Links -->
+                        @guest
+                        <ul class="navbar-nav navbar-nav-hover  ">
                                 <li class="nav-item mx-2">
                                     <a class=" btn bg-gradient-success dropdown-item" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
@@ -52,10 +52,11 @@
                                         <a class=" btn bg-gradient-warning dropdown-item" href="{{ route('register') }}">{{ __('Register') }}</a>
                                     </li>
                                 @endif
+                            </ul>
                             @else
-                        </ul>
                         <div class="dropdown">
                             <a  class="btn bg-gradient-warning dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" v-pre>
+
                                 {{ Auth::user()->name }}
                             </a>
                             <ul class="dropdown-menu px-2 py-3" aria-labelledby="dropdownMenuButton">
