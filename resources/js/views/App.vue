@@ -50,14 +50,16 @@
 
             <router-view  :restaurants="getRestaurants"></router-view>
 
-            <section class="footer">
-                <div class="container">
+            <section class="footer p-0">
+                <div class="jumbotron-2">
                     <div class="row footer-row justify-content-end">
                         <div class="col-6 text-end ">
                         </div>
                     </div>
                 </div>
             </section>
+
+            <Footer />
 
 
             <!-- <Restaurants   @hasClickedMenu="updateJumbo()" /> -->
@@ -69,6 +71,7 @@
 import Header from '../components/Header.vue';
 import Jumbotron from '../components/Jumbotron.vue';
 import Main from '../components/Main.vue';
+import Footer from '../components/Footer.vue'
 
 export default {
     name: "App",
@@ -76,6 +79,7 @@ export default {
     Header,
     Jumbotron,
     Main,
+    Footer
 },
     data: function(){
         return{
@@ -170,8 +174,8 @@ li>h2, .footer h1{
     font-family: 'Source Sans Pro';
 }
 
-.footer {
-  background-image: url('https://qul.imgix.net/087432a9-1412-4fcf-8df5-a0ebf917cf80/579807_sld.jpg');
+.jumbotron-2 {
+  background-image: url('https://www.seriouseats.com/thmb/Gmxw6vqXe2JBa51ZQIUSULqRMrs=/1500x1125/smart/filters:no_upscale()/WokSills101-braising-VickyWasik4-0dcca9714cf54b53b7e52686286b266f.jpg');
   background-size: cover;
   padding-top: 7rem;
   padding-bottom: 7rem;
