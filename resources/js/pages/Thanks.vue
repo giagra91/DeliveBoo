@@ -8,7 +8,7 @@
                     </router-link>
                 </div>
 
-                <div class="col-12 ">
+                <div class="col-8 mx-auto">
                     <img src="../assets/thanks.jpg" class="img-fluid" alt="">
                 </div>
             </div>
