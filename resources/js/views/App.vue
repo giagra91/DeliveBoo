@@ -8,6 +8,39 @@
 
             <Jumbotron />
             <section class="py-5 overflow-hidden bg-primary" id="home" v-show="!isMenuClicked">
+
+                <!-- <div id="vittorio-service" class="shadow bg-info position-fixed  bottom-0 end-0 p-3 m-3 rounded-pill" style="z-index: 1040;">
+
+                </div> -->
+
+                <button style="z-index: 99999999;" type="button" class="btn shadow bg-info position-fixed  bottom-0 end-0 p-3 m-3 rounded-pil" data-bs-toggle="modal" data-bs-target="#vittorioService">
+                    <i class="fa-solid fa-headset fs-4 text-white"></i>
+                </button>
+                <div class="modal fade " id="vittorioService" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content bg-warning">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">
+                                        <i class="fa-solid fa-headset fs-4 text-white"></i>
+                                        <p class="text-white fw-bold">Vittorio Service</p>
+                                    </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body ">
+                                    <div id="cart" class="w-100 border border-warning rounded p-2 shadow" >
+                                        <div  class="d-flex py-2 flex-column">
+                                            <img class="rounded shadow" src="../../../public/img/vittorio.jpg" alt="Vittorio Service">
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="modal-footer justify-content-between">
+                                    <button type="button" class="btn bg-gradient-danger mb-0 " data-bs-dismiss="modal">Stop</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 <div class="container">
                     <div class="row flex-center">
                         <div class="col-md-5 col-lg-6 order-0 order-md-1 mt-8 mt-md-0"><a class="img-landing-banner" href="#!"><img class="img-fluid" src="../../../public/img/logo-deliveboo/gallery/hero-header.png" alt="hero-header" /></a></div>

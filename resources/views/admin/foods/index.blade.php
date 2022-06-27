@@ -4,7 +4,7 @@
 @section('title', 'Home')
 
 @section('content')
-	<section class="p-4">
+	<section class="p-4" style="background-image: url({{asset('img/logo-deliveboo/gallery/hero-bg.png')}})">
 		<div class="container-fluid px-5">
 			<div class="row justify-content-center">
                 <div class="col-12 text-center m-auto pt-3">
