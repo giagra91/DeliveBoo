@@ -5133,6 +5133,9 @@ __webpack_require__.r(__webpack_exports__);
       var nonce = payload.nonce;
       this.$emit('nonce', nonce);
     },
+    log: function log(item) {
+      console.log(item);
+    },
     onError: function onError(error) {
       var message = error.message;
     }
@@ -5218,6 +5221,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5227,6 +5254,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      alerModal: '',
       product: [],
       token: '',
       disableBuyButton: true,
@@ -5264,15 +5292,25 @@ __webpack_require__.r(__webpack_exports__);
     getPayment: function getPayment() {
       var _this3 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/orders/payment', this.form).then(function (result) {
-        console.log(result);
+      console.log(this.form.nonce);
 
-        if (result.data.success) {
-          _this3.$router.push('/thanks');
-        } else {
-          alert('Pagamento rifiutato');
-        }
-      });
+      if (this.form.nonce != '') {
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/orders/payment', this.form).then(function (result) {
+          console.log(result);
+
+          if (result.data.success) {
+            _this3.$router.push('/thanks');
+          }
+        });
+      } else {
+        // alert('Compila tutti i Campi');
+        this.alerModal = document.getElementById('AlertModal');
+        console.log(this.alerModal);
+        this.alerModal.classList.add('d-block', 'show');
+      }
+    },
+    closeModal: function closeModal() {
+      this.alerModal.classList.remove('d-block', 'show');
     },
     checkForm: function checkForm() {
       var form = {
@@ -68028,6 +68066,48 @@ var render = function () {
             ),
           ]),
         ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "modal fade",
+            attrs: {
+              id: "AlertModal",
+              tabindex: "-1",
+              "aria-labelledby": "alertModalLabel",
+              "aria-hidden": "true",
+            },
+          },
+          [
+            _c("div", { staticClass: "modal-dialog" }, [
+              _c("div", { staticClass: "modal-content" }, [
+                _vm._m(4),
+                _vm._v(" "),
+                _vm._m(5),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "modal-footer justify-content-between" },
+                  [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn bg-gradient-dark mb-0",
+                        attrs: { type: "button", "data-bs-dismiss": "modal" },
+                        on: {
+                          click: function ($event) {
+                            return _vm.closeModal()
+                          },
+                        },
+                      },
+                      [_vm._v("Close")]
+                    ),
+                  ]
+                ),
+              ]),
+            ]),
+          ]
+        ),
       ]),
     ]),
   ])
@@ -68099,6 +68179,54 @@ var staticRenderFns = [
         "small",
         { staticClass: "form-text text-muted", attrs: { id: "emailHelp" } },
         [_vm._v("Non condivideremo mai le tue informazioni con nessuno")]
+      ),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
+        [
+          _vm._v(
+            "\n                                    Controlla i campi!\n                                "
+          ),
+        ]
+      ),
+      _vm._v(" "),
+      _c("button", {
+        staticClass: "btn-close",
+        attrs: {
+          type: "button",
+          "data-bs-dismiss": "modal",
+          "aria-label": "Close",
+        },
+      }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-body" }, [
+      _c(
+        "div",
+        {
+          staticClass: "w-100 border border-danger rounded p-2 shadow",
+          attrs: { id: "cart" },
+        },
+        [
+          _c("div", { staticClass: "d-flex py-2 flex-column" }, [
+            _c("p", { staticClass: "text-danger fw-bold" }, [
+              _vm._v(
+                "\n                                            Controlla che tutti i campi siano stati compilati correttamente\n                                        "
+              ),
+            ]),
+          ]),
+        ]
       ),
     ])
   },
