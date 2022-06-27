@@ -9,7 +9,7 @@
                     </div>
 
                     <div class="col-xs-6 col-md-3 ">
-                        <h6>Categories</h6>
+                        <h6>Contacts</h6>
                         <ul class="footer-links">
                         <li><a class="text-warning" href="http://scanfcode.com/category/c-language/">La nostra storia</a></li>
                         <li><a class="text-warning" href="http://scanfcode.com/category/front-end-development/">Contatta il nostro customer assistant Vittorio Campese</a></li>
@@ -24,17 +24,17 @@
                 <div class="container">
                     <div class="row">
                     <div class="col-md-8 col-sm-6 col-xs-12">
-                        <p class="copyright-text">Copyright &copy; 2022 All Rights Reserved by 
+                        <p class="copyright-text">Copyright &copy; 2022 All Rights Reserved by
                     <a href="#">Deliveboo</a>.
                         </p>
                     </div>
 
                     <div class="col-md-4 col-sm-6 col-xs-12">
                         <ul class="social-icons">
-                        <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
-                        <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>   
+                        <li><a class="facebook" href="#"><i class="fa-brands fa-facebook"></i></a></li>
+                        <li><a class="twitter" href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                        <li><a class="dribbble" href="#"><i class="fa-brands fa-dribbble"></i></a></li>
+                        <li><a class="linkedin" href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
                         </ul>
                     </div>
                     </div>
@@ -212,4 +212,4 @@ export default {
     font-weight:600
   }
 }
-</style> 
+</style>

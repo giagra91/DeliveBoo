@@ -66,15 +66,13 @@
                                     {{ __('Logout') }}
                                 </a>
                             </li>
-
-
-
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
-                          </div>
+                            </ul>
+                        </div>
                         @endguest
-                    </ul>
+
                 </div>
             </div>
         </nav>
@@ -85,6 +83,7 @@
         </main>
     </div>
     @yield('script')
+    {{-- <script type="text/javascript" src="{{ asset('js/admin.js') }}"></script> --}}
 
 </body>
 </html>

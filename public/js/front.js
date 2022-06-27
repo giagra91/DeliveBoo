@@ -5217,6 +5217,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -68144,7 +68145,7 @@ var staticRenderFns = [
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "col-xs-6 col-md-3 " }, [
-            _c("h6", [_vm._v("Categories")]),
+            _c("h6", [_vm._v("Contacts")]),
             _vm._v(" "),
             _c("ul", { staticClass: "footer-links" }, [
               _c("li", [
@@ -68224,7 +68225,7 @@ var staticRenderFns = [
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-md-8 col-sm-6 col-xs-12" }, [
             _c("p", { staticClass: "copyright-text" }, [
-              _vm._v("Copyright © 2022 All Rights Reserved by \n        "),
+              _vm._v("Copyright © 2022 All Rights Reserved by\n        "),
               _c("a", { attrs: { href: "#" } }, [_vm._v("Deliveboo")]),
               _vm._v(".\n            "),
             ]),
@@ -68234,25 +68235,25 @@ var staticRenderFns = [
             _c("ul", { staticClass: "social-icons" }, [
               _c("li", [
                 _c("a", { staticClass: "facebook", attrs: { href: "#" } }, [
-                  _c("i", { staticClass: "fa fa-facebook" }),
+                  _c("i", { staticClass: "fa-brands fa-facebook" }),
                 ]),
               ]),
               _vm._v(" "),
               _c("li", [
                 _c("a", { staticClass: "twitter", attrs: { href: "#" } }, [
-                  _c("i", { staticClass: "fa fa-twitter" }),
+                  _c("i", { staticClass: "fa-brands fa-twitter" }),
                 ]),
               ]),
               _vm._v(" "),
               _c("li", [
                 _c("a", { staticClass: "dribbble", attrs: { href: "#" } }, [
-                  _c("i", { staticClass: "fa fa-dribbble" }),
+                  _c("i", { staticClass: "fa-brands fa-dribbble" }),
                 ]),
               ]),
               _vm._v(" "),
               _c("li", [
                 _c("a", { staticClass: "linkedin", attrs: { href: "#" } }, [
-                  _c("i", { staticClass: "fa fa-linkedin" }),
+                  _c("i", { staticClass: "fa-brands fa-linkedin-in" }),
                 ]),
               ]),
             ]),
@@ -68293,7 +68294,8 @@ var staticRenderFns = [
     return _c(
       "nav",
       {
-        staticClass: "navbar navbar-expand-lg navbar-light bg-light fixed-top",
+        staticClass:
+          "navbar navbar-expand-lg navbar-light bg-light fixed-top p-3",
         attrs: { "data-navbar-on-scroll": "data-navbar-on-scroll" },
       },
       [
@@ -68627,12 +68629,19 @@ var render = function () {
               ),
               _vm._v(" "),
               _c("router-link", { attrs: { to: { name: "payment" } } }, [
-                _c("p", { staticClass: "m-0" }, [
-                  _c("i", { staticClass: "fa-solid fa-credit-card" }),
-                  _vm._v(
-                    "\n                            Credit-Card\n                        "
-                  ),
-                ]),
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "btn bg-gradient-success d-flex align-items-center",
+                  },
+                  [
+                    _c("i", { staticClass: "fa-solid fa-credit-card me-2" }),
+                    _vm._v(
+                      "\n                                Paga\n                            "
+                    ),
+                  ]
+                ),
               ]),
               _vm._v(" "),
               _c(
@@ -68656,25 +68665,22 @@ var render = function () {
                           "div",
                           {
                             staticClass:
-                              "w-100 border border-warning rounded p-2",
+                              "w-100 border border-warning rounded p-2 shadow",
                             attrs: { id: "cart" },
                           },
                           [
                             _vm._l(_vm.cart, function (item, index) {
                               return _c(
                                 "div",
-                                { key: index, staticClass: "d-flex py-2" },
+                                {
+                                  key: index,
+                                  staticClass: "d-flex py-2 flex-column",
+                                },
                                 [
                                   _c("p", [
-                                    _vm._v(
-                                      _vm._s(item.name) +
-                                        " - € " +
-                                        _vm._s(item.price) +
-                                        "   "
-                                    ),
                                     _c("i", {
                                       staticClass:
-                                        "ms-2 fa-solid fa-circle-minus",
+                                        "ms-2 fa-solid fa-circle-minus text-danger",
                                       on: {
                                         click: function ($event) {
                                           $event.preventDefault()
@@ -68682,15 +68688,35 @@ var render = function () {
                                         },
                                       },
                                     }),
+                                    _vm._v(" " + _vm._s(item.name)),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("p", [
+                                    _c("i", {
+                                      staticClass:
+                                        "fa-solid fa-euro-sign text-success",
+                                    }),
+                                    _vm._v(" " + _vm._s(item.price)),
                                   ]),
                                 ]
                               )
                             }),
                             _vm._v(" "),
                             _vm.totalPrice == 0
-                              ? _c("p", [_vm._v(" Carrello vuoto")])
-                              : _c("p", { staticClass: "text-danger" }, [
-                                  _vm._v("Totale € " + _vm._s(_vm.totalPrice)),
+                              ? _c(
+                                  "p",
+                                  {
+                                    staticClass:
+                                      "text-dark fw-bold text-center",
+                                  },
+                                  [_vm._v(" Carrello vuoto")]
+                                )
+                              : _c("p", { staticClass: "text-info fw-bold" }, [
+                                  _vm._v("Totale:  "),
+                                  _c("i", {
+                                    staticClass: "fa-solid fa-euro-sign ",
+                                  }),
+                                  _vm._v(" " + _vm._s(_vm.totalPrice)),
                                 ]),
                           ],
                           2
@@ -85739,8 +85765,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\aless\Documents\Boolean\DeliveBoo-2\resources\js\front.js */"./resources/js/front.js");
-module.exports = __webpack_require__(/*! C:\Users\aless\Documents\Boolean\DeliveBoo-2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\esercizi boolean\DeliveBoo-1\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\esercizi boolean\DeliveBoo-1\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -5,7 +5,7 @@
                 <div class="col-12 col-lg-7 rounded-3 p-4 my-food-card d-flex " v-for="(food, index) in restaurants[this.$route.params.id].food_items" :key="index">
                     <div class="icons mb-2">
                         <i @click.prevent="addToCart(food)" class="fa-solid fa-square-plus"></i>
-                        <!-- <i @click.prevent="removeFromCart(food)" class="ms-2 fa-solid fa-circle-minus"></i> -->
+
 				    </div>
                     <div>
                         <h5>{{food.name}}<span class="text-danger ms-2"> &euro;{{food.price}}</span></h5>
@@ -13,19 +13,19 @@
                     </div>
                 </div>
                 <div class="col-5 mx-auto d-flex justify-content-center align-items-center flex-column">
-					<!-- <router-link :to="{name: 'payment' }"> -->
+
 						<button type="button" class="btn bg-gradient-primary mb-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
 							<i class="fa-solid fa-cart-shopping"></i>
 							<span class="badge bg-gradient-danger" id="cart-badge">
 								{{ cartBadge }}
 							</span>
 						</button>
-					<!-- </router-link> -->
+
                     <router-link :to="{name: 'payment' }" >
-                        <p class="m-0">
-                            <i class="fa-solid fa-credit-card" ></i>
-                            Credit-Card
-                        </p>
+                            <button class="btn bg-gradient-success d-flex align-items-center">
+                                <i class="fa-solid fa-credit-card me-2" ></i>
+                                Paga
+                            </button>
                     </router-link>
 
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -38,13 +38,13 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <div id="cart" class="w-100 border border-warning rounded p-2" >
-
-                                        <div v-for="(item, index) in cart" :key="index" class="d-flex py-2">
-                                            <p>{{item.name}} - € {{item.price}}   <i @click.prevent="removeFromCart(item)" class="ms-2 fa-solid fa-circle-minus"></i></p>
+                                    <div id="cart" class="w-100 border border-warning rounded p-2 shadow" >
+                                        <div v-for="(item, index) in cart" :key="index" class="d-flex py-2 flex-column">
+                                            <p><i @click.prevent="removeFromCart(item)" class="ms-2 fa-solid fa-circle-minus text-danger"></i> {{item.name}}</p>
+                                            <p><i class="fa-solid fa-euro-sign text-success"></i> {{item.price}}</p>
                                         </div>
-                                        <p v-if="totalPrice == 0"> Carrello vuoto</p>
-                                        <p v-else class="text-danger">Totale € {{totalPrice}}</p>
+                                        <p v-if="totalPrice == 0" class="text-dark fw-bold text-center"> Carrello vuoto</p>
+                                        <p v-else class="text-info fw-bold">Totale:  <i class="fa-solid fa-euro-sign "></i> {{totalPrice}}</p>
                                     </div>
                                 </div>
                                 <div class="modal-footer justify-content-between">

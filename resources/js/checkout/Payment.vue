@@ -5,7 +5,7 @@
                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 ">
                         <div  id="errors">
 
-                        </div>  
+                        </div>
 
                         <div id="loading">
                                 <form class="mx-auto">
@@ -13,6 +13,7 @@
                                         <label class="name" for="Nome">Nome</label>
                                         <input type="text" class="form-control my-form" placeholder="Inserisci il tuo nome" name="name">
                                     </div>
+
 
                                     <div class="form-group">
                                         <label for="Cognome">Cognome</label>
@@ -43,7 +44,7 @@
                                     <br>
 
                                     <Checkout  v-if="token !== '' " :token='token' @nonce='setNonce' />
-                                    
+
                                     <div class="">
                                         <button id="valdiateBtn" class="btn btn-success" @click="getPayment">Paga</button>
 
@@ -59,7 +60,7 @@
             </div>
         </div>
     </div>
-    
+
 </template>
 
 <script>
@@ -104,7 +105,7 @@ export default {
                 })
                 .catch((error)=>{
                     console.warn(error);
-                }) 
+                })
             },
 
             setNonce(nonce){
@@ -112,7 +113,7 @@ export default {
             },
 
             getPayment(){
-                axios.post('/api/orders/payment', this.form) 
+                axios.post('/api/orders/payment', this.form)
                 .then((result)=> {
                     console.log(result);
                     if (result.data.success){
@@ -185,15 +186,15 @@ export default {
 
     .form-control{
         border-bottom: 1px solid orange;
-    }  
+    }
 
     .form-group {
         padding: 0 2rem;
     }
-    
+
     .btn {
         margin: 0 auto;
-    } 
+    }
 
     .form-control{
         margin-bottom: 2rem;

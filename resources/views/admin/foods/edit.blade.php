@@ -263,4 +263,5 @@
 		})
 
 </script>
+<script type="text/javascript" src="{{ asset('js/admin.js') }}"></script>
 @endsection
