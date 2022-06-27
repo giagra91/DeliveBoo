@@ -7,7 +7,7 @@
 	<section class="p-4 container-fluid">
 		<div class="row px-5">
 			<div class="col-12 mb-5">
-				<a href="{{route('admin.foods.index')}}" class="btn bg-gradient-info_img_food">Tutti i piatti</a>
+				<a href="{{route('admin.foods.index')}}" class="btn bg-gradient-info">Tutti i piatti</a>
 			</div>
 			<div class="col-12 col-lg-6 text-center swing-entrance">
 				<img
