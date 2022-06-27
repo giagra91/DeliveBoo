@@ -5636,6 +5636,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Menu',
   data: function data() {
@@ -68879,6 +68882,18 @@ var render = function () {
                                   }),
                                   _vm._v(" " + _vm._s(_vm.totalPrice)),
                                 ]),
+                            _vm._v(" "),
+                            _vm.totalPrice >= 200
+                              ? _c("div", [
+                                  _c("img", {
+                                    staticClass: "img-fluid",
+                                    attrs: {
+                                      src: __webpack_require__(/*! ../../../public/img/rocco.jpg */ "./public/img/rocco.jpg"),
+                                      alt: "",
+                                    },
+                                  }),
+                                ])
+                              : _vm._e(),
                           ],
                           2
                         ),
@@ -85032,6 +85047,17 @@ module.exports = "/images/pay.png?c333393e0db88c0b777b8f0744ee5110";
 /***/ (function(module, exports) {
 
 module.exports = "/images/logo.svg?eba20296e665c05a065134369291178c";
+
+/***/ }),
+
+/***/ "./public/img/rocco.jpg":
+/*!******************************!*\
+  !*** ./public/img/rocco.jpg ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/rocco.jpg?48083251181023d0e4327ecd33b42baa";
 
 /***/ }),
 
