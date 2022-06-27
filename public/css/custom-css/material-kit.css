@@ -22732,6 +22732,9 @@ hr.horizontal.gray-light {
 .bg-cover {
   background-size: cover;
 }
+.my-bg-shadow{
+    background-color: rgba(0, 0, 0, 0.4);
+}
 
 .mask {
   position: absolute;

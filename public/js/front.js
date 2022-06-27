@@ -5243,8 +5243,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5300,17 +5298,19 @@ __webpack_require__.r(__webpack_exports__);
 
           if (result.data.success) {
             _this3.$router.push('/thanks');
+
+            window.localStorage.clear();
           }
         });
       } else {
         // alert('Compila tutti i Campi');
         this.alerModal = document.getElementById('AlertModal');
         console.log(this.alerModal);
-        this.alerModal.classList.add('d-block', 'show');
+        this.alerModal.classList.add('d-block', 'show', 'my-bg-shadow');
       }
     },
     closeModal: function closeModal() {
-      this.alerModal.classList.remove('d-block', 'show');
+      this.alerModal.classList.remove('d-block', 'show', 'my-bg-shadow');
     },
     checkForm: function checkForm() {
       var form = {
@@ -5895,6 +5895,39 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Jumbotron_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Jumbotron.vue */ "./resources/js/components/Jumbotron.vue");
 /* harmony import */ var _components_Main_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Main.vue */ "./resources/js/components/Main.vue");
 /* harmony import */ var _components_Footer_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Footer.vue */ "./resources/js/components/Footer.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -68070,7 +68103,7 @@ var render = function () {
         _c(
           "div",
           {
-            staticClass: "modal fade",
+            staticClass: "modal fade ",
             attrs: {
               id: "AlertModal",
               tabindex: "-1",
@@ -69151,9 +69184,13 @@ var render = function () {
               attrs: { id: "home" },
             },
             [
+              _vm._m(0),
+              _vm._v(" "),
+              _vm._m(1),
+              _vm._v(" "),
               _c("div", { staticClass: "container" }, [
                 _c("div", { staticClass: "row flex-center" }, [
-                  _vm._m(0),
+                  _vm._m(2),
                   _vm._v(" "),
                   _c(
                     "div",
@@ -69171,11 +69208,11 @@ var render = function () {
                         [_vm._v("Hai fame?")]
                       ),
                       _vm._v(" "),
-                      _vm._m(1),
+                      _vm._m(3),
                       _vm._v(" "),
                       _c("div", { staticClass: "card w-xxl-75" }, [
                         _c("div", { staticClass: "card-body" }, [
-                          _vm._m(2),
+                          _vm._m(4),
                           _vm._v(" "),
                           _c(
                             "div",
@@ -69361,7 +69398,7 @@ var render = function () {
           _vm._v(" "),
           _c("router-view", { attrs: { restaurants: _vm.getRestaurants } }),
           _vm._v(" "),
-          _vm._m(3),
+          _vm._m(5),
           _vm._v(" "),
           _c("Footer"),
         ],
@@ -69372,6 +69409,107 @@ var render = function () {
   )
 }
 var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass:
+          "btn shadow bg-info position-fixed  bottom-0 end-0 p-3 m-3 rounded-pil",
+        staticStyle: { "z-index": "99999999" },
+        attrs: {
+          type: "button",
+          "data-bs-toggle": "modal",
+          "data-bs-target": "#vittorioService",
+        },
+      },
+      [_c("i", { staticClass: "fa-solid fa-headset fs-4 text-white" })]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "modal fade ",
+        attrs: {
+          id: "vittorioService",
+          tabindex: "-1",
+          "aria-labelledby": "exampleModalLabel",
+          "aria-hidden": "true",
+        },
+      },
+      [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content bg-warning" }, [
+            _c("div", { staticClass: "modal-header" }, [
+              _c(
+                "h5",
+                {
+                  staticClass: "modal-title",
+                  attrs: { id: "exampleModalLabel" },
+                },
+                [
+                  _c("i", {
+                    staticClass: "fa-solid fa-headset fs-4 text-white",
+                  }),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "text-white fw-bold" }, [
+                    _vm._v("Vittorio Service"),
+                  ]),
+                ]
+              ),
+              _vm._v(" "),
+              _c("button", {
+                staticClass: "btn-close",
+                attrs: {
+                  type: "button",
+                  "data-bs-dismiss": "modal",
+                  "aria-label": "Close",
+                },
+              }),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body " }, [
+              _c(
+                "div",
+                {
+                  staticClass: "w-100 border border-warning rounded p-2 shadow",
+                  attrs: { id: "cart" },
+                },
+                [
+                  _c("div", { staticClass: "d-flex py-2 flex-column" }, [
+                    _c("img", {
+                      staticClass: "rounded shadow",
+                      attrs: {
+                        src: __webpack_require__(/*! ../../../public/img/vittorio.jpg */ "./public/img/vittorio.jpg"),
+                        alt: "Vittorio Service",
+                      },
+                    }),
+                  ]),
+                ]
+              ),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-footer justify-content-between" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn bg-gradient-danger mb-0 ",
+                  attrs: { type: "button", "data-bs-dismiss": "modal" },
+                },
+                [_vm._v("Stop")]
+              ),
+            ]),
+          ]),
+        ]),
+      ]
+    )
+  },
   function () {
     var _vm = this
     var _h = _vm.$createElement
@@ -84894,6 +85032,17 @@ module.exports = "/images/pay.png?c333393e0db88c0b777b8f0744ee5110";
 /***/ (function(module, exports) {
 
 module.exports = "/images/logo.svg?eba20296e665c05a065134369291178c";
+
+/***/ }),
+
+/***/ "./public/img/vittorio.jpg":
+/*!*********************************!*\
+  !*** ./public/img/vittorio.jpg ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/vittorio.jpg?367d247fdce7cdfe83fa6d64694da978";
 
 /***/ }),
 

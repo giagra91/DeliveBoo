@@ -54,7 +54,7 @@
                                 </div>
                         </div>
                 </div>
-                <div class="modal fade" id="AlertModal" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
+                <div class="modal fade " id="AlertModal" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -143,17 +143,18 @@ export default {
                         console.log(result);
                         if (result.data.success){
                             this.$router.push('/thanks')
+                            window.localStorage.clear();
                         }
                     })
                 }else {
                     // alert('Compila tutti i Campi');
                     this.alerModal = document.getElementById('AlertModal');
                     console.log(this.alerModal);
-                    this.alerModal.classList.add('d-block', 'show');
+                    this.alerModal.classList.add('d-block', 'show', 'my-bg-shadow');
                 }
             },
             closeModal(){
-                this.alerModal.classList.remove('d-block', 'show');
+                this.alerModal.classList.remove('d-block', 'show' , 'my-bg-shadow');
             },
 
 
