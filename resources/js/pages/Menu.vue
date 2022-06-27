@@ -11,13 +11,19 @@
                     <p class="fst-italic">{{food.description}}</p>
                 </div>
                 <div class="col-sm-3 col-6 mx-auto d-flex justify-content-center align-items-center">
-					<router-link :to="{name: 'payment' }">
+					<!-- <router-link :to="{name: 'payment' }"> -->
 						<button type="button" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
 							<i class="fa-solid fa-cart-shopping"></i>
 							<span class="badge bg-gradient-danger" id="cart-badge">
 								{{ cartBadge }}
 							</span>
 						</button>
+					<!-- </router-link> -->
+					<router-link :to="{name: 'payment' }" >
+						<p>
+							<i class="fa-solid fa-credit-card" ></i>
+							Credit-Card
+						</p>
 					</router-link>
 
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
