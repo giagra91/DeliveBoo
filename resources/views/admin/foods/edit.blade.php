@@ -31,7 +31,7 @@
 					@endif
 
 			<div id="errors" ></div>
-            <div class="col-md-6">
+            <div class="col-md-6 col-8">
                 <div class="input-group input-group-static mb-4 ">
                         <label for="name">Nome*</label>
                         <input
@@ -45,7 +45,7 @@
                         >
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 col-8">
                 <div class="input-group input-group-static mb-4">
                     <label for="description" class="">Descrizione*</label>
                     <textarea
@@ -59,7 +59,7 @@
                     >{{ old('description', $foodItem->description ) }}</textarea>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 col-8">
                 <div class="input-group input-group-static mb-4">
                     <label for="ingredients">Ingredienti*</label>
                     <input
@@ -73,7 +73,7 @@
                         >
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 col-8">
                 <div class="input-group input-group-static mb-4">
                     <img
                         class="w-100"
@@ -82,7 +82,7 @@
                     >
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 col-8">
                 <div class="breadcrumb  mb-4">
                         <label for="img" >Carica l'immagine</label>
                         <input
@@ -94,7 +94,7 @@
                         >
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 col-8">
                 <div class="input-group input-group-static mb-4">
                     <label for="price">Inserisci il prezzo*</label>
                     <input
@@ -109,7 +109,7 @@
                     >
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 col-8">
                 <div class="breadcrumb mb-4">
                     <h5>Portata*</h5>
                     <select
@@ -129,7 +129,7 @@
             </div>
 
 
-		<div class="col py-2">
+		<div class="col-8 py-2">
 			@foreach ($categories as $category)
 			<div class="form-check">
 				<input
@@ -146,7 +146,7 @@
 			</div>
 			@endforeach
 		</div>
-		<div class="col py-2">
+		<div class="col-8 col-md-4 py-2">
 
 			<div class="form-check">
 				<input
