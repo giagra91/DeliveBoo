@@ -2587,27 +2587,27 @@ progress {
 }
 
 .form-control::-webkit-input-placeholder {
-  color: #BDBDBD !important;
+
   opacity: 1;
 }
 
 .form-control::-moz-placeholder {
-  color: #BDBDBD !important;
+
   opacity: 1;
 }
 
 .form-control:-ms-input-placeholder {
-  color: #BDBDBD !important;
+
   opacity: 1;
 }
 
 .form-control::-ms-input-placeholder {
-  color: #BDBDBD !important;
+
   opacity: 1;
 }
 
 .form-control::placeholder {
-  color: #BDBDBD !important;
+
   opacity: 1;
 }
 
@@ -17414,7 +17414,7 @@ fieldset:disabled .btn {
 }
 ::placeholder {
   opacity: 1;
-  color: #E0E0E0 !important;
+
 }
 
 html {

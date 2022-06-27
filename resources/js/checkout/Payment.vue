@@ -1,13 +1,19 @@
 <template>
     <div class="form-wrapper p-5">
         <div class="container">
-            <div class="row">
-                <div class="col-12 col-sm-12 col-md-6 col-lg-6 ">
-                        <div  id="errors">
+            <div class="row" v-if="loading">
+                <div class="col-4">
+                        <div  class="background-loading">
+                            <img src="https://cdn.dribbble.com/users/1537787/screenshots/5196254/icon_and_graphics_2.gif" id="loading-hamburger" alt="loading hamburger">
+                        </div>
 
-                        </div>  
 
-                        <div id="loading">
+                </div>
+            </div>
+
+            <div class="row" v-else>
+                <div class="col-12">
+                            <div id="loading" class="dataForm" >
                                 <form class="mx-auto">
                                     <div class="form-group">
                                         <label class="name" for="Nome">Nome</label>
@@ -35,7 +41,7 @@
                                     <button v-else class="btn btn-warninng mb-4"> {{loadingPayment ? 'Loading...' : 'Procedi con l\'acquisto'}}</button>
                                 </form>
 
-                                <div class="text-center">
+                                <div class="text-center loading-payment">
                                     <button class="btn btn-warning" @click="getToken()">Aggiungi un metodo di pagamento</button>
 
                                     <br>
@@ -44,16 +50,14 @@
 
                                     <Checkout  v-if="token !== '' " :token='token' @nonce='setNonce' />
                                     
-                                    <div class="">
-                                        <button id="valdiateBtn" class="btn btn-success" @click="getPayment">Paga</button>
+                                    <div>
+                                        <button id="valdiateBtn" class="btn btn-success" @click="timeoutPayment">Paga</button>
 
                                         <router-link :to="{name: 'menu' }">
                                             <button class="btn btn-dark">Ritorna ai menù</button>
                                         </router-link>
                                     </div>
-
                                 </div>
-
                         </div>
                 </div>
             </div>
@@ -74,6 +78,11 @@ export default {
 
     data: function (){
         return {
+/*           dataForm = true,
+            cardRegistration=true, */
+            loadingPayment: '',
+            dataForm: '',
+            loading: false,
             product: [],
             token: '',
             disableBuyButton: true,
@@ -82,6 +91,7 @@ export default {
                 amount: 0
             }
         }
+
     },
 
     methods: {
@@ -109,6 +119,19 @@ export default {
 
             setNonce(nonce){
                 this.form.nonce=nonce
+            },
+
+            
+            timeoutPayment(){
+                this.dataForm = document.querySelector('.dataForm').classList.add('d-none');
+                this.loading = true;        
+/*              this.formRegistration = false;
+                this.cardRegistration = false; */
+                console.log(this.loading)
+                setTimeout(() => {
+                    this.getPayment();
+                    this.loading = false;
+                }, "20000")
             },
 
             getPayment(){
@@ -184,7 +207,7 @@ export default {
     } */
 
     .form-control{
-        border-bottom: 1px solid orange;
+        border-bottom: 1px solid black;
     }  
 
     .form-group {
@@ -197,5 +220,17 @@ export default {
 
     .form-control{
         margin-bottom: 2rem;
+    }
+    
+    .background-loading, .form-wrapper {
+        background-color: #fbcf5a;
+    }
+
+    .form-control::placeholder {
+        color:black;
+    }
+
+    label{
+        color: black;
     }
 </style>
