@@ -9,7 +9,7 @@
         >
 
         <template v-slot:button="slotProps">
-            <button class="btn btn-warning mb-3" @click="slotProps.submit" color="success">
+            <button class="btn btn-warning mb-3" @click=" slotProps.submit" color="success">
                 Salva i dati prima di pagare
             </button>
         </template>
@@ -27,9 +27,12 @@ export default {
     },
 
     methods: {
-        onSuccess (payload) {   
+        onSuccess (payload) {
             const nonce = payload.nonce;
             this.$emit('nonce', nonce)
+        },
+        log(item){
+            console.log(item);
         },
 
         onError(error){

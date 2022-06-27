@@ -14,7 +14,6 @@
                                         <input type="text" class="form-control my-form" placeholder="Inserisci il tuo nome" name="name">
                                     </div>
 
-
                                     <div class="form-group">
                                         <label for="Cognome">Cognome</label>
                                         <input type="text" class="form-control" placeholder="Inserisci il tuo Cognome">
@@ -52,11 +51,34 @@
                                             <button class="btn btn-dark">Ritorna ai menù</button>
                                         </router-link>
                                     </div>
-
                                 </div>
-
                         </div>
                 </div>
+                <div class="modal fade" id="AlertModal" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">
+                                        Controlla i campi!
+                                    </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div id="cart" class="w-100 border border-danger rounded p-2 shadow" >
+                                        <div class="d-flex py-2 flex-column">
+                                            <p class="text-danger fw-bold">
+                                                Controlla che tutti i campi siano stati compilati correttamente
+                                            </p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer justify-content-between">
+                                    <button @click="closeModal()" type="button" class="btn bg-gradient-dark mb-0" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
             </div>
         </div>
     </div>
@@ -75,6 +97,7 @@ export default {
 
     data: function (){
         return {
+            alerModal : '',
             product: [],
             token: '',
             disableBuyButton: true,
@@ -113,15 +136,24 @@ export default {
             },
 
             getPayment(){
-                axios.post('/api/orders/payment', this.form)
-                .then((result)=> {
-                    console.log(result);
-                    if (result.data.success){
-                        this.$router.push('/thanks')
-                    } else {
-                        alert('Pagamento rifiutato')
-                    }
-                })
+                console.log(this.form.nonce)
+                if(this.form.nonce != ''){
+                    axios.post('/api/orders/payment', this.form)
+                    .then((result)=> {
+                        console.log(result);
+                        if (result.data.success){
+                            this.$router.push('/thanks')
+                        }
+                    })
+                }else {
+                    // alert('Compila tutti i Campi');
+                    this.alerModal = document.getElementById('AlertModal');
+                    console.log(this.alerModal);
+                    this.alerModal.classList.add('d-block', 'show');
+                }
+            },
+            closeModal(){
+                this.alerModal.classList.remove('d-block', 'show');
             },
 
 
