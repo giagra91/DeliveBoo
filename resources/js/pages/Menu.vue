@@ -68,6 +68,8 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2';
+
 export default {
 	name: 'Menu',
 	data: function (){
@@ -90,6 +92,13 @@ export default {
 				price : food.price,
 				};
 			this.cart.push(productInCart);
+            Swal.fire({
+                        title :'Piatto aggiunto al carrello!',
+                        // text: 'Il piatto è stato cancellato.',
+                        icon :'success',
+                        timer: 1500,
+                        showConfirmButton: false
+                    })
 			this.totalPrice += food.price;
 			window.localStorage.setItem("cart", JSON.stringify(this.cart ));
 
