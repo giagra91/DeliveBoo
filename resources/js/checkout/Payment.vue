@@ -45,7 +45,7 @@
                                     <Checkout  v-if="token !== '' " :token='token' @nonce='setNonce' />
 
                                     <div class="">
-                                        <button id="valdiateBtn" class="btn btn-success" @click="getPayment">Paga</button>
+                                        <button id="valdiateBtn" class="btn btn-success" @click="getPayment" >Paga</button>
 
                                         <router-link :to="{name: 'menu' }">
                                             <button class="btn btn-dark">Ritorna ai menù</button>
@@ -104,6 +104,12 @@ export default {
             loadingPayment: true,
             form: {nonce: '',
                 amount: 0
+            },
+            order: {
+                name: "",
+                address: "",
+                email: "",
+                amount: 0,
             }
         }
     },
@@ -183,6 +189,20 @@ export default {
                     checkForm();
                 })
             },
+            addOrder(){
+                this.order.name = "Gianni",
+                this.order.address = "Via Roma 1500",
+                this.order.email = "prova415@gmail.com",
+                this.order.amount = 56,
+
+                axios.post("http://127.0.0.1:8000/api/orders/add", this.order)
+                .then((result) => {
+                    console.log(result)
+                })
+                .catch((error) => {
+                    console.error(error)
+                })
+            },
 
             // async buy () {
             //     try {
@@ -196,6 +216,8 @@ export default {
         created(){
             this.getPost(this.$route.params.id);
             this.getPayment();
+            // this.addOrder();
+            console.log("sdgfklsdngldsknglisdnglisdnglisdnglidsnglisdngldsngds354534358sdgds")
         },
 
 /*         async mounted(){

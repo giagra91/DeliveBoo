@@ -36,3 +36,4 @@ Route::get('/filtered_restaurants/{ids}', 'Api\RestaurantController@filterRestau
 
 Route::get('orders/token', 'Api\OrdersController@generate'); /* Per generare il token del pagamento */
 Route::post('orders/payment', 'Api\OrdersController@makePayment'); /* Per confermare il pagamento */
+Route::post('orders/add', 'Api\OrdersController@addOrder');
